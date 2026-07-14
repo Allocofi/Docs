@@ -42,7 +42,8 @@
               "products/stable-yield-etp",
               "products/themes-etp",
               "products/private-markets"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Trading & Access",
@@ -51,7 +52,8 @@
               "trading/subscription-redemption",
               "trading/liquidity",
               "trading/fees"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Trust & Transparency",
@@ -60,7 +62,8 @@
               "trust/custody",
               "trust/risk-disclosures",
               "trust/prospectus"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Account & Compliance",
@@ -68,14 +71,16 @@
               "account/wallets",
               "account/kyc-verification",
               "account/supported-jurisdictions"
-            ]
+            ],
+            "hidden": true
           },
           {
             "group": "Legal",
             "pages": [
               "legal/terms-of-service",
               "legal/privacy-policy"
-            ]
+            ],
+            "hidden": true
           }
         ]
       }
