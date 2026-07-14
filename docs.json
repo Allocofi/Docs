@@ -4,7 +4,8 @@
   "theme": "luma",
   "logo": {
     "light": "/images/logo.png",
-    "dark": "https://media.brand.dev/83cda7a8-2052-4293-8e4f-a68a5e123b43.svg"
+    "dark": "/images/1784040531823.jpg",
+    "href": "https://allocofi.com"
   },
   "favicon": "https://icons.duckduckgo.com/ip3/allocofi.com.ico",
   "colors": {
@@ -84,5 +85,8 @@
     "socials": {
       "website": "https://allocofi.com"
     }
+  },
+  "fonts": {
+    "family": "Inter"
   }
 }
