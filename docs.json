@@ -28,7 +28,9 @@
           {
             "group": "Get Started",
             "pages": [
-              "started/introduction"
+              "started/introduction",
+              "started/how-it-works",
+              "started/eligibility"
             ]
           },
           {
