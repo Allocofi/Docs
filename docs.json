@@ -28,6 +28,7 @@
           {
             "group": "Get Started",
             "pages": [
+              "index",
               "introduction",
               "how-it-works",
               "eligibility"
