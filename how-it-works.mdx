@@ -4,51 +4,28 @@ sidebarTitle: "Official Domains"
 description: "Always verify that you are interacting with an official Alloco domain or communication channel."
 ---
 
-Every Alloco product starts as a market insight — a theme, a professional strategy, a data signal, or an investment narrative — and ends as a structured, transparent, onchain financial product that investors can access, trade, and redeem. The platform engineers each step of that transformation: defining the product rules, calculating NAV, routing liquidity, maintaining legal structure, and publishing the disclosures that make the product trustworthy. This page walks you through the full lifecycle, from inception to secondary market trading and back through redemption.
+## Official Links
 
-## The Product Lifecycle
+| Channel | Official Address |
+| :-- | :-- |
+| Website | [https://www.allocofi.com](https://www.allocofi.com) |
+| Alloco App | [https://app.allocofi.com](https://app.allocofi.com) |
+| Documentation | `https://docs.allocofi.com` |
+| X / Twitter | [@alloco\_fi](https://x.com/alloco_fi) |
+| Telegram | [https://t.me/alloco\_fi](https://t.me/alloco_fi) |
+| Support | [support@allocofi.com](mailto:support@allocofi.com) |
 
-<Steps>
-  <Step title="Product Creation">
-    A theme, strategy, or insight is turned into an ETP blueprint. Each product defines its eligible assets, investment rules, fee structure, valuation source, rebalancing process, liquidity path, and redemption constraints. The product blueprint is the foundation for everything that follows — it encodes the intent of the product in a way that is structured, auditable, and enforceable.
-  </Step>
-  <Step title="Structuring">
-    Alloco engineers the product structure using the **Product Engine**: the engine defines the product's name, ticker, objective, eligible users, fees, minimum units, risk limits, rebalance rules, subscription and redemption cycles, and suspension conditions. Legal wrappers — such as SPV, SPC, or segregated portfolio structures — are put in place to separate the product's assets from the Alloco operating company and other products.
-  </Step>
-  <Step title="NAV and Valuation">
-    The **NAV Engine** runs continuously across three layers. **Official NAV** provides the highest-accuracy valuation for formal settlement, primary creation and redemption, and reporting. **iNAV** delivers real-time pricing for secondary market anchoring and RFQ quote reference. **Risk NAV** applies conservative haircuts for risk control, suspension logic, and quote protection. Each layer is calculated from assets, cash, liabilities, accrued fees, unsettled trades, and applicable discounts.
-  </Step>
-  <Step title="Access and Trading">
-    Users access products through secondary market trading, RFQ routes, or primary market creation and redemption processes, depending on eligibility and product rules. Orders route through DEX, RFQ providers, market makers, authorized participants, or broker APIs. Small orders execute instantly via DEX swap; medium orders receive competitive quotes through RFQ; large orders settle through primary create/redeem against Official NAV.
-  </Step>
-  <Step title="Redemption">
-    Eligible users can redeem ETP units through the primary market process, subject to product-specific eligibility requirements, redemption cycles (T\+1, T\+N, or weekly settlement), and applicable fees. Redemption value is calculated against Official NAV after execution costs. The platform maintains layered reconciliation across onchain supply, vault records, custodian reports, and NAV calculations to ensure settlement integrity.
-  </Step>
-</Steps>
+## Security Notice
 
-## Product Structure
+All official Alloco websites use the **allocofi.com** domain.
 
-Every Alloco product is assembled from a set of well-defined modules. Together, these modules handle the full spectrum of functions required for a real, regulated-grade financial product — from share records and NAV computation to legal segregation and user-facing disclosure.
+Alloco team members will never:
 
-| Module | Function |
-| --- | --- |
-| **Product Engine** | Defines name, ticker, objective, eligible users, fees, minimum units, risk limits, rebalance rules, subscription/redemption cycles, and suspension conditions. |
-| **Vault / Share Token** | Records product shares and subscription/redemption status. The token acts as an operational record and transfer rail; its legal nature depends on the applicable product documents. |
-| **NAV Engine** | Calculates Official NAV, iNAV, and Risk NAV based on assets, cash, liabilities, fees, unsettled trades, and applicable haircuts and discounts. |
-| **Liquidity Layer** | Routes orders across DEX, RFQ, market makers, authorized participants, broker API, and primary create/redeem flows to find the appropriate execution path for each order size. |
-| **Legal Wrapper** | Uses SPV/SPC/segregated portfolio or equivalent structures to separate each product's underlying assets, cash, and obligations from the operating company and all other products. |
-| **Disclosure Layer** | Publishes terms, fees, risks, NAV, holdings, custody information, rebalance records, exception events, and all supporting resource files so users can make informed decisions. |
+- Ask for your private key or seed phrase
+- Request that you transfer assets to a personal wallet
+- Contact you first through an unofficial account
+- Ask you to install unknown software or browser extensions
 
-## From Private Strategies to Global Markets
+Smart contract addresses and supported network details will only be published in the official documentation.
 
-Alloco's platform connects three stages of the value chain that have historically been disconnected:
-
-**From private strategies to products** — Investment insights held by professional managers, research teams, KOLs, and institutional investors are encoded into structured product blueprints. The Product Engine and legal structuring layer translate a thesis into something rule-bound, auditable, and issuable.
-
-**From products to onchain access** — Structured products are made accessible through onchain share records, NAV-anchored secondary markets, and multiple liquidity routes. Users interact through wallets, DEX interfaces, RFQ desks, or broker integrations — whichever route suits their size and eligibility.
-
-**From access to global markets** — Products distributed onchain are globally reachable, composable with DeFi infrastructure, and available 24/7. The migration from closed, institution-controlled distribution to open, digital networks means that any eligible user anywhere in the world can access the same product on the same terms.
-
-<Info>
-  Investment ideas should become investable products. Turn any market insight into a compliant, investable onchain ETP using the Alloco Theme To Product Engine.
-</Info>
+Always verify the domain and contract address before connecting your wallet or signing a transaction.
