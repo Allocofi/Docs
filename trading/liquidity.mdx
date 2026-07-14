@@ -1,5 +1,5 @@
 ---
-title: "ETP Liquidity: How Alloco Products Are Traded"
+title: "How Alloco ETP Liquidity Works: Routes and NAV States"
 sidebarTitle: "Liquidity"
 description: "Understand how liquidity works for Alloco ETP products — from crypto-native and US equity backing to market makers, RFQ desks, and the NAV state machine."
 ---
@@ -37,7 +37,7 @@ Alloco uses a NAV state machine to reflect real-time data quality, market condit
 | Fresh | Data current, prices normal, holdings reconciled | Normal trading, RFQ, create/redeem | Regular limits and fees |
 | Stale | NAV or key price update delayed | Small trades and limited RFQ | Restrict large create/redeem, widen spread |
 | Frozen | Underlying market closed or halted | Small trades or view-only | Suspend large instant create/redeem |
-| Degraded | Data-source conflict or abnormal price | Limited trading and limited redemption | Increase haircut, suspend high-risk paths |
+| Degraded | Data-source conflict, lower liquidity, or abnormal price | Limited trading and limited redemption | Increase haircut, suspend high-risk paths |
 | Emergency | Oracle failure, custody event, extreme deviation | Usually view-only or redeem-only | Suspend secondary trading, RFQ and creation |
 
 <Note>
