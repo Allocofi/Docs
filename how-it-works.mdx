@@ -1,7 +1,7 @@
 ---
-title: "How Alloco Works: From Idea to an Investable Product"
-sidebarTitle: "How It Works"
-description: "Learn how Alloco transforms market themes and investment strategies into structured onchain ETPs, from product creation through trading and redemption."
+title: "Official Domains"
+sidebarTitle: "Official Domains"
+description: "Always verify that you are interacting with an official Alloco domain or communication channel."
 ---
 
 Every Alloco product starts as a market insight — a theme, a professional strategy, a data signal, or an investment narrative — and ends as a structured, transparent, onchain financial product that investors can access, trade, and redeem. The platform engineers each step of that transformation: defining the product rules, calculating NAV, routing liquidity, maintaining legal structure, and publishing the disclosures that make the product trustworthy. This page walks you through the full lifecycle, from inception to secondary market trading and back through redemption.
@@ -22,7 +22,7 @@ Every Alloco product starts as a market insight — a theme, a professional stra
     Users access products through secondary market trading, RFQ routes, or primary market creation and redemption processes, depending on eligibility and product rules. Orders route through DEX, RFQ providers, market makers, authorized participants, or broker APIs. Small orders execute instantly via DEX swap; medium orders receive competitive quotes through RFQ; large orders settle through primary create/redeem against Official NAV.
   </Step>
   <Step title="Redemption">
-    Eligible users can redeem ETP units through the primary market process, subject to product-specific eligibility requirements, redemption cycles (T+1, T+N, or weekly settlement), and applicable fees. Redemption value is calculated against Official NAV after execution costs. The platform maintains layered reconciliation across onchain supply, vault records, custodian reports, and NAV calculations to ensure settlement integrity.
+    Eligible users can redeem ETP units through the primary market process, subject to product-specific eligibility requirements, redemption cycles (T\+1, T\+N, or weekly settlement), and applicable fees. Redemption value is calculated against Official NAV after execution costs. The platform maintains layered reconciliation across onchain supply, vault records, custodian reports, and NAV calculations to ensure settlement integrity.
   </Step>
 </Steps>
 
@@ -31,7 +31,7 @@ Every Alloco product starts as a market insight — a theme, a professional stra
 Every Alloco product is assembled from a set of well-defined modules. Together, these modules handle the full spectrum of functions required for a real, regulated-grade financial product — from share records and NAV computation to legal segregation and user-facing disclosure.
 
 | Module | Function |
-|---|---|
+| --- | --- |
 | **Product Engine** | Defines name, ticker, objective, eligible users, fees, minimum units, risk limits, rebalance rules, subscription/redemption cycles, and suspension conditions. |
 | **Vault / Share Token** | Records product shares and subscription/redemption status. The token acts as an operational record and transfer rail; its legal nature depends on the applicable product documents. |
 | **NAV Engine** | Calculates Official NAV, iNAV, and Risk NAV based on assets, cash, liabilities, fees, unsettled trades, and applicable haircuts and discounts. |
