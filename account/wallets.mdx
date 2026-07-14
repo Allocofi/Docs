@@ -1,0 +1,102 @@
+---
+title: "Digital Wallets: Connecting to Alloco"
+sidebarTitle: "Wallets"
+description: "Learn how to connect a self-custodial or embedded digital wallet to Alloco, manage wallet security, and understand your responsibilities as a wallet holder."
+---
+
+Alloco uses digital wallets for authentication, transaction signing, and ETP Unit management. You may connect a self-custodial wallet you already own, or use an embedded wallet created through the Alloco platform. Understanding wallet security is critical before interacting with any product — your wallet is your gateway to every transaction on the platform, and many actions on a blockchain are irreversible once confirmed.
+
+## Connecting Your Wallet
+
+<Steps>
+  <Step title="Visit app.allocofi.com">
+    Open [app.allocofi.com](https://app.allocofi.com) in your browser.
+  </Step>
+  <Step title="Click 'Connect Wallet'">
+    Select **Connect Wallet** in the top navigation bar.
+  </Step>
+  <Step title="Choose your wallet type">
+    Select either a self-custodial wallet (e.g., MetaMask or Coinbase Wallet) or an embedded wallet created directly through Alloco.
+  </Step>
+  <Step title="Approve the connection request">
+    Your wallet will prompt you to approve the connection. Review the request carefully, then confirm it within your wallet interface.
+  </Step>
+  <Step title="Complete account setup or KYC verification">
+    Depending on the products you want to access, you may be guided through additional account setup steps or identity verification. Follow any on-screen instructions to complete onboarding.
+  </Step>
+</Steps>
+
+## Supported Wallet Types
+
+Alloco supports two categories of digital wallet:
+
+<CardGroup cols={2}>
+  <Card title="Self-Custodial Wallets" icon="wallet">
+    Wallets you own and control independently, such as MetaMask, Coinbase Wallet, or any other compatible wallet. You hold your own private keys and are entirely responsible for their security.
+  </Card>
+  <Card title="Embedded Wallets" icon="key">
+    Wallets created directly through the Alloco platform using your email address, a passkey, or a third-party authentication provider. These are designed for a simpler onboarding experience while still giving you control over your assets.
+  </Card>
+</CardGroup>
+
+Both wallet types allow you to interact with Alloco's ETP products. The right choice depends on your technical experience and security preferences.
+
+## Your Wallet Responsibilities
+
+As a wallet holder, you are solely responsible for the following. Alloco cannot intervene on your behalf if any of these areas are neglected.
+
+- **Selecting and maintaining your wallet** — choose a reputable wallet provider and keep your software up to date.
+- **Protecting private keys, seed phrases, passwords, and devices** — store these securely and never share them with anyone.
+- **Confirming wallet addresses before sending transactions** — always double-check the destination address; blockchain transactions cannot be reversed.
+- **Reviewing transaction details carefully before signing** — verify amounts, fees, and contract addresses before you confirm.
+- **Understanding wallet permissions and token approvals** — be aware of what each approval grants before accepting it.
+- **Maintaining sufficient network tokens for gas fees** — you need a small balance of the native network token to cover transaction costs.
+- **Ensuring your wallet is compatible with the applicable blockchain and smart contracts** — not all wallets support every network or contract standard.
+
+<Warning>
+  Never provide your private key or seed phrase to Alloco or any person claiming to represent Alloco. Alloco cannot recover private keys, reverse wallet transactions, restore access to a lost wallet, cancel a confirmed blockchain transaction, or retrieve assets sent to an incorrect address.
+</Warning>
+
+## Wallet Signatures
+
+When you interact with Alloco products, you will be asked to sign transactions or messages using your wallet. A wallet signature may constitute a legally binding instruction — similar in effect to signing a document — and may be irreversible once submitted to a blockchain.
+
+Before confirming any signature, review the details carefully:
+
+- Check that the contract address matches the expected Alloco or product smart contract.
+- Verify that the amounts and parameters are correct.
+- Confirm that you understand what permission or action the signature authorises.
+
+If anything looks unfamiliar or unexpected, do not sign. Contact [support@allocofi.com](mailto:support@allocofi.com) if you are unsure.
+
+## Network Tokens and Gas
+
+Every blockchain transaction requires a gas fee paid in the native token of the network you are using. Gas fees are paid to the network itself — not to Alloco — and are required regardless of whether your transaction succeeds or fails.
+
+Before interacting with Alloco products on any chain, make sure your wallet holds a small amount of the relevant network token:
+
+| Network | Native Token |
+|---|---|
+| Ethereum | ETH |
+| Polygon | POL (formerly MATIC) |
+| Base | ETH |
+| Arbitrum | ETH |
+| Other EVM chains | Refer to that chain's documentation |
+
+Gas costs vary with network congestion. Keep a buffer in your wallet to avoid failed transactions during periods of high demand.
+
+## Security Best Practices
+
+<Tip>
+  Follow these practices to keep your wallet and assets as secure as possible:
+
+  - **Use a hardware wallet** (e.g., Ledger or Trezor) for large or long-term holdings — hardware wallets keep your private key offline and away from potential attackers.
+  - **Never share your seed phrase with anyone** — not with support agents, not in online forms, not with anyone who contacts you claiming to be from Alloco.
+  - **Verify contract addresses before approving transactions** — check addresses against official Alloco documentation before interacting with any smart contract.
+  - **Use a dedicated wallet for DeFi interactions** — keeping a separate wallet for active on-chain activity limits your exposure if that wallet is ever compromised.
+  - **Regularly review and revoke unnecessary token approvals** — use a tool like Revoke.cash to audit and remove approvals you no longer need.
+</Tip>
+
+<Note>
+  Alloco does not control self-custodial wallets and generally cannot assist with wallet recovery, private key management, or direct blockchain interactions outside the platform interface.
+</Note>

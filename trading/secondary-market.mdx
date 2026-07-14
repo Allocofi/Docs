@@ -1,0 +1,69 @@
+---
+title: "Secondary Market Trading for Alloco ETP Units"
+sidebarTitle: "Secondary Market"
+description: "Buy and sell Alloco ETP Units on secondary markets via DEX, RFQ, or market makers. Understand pricing, spreads, and when market price may differ from NAV."
+---
+
+After an Alloco ETP is launched, you can trade ETP Units on secondary markets without going through the primary subscription/redemption process. Secondary trading is available through decentralized exchanges (DEX), request-for-quote (RFQ) systems, or market makers, depending on the product. This page explains the available trading routes, how market price relates to NAV, and what risks to keep in mind before you trade.
+
+## Trading Routes
+
+Each route is suited to a different order size and execution priority. Choose the route that best matches your position size and tolerance for slippage.
+
+| Route | Best For | Description |
+|---|---|---|
+| DEX / Instant Swap | Small orders | Fast execution with visible slippage and premium/discount to NAV |
+| RFQ / MM Quote | Medium orders | Multiple quotes may reduce slippage; quotes based on iNAV and market conditions |
+| Primary Create/Redeem | Large orders | NAV or execution-adjusted NAV pricing; available to eligible users and APs |
+
+## Understanding Price vs NAV
+
+Secondary market prices are set by supply and demand rather than directly by NAV. Knowing how these two figures relate helps you evaluate whether you are getting fair value when you trade.
+
+- ETP Units may trade above or below NAV on secondary markets.
+- Market price is influenced by supply and demand, DEX liquidity depth, and broader market conditions.
+- **iNAV** (indicative NAV) is published as a real-time reference to anchor secondary market pricing. It updates frequently during active market hours and is the primary benchmark for DEX and RFQ quotes.
+- The **premium/discount** is the difference between the current market price and iNAV. A positive number means units are trading above iNAV; a negative number means below.
+- Alloco does not guarantee that the secondary market price of an ETP Unit will always equal NAV.
+
+## Risks in Secondary Trading
+
+Before you execute a secondary market trade, be aware of the following risks:
+
+- **Wide bid-ask spreads** in low-liquidity conditions
+- **Slippage** on large DEX orders
+- **Price impact** from AMM mechanics
+- **Delayed execution or partial fills**
+- **Premiums or discounts to NAV**
+- **Market manipulation or MEV** on public blockchains
+- **Trading suspension** during product events, emergency states, or NAV staleness periods
+
+## Executing a Trade
+
+<Steps>
+  <Step title="Connect your wallet">
+    Go to [app.allocofi.com](https://app.allocofi.com) and connect your wallet.
+  </Step>
+  <Step title="Select the ETP product">
+    Navigate to the ETP product you want to trade.
+  </Step>
+  <Step title="Check pricing and premium/discount">
+    Review the current market price, iNAV, and the premium/discount indicator before committing to a trade.
+  </Step>
+  <Step title="Choose your route for small orders">
+    For small orders, use the DEX/instant swap route for fast execution.
+  </Step>
+  <Step title="Request a quote for medium orders">
+    For medium orders, use the RFQ interface to request one or more quotes from market makers.
+  </Step>
+  <Step title="Review execution details">
+    Check the slippage estimate, applicable fees, and final execution price before you confirm.
+  </Step>
+  <Step title="Confirm the transaction">
+    Approve and sign the transaction in your wallet to complete the trade.
+  </Step>
+</Steps>
+
+<Note>
+  For large orders, consider using the primary create/redeem process to minimize market impact. See the [Subscription & Redemption](/trading/subscription-redemption) page for details.
+</Note>

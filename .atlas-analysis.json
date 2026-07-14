@@ -1,24 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "name": "Alloco",
+  "projectType": "saas",
+  "projectName": "Alloco",
+  "projectDescription": "Alloco is an onchain ETP (exchange-traded product) issuance and access platform that turns market themes, professional strategies, and investment ideas into structured, transparent, and tradeable onchain financial products.",
   "theme": "luma",
-  "logo": {
-    "light": "https://media.brand.dev/83cda7a8-2052-4293-8e4f-a68a5e123b43.svg",
-    "dark": "https://media.brand.dev/83cda7a8-2052-4293-8e4f-a68a5e123b43.svg"
-  },
-  "favicon": "https://icons.duckduckgo.com/ip3/allocofi.com.ico",
-  "colors": {
-    "primary": "#0a0a0a",
-    "light": "#ffffff",
-    "dark": "#0a0a0a"
-  },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Launch App",
-      "href": "https://app.allocofi.com"
-    }
-  },
+  "primaryColor": "#ffffff",
+  "lightColor": "#ffffff",
+  "darkColor": null,
   "navigation": {
     "tabs": [
       {
@@ -80,9 +67,23 @@
       }
     ]
   },
-  "footer": {
-    "socials": {
-      "website": "https://allocofi.com"
-    }
-  }
+  "keyFeatures": [
+    "Onchain ETP issuance infrastructure for crypto-native and TradFi-linked products",
+    "Three-layer NAV system: Official NAV, iNAV, and Risk NAV",
+    "Multiple liquidity routes: DEX, RFQ, market makers, and primary create/redeem",
+    "KOL, Hedge Fund, Stable Yield, and Themes ETP product categories",
+    "Private markets access: PE&VC and manager-led onchain products",
+    "Transparent product documents: prospectus, risk disclosures, NAV methodology, custody overview",
+    "Full product lifecycle: from idea and structuring to issuance, trading, and redemption",
+    "Compliance-ready: KYC/AML, jurisdictional eligibility, and investor classification"
+  ],
+  "publicApiSurface": [
+    "ETP product subscription and minting flows",
+    "ETP Unit redemption and withdrawal",
+    "Secondary market trading via DEX and RFQ",
+    "NAV and iNAV data display",
+    "Wallet connection and authentication",
+    "KYC/AML identity verification flow",
+    "Product document access (prospectus, risk disclosures, NAV methodology, custody overview)"
+  ]
 }
