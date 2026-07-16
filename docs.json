@@ -3,8 +3,8 @@
   "name": "Alloco",
   "theme": "luma",
   "logo": {
-    "light": "/images/处理完成图片20260716135138.png",
-    "dark": "/images/处理完成图片20260716134253.png",
+    "light": "/images/light_dark.png",
+    "dark": "/images/Dark_Light.png",
     "href": "https://allocofi.com"
   },
   "favicon": "https://icons.duckduckgo.com/ip3/allocofi.com.ico",
