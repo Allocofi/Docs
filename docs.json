@@ -41,9 +41,9 @@
               "products/hedge-fund-etp",
               "products/stable-yield-etp",
               "products/themes-etp",
-              "products/private-markets"
-            ],
-            "hidden": true
+              "products/private-markets",
+              "products/trust-and-transparency"
+            ]
           },
           {
             "group": "Trading & Access",
