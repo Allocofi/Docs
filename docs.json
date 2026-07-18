@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Alloco",
-  "theme": "luma",
+  "theme": "palm",
   "logo": {
     "light": "/images/light_dark.png",
     "dark": "/images/1784182262989.png",
