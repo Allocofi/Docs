@@ -51,8 +51,7 @@
               "trading/subscription-redemption",
               "trading/liquidity",
               "trading/fees"
-            ],
-            "hidden": true
+            ]
           },
           {
             "group": "USDA",

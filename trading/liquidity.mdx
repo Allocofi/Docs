@@ -1,54 +1,73 @@
 ---
-title: "How Alloco ETP Liquidity Works: Routes and NAV States"
-sidebarTitle: "Liquidity"
+title: "Risk Management & Liquidity"
+sidebarTitle: "Risk Management & Liquidity"
 description: "Understand how liquidity works for Alloco ETP products — from crypto-native and US equity backing to market makers, RFQ desks, and the NAV state machine."
 ---
 
-Alloco products are designed with multiple liquidity layers to serve different order types and market conditions. Understanding how liquidity works helps you choose the right access route and manage execution risk. Liquidity for any given product depends on its underlying asset type, NAV state, and the market makers or authorized participants supporting it at any given time.
+## Position-Level Controls
 
-## Liquidity Architecture
+Individual positions may be subject to:
 
-Alloco products draw on two main backing types, each with its own liquidity profile and access routes.
+- Position-size limits
+- Stop-loss thresholds
+- Exposure limits
+- Instrument-level risk limits
+- Predefined entry and exit rules
 
-### Crypto-Native Backing
+These controls are intended to prevent a single trade or market event from having a disproportionate effect on the portfolio.
 
-Products backed by crypto-native assets use spot positions, perpetual contracts, and onchain positions as their underlying holdings. These products operate on weekly settlement and rebalance cycles. Liquidity is primarily provided by arbitrage desks, market makers, and high-turnover strategies that continuously quote around iNAV.
+## Portfolio-Level Controls
 
-### US Equity Backing
+At the portfolio level, risk may be monitored through:
 
-Products backed by US equities hold stocks, ETFs, and assets held in custody accounts. Order routing runs through broker and API connections using RFQ, offchain execution, and onchain access layers. NAV-aware market makers can provide deeper quotes for these products because the underlying assets have well-established pricing conventions.
+- Gross and net exposure
+- Currency concentration
+- Precious-metals exposure
+- Portfolio volatility
+- Drawdown levels
+- Liquidity requirements
+- Counterparty exposure
 
-## Liquidity Routes by Order Size
+The portfolio may reduce exposure, hedge positions or hold additional cash when market conditions become less favourable.
 
-Choose the route that best matches your order size. Larger orders benefit from routes that are closer to NAV and reduce market impact.
+## Liquidity
 
-| Order Size | Recommended Route | User Protection |
-|---|---|---|
-| Small orders | DEX / instant swap | Fast execution with visible slippage and premium/discount to NAV |
-| Medium orders | RFQ / MM quote | Multiple quotes may reduce slippage |
-| Large orders | Primary create/redeem | NAV or execution-adjusted NAV may reduce AMM market impact |
+The underlying markets are generally liquid, but redemption timing may depend on the ability to close or settle active positions in an orderly manner.
 
-## NAV State and Liquidity
+Redemption requests may therefore be subject to:
 
-Alloco uses a NAV state machine to reflect real-time data quality, market conditions, and operational status. The current NAV state directly determines which trading routes are available for a product. You can see the current state on the product page.
+- Scheduled redemption windows
+- Processing periods
+- Market liquidity
+- Settlement timing
+- Temporary restrictions during exceptional market conditions
 
-| State | Meaning | Allowed Actions | Restrictions |
-|---|---|---|---|
-| Fresh | Data current, prices normal, holdings reconciled | Normal trading, RFQ, create/redeem | Regular limits and fees |
-| Stale | NAV or key price update delayed | Small trades and limited RFQ | Restrict large create/redeem, widen spread |
-| Frozen | Underlying market closed or halted | Small trades or view-only | Suspend large instant create/redeem |
-| Degraded | Data-source conflict, lower liquidity, or abnormal price | Limited trading and limited redemption | Increase haircut, suspend high-risk paths |
-| Emergency | Oracle failure, custody event, extreme deviation | Usually view-only or redeem-only | Suspend secondary trading, RFQ and creation |
+The estimated redemption value is calculated using the applicable NAV after trading costs, fees and settlement adjustments.
 
-<Note>
-  Liquidity may disappear during stress events. In Emergency state, creation and secondary trading may be suspended to protect the asset pool and existing holders.
-</Note>
+$$
+Redemption\ Value
+=
+Redeemed\ Units
+\times
+Final\ NAV\ per\ Unit
+-
+Applicable\ Costs
+$$
 
-## Premium and Discount
+## Key Risks
 
-Every Alloco product page displays a **premium/discount indicator** that shows how the current market price compares to iNAV.
+USDM may be exposed to:
 
-- A **premium** means the market price is above iNAV — you are paying more than the calculated value of the underlying assets.
-- A **discount** means the market price is below iNAV — you may be acquiring units for less than their calculated value.
+- Foreign-exchange risk
+- Precious-metals price risk
+- Derivatives risk
+- Leverage risk
+- Liquidity risk
+- Counterparty risk
+- Execution risk
+- Model and strategy risk
+- Operational risk
 
-Large premiums or discounts create arbitrage opportunities for authorized participants (APs). When APs act on these opportunities by creating or redeeming units at or near NAV, the resulting supply adjustment pushes the market price back toward iNAV over time. This mechanism helps keep secondary market prices aligned with the underlying value of the product.
+<Warning>
+  USDM is an investment product. Capital is at risk, returns are not guaranteed, and investors may receive less than their original investment.
+</Warning>
