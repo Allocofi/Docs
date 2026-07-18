@@ -87,5 +87,10 @@
       "x": "https://x.com/alloco_fi",
       "telegram": "https://t.me/alloco_fi"
     }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Inter"
+    }
   }
 }
