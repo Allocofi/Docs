@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Alloco",
-  "theme": "palm",
+  "theme": "willow",
   "logo": {
     "light": "/images/light_dark.png",
     "dark": "/images/1784182262989.png",
@@ -9,7 +9,7 @@
   },
   "favicon": "https://icons.duckduckgo.com/ip3/allocofi.com.ico",
   "colors": {
-    "primary": "#ff0000",
+    "primary": "#19A249",
     "light": "#ffffff",
     "dark": "#0a0a0a"
   },
