@@ -4,40 +4,168 @@ sidebarTitle: "Fee "
 description: "Access curated PE&VC opportunities or launch independently branded onchain investment products through Alloco's private markets infrastructure."
 ---
 
-Alloco's private markets offering brings opportunities beyond public markets onchain. Whether you are looking to participate in curated PE&VC opportunities across the company growth lifecycle, or you are a fund manager who wants to launch independently branded onchain investment products, Alloco provides the issuance infrastructure and access network to make it happen.
+Alloco's ETP fee structure is designed to align with long-term investors while maintaining transparent and predictable costs.
 
-## What's Available
+The total cost of holding an ETP consists of:
 
-<CardGroup cols={2}>
-  <Card title="PE&VC Opportunities" icon="chart-bar" href="/products/private-markets#pevc-opportunities">
-    Participate in curated venture opportunities across the company growth lifecycle
-  </Card>
+- Minting fees
+- Redemption fees
+- Management fees
+- Other operational expenses
 
-  <Card title="Manager-Led Products" icon="user-tie" href="/products/private-markets#manager-led-onchain-products">
-    Exceptional fund managers can launch independently branded onchain investment products
-  </Card>
-</CardGroup>
+# 1. Mint Fee
 
-## PE&VC Opportunities
+## No Mint Fee
 
-Alloco curates access to private equity and venture capital opportunities at various stages of the company growth lifecycle — from early venture through to growth equity and pre-IPO. These opportunities are structured as onchain products with defined terms, NAV methodology, and custody arrangements, giving you the same disclosure standards and structural clarity you expect from any other Alloco product. Access may be limited by eligibility requirements and jurisdiction. Check each product page for the specific terms and minimum participation amounts.
+Alloco does not charge any fee when users mint new ETP units.
 
-## Manager-Led Onchain Products
+Users receive ETP units based on the current NAV per unit:
 
-Qualified fund managers and investment professionals can launch independently branded onchain investment products through Alloco's issuance infrastructure. This pathway is designed for managers who want the reach and accessibility of onchain distribution without sacrificing the product quality, compliance standards, or branding that define their offering.
+$$
+Minted\ Units=
+\frac{Deposit}
+{NAV_{per\ Unit}}
+$$
 
-Launching a manager-led product through Alloco includes:
+This structure allows investors to enter an ETP at the same underlying asset value without additional issuance costs.
 
-- **Full product structuring and blueprint design** — defining eligible assets, strategy rules, fees, and rebalancing processes
-- **NAV engine integration** — connecting your strategy's valuation logic to Alloco's three-layer NAV system for Official NAV, iNAV, and Risk NAV
-- **Liquidity and trading setup** — configuring DEX, RFQ, and primary create/redeem flows to match your product's liquidity profile
-- **Compliance and disclosure infrastructure** — prospectus, risk disclosures, NAV methodology, custody overview, and ongoing reporting
-- **Distribution through Alloco's access network** — reaching investors through Alloco's platform, DEX integrations, and access channels
+# 2. Redemption Fee
 
-## Get Started
+Redemption fees are designed to encourage long-term holding and protect ETP liquidity.
 
-For PE&VC opportunities or to explore launching a manager-led onchain product, visit [app.allocofi.com](https://app.allocofi.com) or email the team directly.
+The redemption fee may be reduced or waived depending on the holding period.
 
-<Info>
-  If you have any questions or are not sure which channel to reach out to, email [support@allocofi.com](mailto:support@allocofi.com) and the team will connect you with the right team at Alloco.
-</Info>
+$$
+Redemption\ Fee=f(Holding\ Period)
+$$
+
+Where:
+
+| Component | Description |
+| --- | --- |
+| Holding Period | Duration that ETP units are held before redemption |
+| Redemption Fee | Fee applied when redeeming ETP units |
+
+## Holding Period Example
+
+| Holding Period | Redemption Fee |
+| --- | --- |
+| Short-term holding | Applicable fee |
+| Medium-term holding | Reduced fee |
+| Long-term holding | Potential fee waiver |
+
+The final redemption amount is calculated as:
+
+$$
+USDC_{Received}
+=
+Units
+\times
+NAV_{Unit}
+\times
+(1-Redemption\ Fee)
+$$
+
+# 3. Management Fee
+
+Alloco charges an annual management fee based on the ETP assets under management.
+
+The management fee range:
+
+$$
+\boxed{
+0.5\%-2.0\% \ per\ year
+}
+$$
+
+The management fee is accrued over time:
+
+$$
+Management\ Fee_t
+=
+NAV_t
+\times
+Annual\ Fee
+\times
+\frac{Days}{365}
+$$
+
+Where:
+
+| Component | Description |
+| --- | --- |
+| NAV | Net asset value of the ETP |
+| Annual Fee | Annual management fee rate |
+| Days | Number of days elapsed |
+
+## Example
+
+Assume:
+
+- ETP NAV: \$10,000,000
+- Management fee: 1% annually
+- Holding period: 30 days
+
+The accrued fee:
+
+$$
+10,000,000
+\times
+1\%
+\times
+\frac{30}{365}
+$$
+
+$$
+=
+8,219.18
+$$
+
+The fee is reflected in NAV calculation.
+
+# 4. Other Expenses
+
+Certain operational expenses may be reflected in the ETP NAV.
+
+These may include:
+
+| Expense Category | Description |
+| --- | --- |
+| Custody Costs | Fees charged by qualified custodians |
+| Brokerage Costs | Execution and settlement costs |
+| Trading Costs | Market execution related expenses |
+| Network Fees | Blockchain transaction costs |
+| Administration Costs | Fund administration and reporting expenses |
+
+# 5. Total Cost Impact
+
+The effective cost of an ETP can be summarized as:
+
+$$
+Total\ Cost
+=
+Management\ Fee
++
+Redemption\ Fee
++
+Operational\ Expenses
+$$
+
+Minting does not incur additional issuance fees:
+
+$$
+Mint\ Fee=0
+$$
+
+# Transparent Fee Model
+
+All fees are disclosed and reflected through the ETP NAV calculation.
+
+Investors can verify:
+
+- Current NAV
+- Accrued management fees
+- Redemption terms
+- Operational expenses
+
+This ensures that every ETP unit represents a transparent and verifiable ownership interest in the underlying assets.
