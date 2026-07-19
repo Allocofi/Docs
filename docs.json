@@ -62,10 +62,8 @@
             "group": "ETP Launcher",
             "pages": [
               "account/wallets",
-              "account/kyc-verification",
-              "account/supported-jurisdictions"
-            ],
-            "hidden": true
+              "account/kyc-verification"
+            ]
           },
           {
             "group": "Private Fund (Institution only)",
