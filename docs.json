@@ -55,11 +55,8 @@
             "group": "USDA",
             "pages": [
               "trust/nav-methodology",
-              "trust/custody",
-              "trust/risk-disclosures",
-              "trust/prospectus"
-            ],
-            "hidden": true
+              "trust/custody"
+            ]
           },
           {
             "group": "ETP Launcher",

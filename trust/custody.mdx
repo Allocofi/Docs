@@ -1,88 +1,86 @@
 ---
-title: "Custody Overview: How Alloco Product Assets Are Held"
-sidebarTitle: "Custody"
-description: "Understand how Alloco product assets are held, segregated from operating company assets, and protected through onchain and offchain custody structures."
+title: "Risk Management & Liquidity"
+sidebarTitle: "Risk Management & Liquidity"
+description: "USDA operates within an institutional-grade risk management framework designed to control market exposure, execution risks and operational risks."
 ---
 
-Understanding how your product assets are held is a key part of evaluating any investment on Alloco. This page explains the custody structure used for different product types, how assets are segregated from the operating company and from other products, and what operational controls are in place to protect those assets.
+## Market-Neutral Risk Controls
 
-## Core Principle
+The strategy is designed to minimize directional exposure through hedged positions.
 
-Product assets should be recorded separately from operating-company assets, other product assets, and service-provider proprietary assets wherever possible. This separation exists to protect your economic interest in a product — even in scenarios involving platform failure, service-provider insolvency, or operational exceptions.
+Portfolio exposure is monitored through:
 
-<Note>
-You should rely on the legal structure, custody records, NAV reports, and reconciliation processes described in the product documents — not only on platform statements or UI displays — when assessing how your investment is held.
-</Note>
+- Net market exposure
+- Gross exposure
+- Delta exposure
+- Asset concentration
+- Exchange exposure
 
-## Custody by Asset Type
+The objective is to generate returns primarily from market inefficiencies rather than market direction.
 
-Different asset types require different custody arrangements. The table below summarises the possible holding methods and primary record sources for each category.
+## Quantitative Risk Framework
 
-| Asset/Exposure Type | Possible Holding Method | Main Records |
-|---|---|---|
-| **Onchain assets** | Smart contract vault, multisig wallet or compliant custody wallet | Onchain balance, transaction hash and vault records |
-| **Stablecoins/cash** | Vault, custody account, bank account or issuer account | Onchain balance, bank/custodian report and cash ledger |
-| **Equities/ETFs/traditional assets** | Brokerage account, custodian, SPV/SPC asset pool | Broker statement, custody statement and asset-pool ledger |
-| **Derivatives/perpetuals/swaps** | Exchange account, prime broker or swap counterparty | Position report, margin record and PnL report |
-| **RWA/other structured assets** | SPV, fund, trust or other legal vehicle | Legal register, asset list and manager report |
+The strategy uses systematic monitoring and predefined risk parameters.
 
-## SPV and Asset Pool Structure
+Risk controls include:
 
-Alloco-related products may be supported by SPVs (Special Purpose Vehicles), SPCs (Special Purpose Companies), segregated portfolios, fund entities, or other applicable legal vehicles. The purpose of these structures is to separate a specific product's underlying assets, cash, receivables, payables, and rights/obligations from the Alloco operating company and from other products.
+- Automated position monitoring
+- Exposure limits
+- Trade execution controls
+- Liquidity assessment
+- Real-time portfolio monitoring
 
-The roles within this structure are defined as follows:
+Positions may be adjusted or reduced when risk conditions exceed predefined thresholds.
 
-- The **operating company** provides technology, front end, protocol, data, product operation, or service support
-- The **SPV/SPC or asset pool** holds or arranges to hold underlying assets, cash, and related rights
-- **Custodians, brokers, administrators, managers, or other service providers** provide custody, execution, valuation, and reporting support
-- The **product token** acts as an operational record and transfer rail; its legal nature depends on the product documents and your eligibility classification
+## Execution & Counterparty Risk
 
-## Onchain Asset Controls
+Because the strategy interacts with multiple trading venues, risk management includes:
 
-For products that hold onchain assets, the following technical controls govern how those assets are managed:
+- Exchange diversification
+- Counterparty monitoring
+- Withdrawal and operational controls
+- Trading limit management
+- Execution quality monitoring
 
-- Vault contracts limit mint/burn, asset transfer, fee collection, and emergency pause permissions
-- Multisig or MPC wallets use signing thresholds, operation logs, address whitelists, and per-transaction amount limits
-- Major contract upgrades use timelock, multisig approval, or guardian mechanisms before taking effect
-- Onchain balances are reconciled with NAV reports, product token supply, and user share records on a regular basis
+The strategy seeks to reduce dependency on any single venue or liquidity source.
 
-## Holding Methods
+## Liquidity Management
 
-Products may use one or more of the following holding structures depending on underlying asset type and product design.
+USDA liquidity is supported by actively traded digital asset markets and systematic position management.
 
-| Holding Method | Description |
-|---|---|
-| **Direct holding** | The asset pool directly holds stablecoins, tokens, equities, ETFs or cash |
-| **Indirect holding** | The asset pool obtains economic exposure through a fund, SPV, note, swap, synthetic tool or custody arrangement |
-| **Margin holding** | Strategy products maintain margin and hedge positions at an exchange, broker or prime broker |
-| **Cash buffer** | A product retains cash or short-term liquidity assets for fees, redemptions, slippage and exception states |
-| **Risk reserve** | Certain products maintain cost reserves for trading costs, closed-market risk, counterparty risk or redemption processing |
+Redemption processing depends on:
 
-## Third-Party Service Providers
+- Market liquidity conditions
+- Position unwinding requirements
+- Settlement timelines
+- Trading venue availability
 
-Many custody and execution functions are performed by third-party service providers. Each provider type carries its own risk profile, which is reflected in the product's risk disclosures and Risk NAV haircut model.
+The redemption value is calculated based on the applicable NAV:
 
-| Service Provider | Possible Responsibilities | Main Risks |
-|---|---|---|
-| **Custodian** | Hold securities, cash, stablecoins or other assets | Bankruptcy, freeze, operational error or legal dispute |
-| **Broker/PB** | Execute equities, ETFs, derivatives or financing trades | Order rejection, delay, margin change or settlement failure |
-| **Exchange/CEX** | Execute crypto trades, perpetual contracts or funding-rate strategies | Withdrawal limits, bankruptcy, hacking or liquidation risk |
-| **Market maker/AP** | Quote, hold inventory, create/redeem and repair premium/discount | Insufficient inventory, quote withdrawal or performance failure |
-| **Oracle/data source** | Provide prices, market state and NAV inputs | Delay, error, manipulation or outage |
-| **Administrator/manager** | Support reporting, registration, reconciliation and wind-down | Operational error, delay or file inconsistency |
+$$
+Redemption\ Value
+=
+Redeemed\ Units
+\times
+NAV_{per\ Unit}
+-
+Applicable\ Fees
+$$
+
+During periods of extreme market volatility or abnormal liquidity conditions, processing times may be extended to ensure orderly execution.
+
+## Key Risks
+
+Investors should consider the following risks:
+
+- Digital asset market volatility
+- Exchange and counterparty risk
+- Funding rate fluctuations
+- Execution and slippage risk
+- Liquidity risk
+- Model and algorithm risk
+- Operational and infrastructure risk
 
 <Warning>
-Alloco does not guarantee the solvency, security, availability, or performance of any third-party custodian, broker, bank, exchange, protocol, or counterparty.
+  USDA is an investment product. Returns are not guaranteed and investors may lose part or all of their invested capital.
 </Warning>
-
-## What You Can Review
-
-Custody-related disclosure for each product is available on the relevant product page on [app.allocofi.com](https://app.allocofi.com). For each product, you can review:
-
-- The product asset-pool structure and legal wrapper type
-- Main custody or brokerage arrangements
-- Asset-segregation principles applicable to the product
-- Vault or contract addresses (where applicable for onchain holdings)
-- Recent NAV reports and report hashes
-- Cash buffer levels and pending redemption amounts
-- Any exception, suspension, or wind-down notices in effect
