@@ -34,7 +34,7 @@
             ]
           },
           {
-            "group": "ETP Products",
+            "group": "ETFT Products",
             "pages": [
               "products/overview",
               "products/kol-etp",
@@ -45,7 +45,7 @@
             ]
           },
           {
-            "group": "USDM",
+            "group": "Stable RWA Income",
             "pages": [
               "trading/secondary-market",
               "trading/liquidity"
