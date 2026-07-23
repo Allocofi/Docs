@@ -45,14 +45,14 @@
             ]
           },
           {
-            "group": "Stable RWA Income",
+            "group": "Growth Asset Income Notes",
             "pages": [
               "trading/secondary-market",
               "trading/liquidity"
             ]
           },
           {
-            "group": "USDA",
+            "group": "Stable Underlying Real Earnings",
             "pages": [
               "trust/nav-methodology",
               "trust/custody"
