@@ -45,14 +45,14 @@
             ]
           },
           {
-            "group": "Growth Asset Income Notes",
+            "group": "Stable Underlying Real Earnings",
             "pages": [
               "trading/secondary-market",
               "trading/liquidity"
             ]
           },
           {
-            "group": "Stable Underlying Real Earnings",
+            "group": "Growth Asset Income Notes",
             "pages": [
               "trust/nav-methodology",
               "trust/custody"
