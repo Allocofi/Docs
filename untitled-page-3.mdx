@@ -1,0 +1,333 @@
+---
+title: "Risk & Transparency"
+description: "How GAIN measures portfolio risk, manages operational exposure and reports product information"
+---
+
+GAIN uses a multi-layer risk framework covering portfolio exposures, leverage, concentration, liquidity, counterparties, technology and operational resilience. Risk controls are designed to identify and reduce risk; they cannot eliminate losses or guarantee uninterrupted subscriptions or redemptions.
+
+<CardGroup cols={3}>
+  <Card title="Measure" icon="chart-mixed">
+    Monitor net exposure, gross leverage, concentration, drawdown, margin and liquidity across the portfolio.
+  </Card>
+
+  <Card title="Control" icon="sliders">
+    Apply approved limits, venue allocation rules, execution controls and escalation procedures.
+  </Card>
+
+  <Card title="Disclose" icon="eye">
+    Publish product, NAV, performance and material-risk information through official reporting channels.
+  </Card>
+</CardGroup>
+
+## Risk Measurement Framework
+
+Risk is assessed across all trading accounts in aggregate, at each exchange and for each underlying digital asset. This is important because a portfolio that appears neutral overall may still contain a material position at one venue or in one asset.
+
+| Risk Dimension | Metric | What It Measures |
+| :-- | :-- | :-- |
+| Portfolio directionality | Net Leverage Ratio | Net delta exposure across all trading accounts relative to total AUM |
+| Exchange directionality | Net Leverage Ratio per Exchange | Net delta exposure at one exchange relative to the AUM held there |
+| Single-asset directionality | Single Currency Net Leverage Ratio | Net exposure to one underlying digital asset relative to total AUM |
+| Total position size | Gross Leverage Ratio | Aggregate long and short exposure before offsetting positions |
+| Underlying concentration | Underlying Concentration Ratio | Share of gross exposure attributable to one underlying hedge unit |
+| Portfolio loss | Maximum Drawdown | Decline from a historical peak AUM to a subsequent trough |
+
+<Info>
+  For these calculations, AUM Value means the real-time net value of assets attributable to GAIN across the relevant trading accounts after recognizing open-position profit and loss and applicable liabilities. AUM Value per Exchange refers only to the real-time net value held at the relevant exchange.
+</Info>
+
+### Net Leverage Ratio
+
+The Net Leverage Ratio measures aggregate directional exposure after delta-adjusted long and short positions are offset across all trading accounts.
+
+$$
+\mathrm{NLR}
+=
+\frac{
+\left|\mathrm{Net\ Delta\ Notional\ Across\ All\ Trading\ Accounts}\right|
+}{
+\mathrm{Total\ AUM\ Value}
+}
+\times 100\%
+$$
+
+A lower ratio generally indicates that long and short delta exposures are more closely matched. A ratio of zero indicates delta neutrality at that measurement time; it does not mean that the portfolio is risk-free.
+
+### Net Leverage Ratio per Exchange
+
+This ratio identifies unmatched directional exposure within an individual trading venue.
+
+$$
+\mathrm{NLR\ per\ Exchange}
+=
+\frac{
+\left|\mathrm{Net\ Delta\ Notional\ at\ the\ Relevant\ Exchange}\right|
+}{
+\mathrm{AUM\ Value\ at\ the\ Relevant\ Exchange}
+}
+\times 100\%
+$$
+
+It helps identify exchange-specific imbalances, incomplete hedges and exposure created when different legs of a strategy are executed at different venues.
+
+### Single Currency Net Leverage Ratio
+
+The Single Currency Net Leverage Ratio measures residual delta exposure to one underlying digital asset across all trading accounts.
+
+$$
+\mathrm{SNLR}_{i}
+=
+\frac{
+\left|\mathrm{Net\ Delta\ Notional\ for\ Underlying}\ i\right|
+}{
+\mathrm{Total\ AUM\ Value}
+}
+\times 100\%
+$$
+
+The ratio is calculated separately for each underlying. Spot, perpetual and futures positions referencing the same asset are combined on a delta-adjusted basis.
+
+### Gross Leverage Ratio
+
+Gross leverage measures total position exposure before long and short positions are offset.
+
+$$
+\mathrm{Gross\ Leverage\ Notional}
+=
+\sum_{j=1}^{n}
+\left|\mathrm{Delta\ Adjusted\ Notional}_{j}\right|
+$$
+
+$$
+\mathrm{GLR}
+=
+\frac{
+\mathrm{Gross\ Leverage\ Notional}
+}{
+\mathrm{Total\ AUM\ Value}
+}
+\times 100\%
+$$
+
+<Warning>
+  A portfolio can have low net directional exposure while maintaining substantial gross leverage. Market neutrality should therefore be assessed together with leverage, margin, liquidity and counterparty exposure.
+</Warning>
+
+### Underlying Concentration Ratio
+
+The Underlying Concentration Ratio measures the share of total gross exposure attributable to one underlying hedge unit.
+
+$$
+\mathrm{UCR}_{i}
+=
+\frac{
+\mathrm{Gross\ Notional\ for\ Underlying\ Hedge\ Unit}\ i
+}{
+\mathrm{Total\ Gross\ Notional\ Across\ All\ Hedge\ Units}
+}
+\times 100\%
+$$
+
+A hedge unit groups positions with the same underlying economic exposure. A delta-neutral position may still create material concentration if it represents a large share of the portfolio's gross positions.
+
+### Maximum Drawdown
+
+Maximum Drawdown measures the largest percentage decline from a historical peak AUM to the lowest subsequent AUM before a new peak is reached.
+
+$$
+\mathrm{MDD}
+=
+\frac{
+\mathrm{Peak\ AUM\ Value}-\mathrm{Subsequent\ Trough\ AUM\ Value}
+}{
+\mathrm{Peak\ AUM\ Value}
+}
+\times 100\%
+$$
+
+Drawdown may result from trading losses, basis movements, funding changes, execution costs, exchange events, stablecoin repricing or other changes in portfolio value.
+
+## Risk Limits and Response
+
+Each quantitative measure is monitored against an approved operating limit. Specific limits should be disclosed only after formal approval and may be adjusted in accordance with the product's risk governance process.
+
+| Metric | Measurement Scope | Current Limit |
+| :-- | :-- | :-- |
+| Net Leverage Ratio | All trading accounts in aggregate | To be confirmed |
+| Net Leverage Ratio per Exchange | Each exchange separately | To be confirmed |
+| Single Currency Net Leverage Ratio | Each underlying across all accounts | To be confirmed |
+| Gross Leverage Ratio | All trading accounts in aggregate | To be confirmed |
+| Underlying Concentration Ratio | Each underlying hedge unit | To be confirmed |
+| Maximum Drawdown | GAIN portfolio | To be confirmed |
+
+<Steps>
+  <Step title="Detect">
+    Recalculate exposures using current positions, prices, deltas, balances and account equity, and compare the results with approved thresholds.
+  </Step>
+  <Step title="Investigate">
+    Identify whether a change is caused by market movement, incomplete execution, funding conditions, collateral movements or a data-quality issue.
+  </Step>
+  <Step title="Correct">
+    Add or adjust hedges, reduce positions, rebalance collateral, restrict new trades or increase available margin where appropriate.
+  </Step>
+  <Step title="Escalate">
+    Material or persistent breaches may result in portfolio de-risking, suspension of new subscriptions or other actions permitted by the product terms.
+  </Step>
+</Steps>
+
+## Principal Risk Categories
+
+### Counterparty and Exchange Risk
+
+Assets and positions held at centralized trading venues are exposed to insolvency, illiquidity, withdrawal suspension, operational failure, cyberattack, fraud and misconduct. Diversifying execution across venues may reduce concentration but also introduces additional operational complexity.
+
+**Risk controls may include:**
+
+- due diligence before approving a venue;
+- venue-level exposure and balance limits;
+- monitoring financial, operational, security and withdrawal indicators;
+- allocating only the capital required for strategy execution and margin;
+- maintaining operational capability across multiple approved venues; and
+- reducing or withdrawing exposure when risk indicators deteriorate.
+
+### Operational, Cybersecurity and Custody Risk
+
+Wallet compromise, API-key leakage, unauthorized access, internal control failure, software defects or cyberattack may lead to loss, disruption or incorrect execution.
+
+**Risk controls may include:**
+
+- segregated institutional trading accounts and role-based access;
+- withdrawal allowlists and restricted API permissions;
+- multisignature authorization for privileged onchain actions;
+- hardware-backed or institutional-grade key management;
+- reconciliation of balances, positions and transfers; and
+- incident-response, access-review and business-continuity procedures.
+
+<Info>
+  No custody, wallet or security arrangement can eliminate the possibility of theft, loss, operational failure or unauthorized access.
+</Info>
+
+### Transaction Irreversibility and Execution Risk
+
+Blockchain transfers are generally irreversible. Trading strategies also face partial fills, failed orders, price movement between hedge legs, slippage and market-data or API outages.
+
+**Risk controls may include:**
+
+- address allowlists and transaction confirmation controls;
+- amount, price and order-size validation;
+- test transfers when appropriate;
+- execution limits and maximum slippage parameters;
+- automated monitoring of incomplete hedge legs; and
+- pause, cancel and manual-escalation procedures.
+
+### Stablecoin and Collateral Risk
+
+USDT, USDC and other collateral assets may deviate from their reference value, experience liquidity stress, become subject to issuer or banking disruption, or face redemption and regulatory restrictions.
+
+**Risk controls may include:**
+
+- limiting use to approved stablecoins and collateral assets;
+- monitoring market price, liquidity, reserve disclosures and issuer developments;
+- applying concentration limits by stablecoin and collateral type;
+- maintaining conversion and rebalancing procedures; and
+- reducing exposure when depeg or liquidity indicators deteriorate.
+
+### Market, Funding and Basis Risk
+
+Funding rates and price spreads can change rapidly or become negative. Spot and derivative prices may not converge as expected, and mark-price methodologies can differ across exchanges. Hedged positions remain exposed to basis movement, liquidation risk and changes in execution cost.
+
+**Risk controls may include:**
+
+- evaluating expected returns after fees, slippage, funding and borrowing costs;
+- monitoring basis, funding-rate persistence and convergence conditions;
+- applying leverage, margin and liquidation-distance limits;
+- stress testing adverse funding and price scenarios; and
+- closing or resizing trades when risk-adjusted returns deteriorate.
+
+### Liquidity and Redemption Risk
+
+Positions may not be closed, transferred or converted at the expected price or within the expected time. Exchange restrictions, market disruption and blockchain congestion may also delay redemption settlement.
+
+**Risk controls may include:**
+
+- maintaining an immediately accessible liquidity reserve;
+- estimating market depth, exit time and price impact before entry;
+- limiting position size relative to executable liquidity;
+- staggering maturities and avoiding excessive reliance on one venue; and
+- applying the redemption gate and queue described in the Product Mechanics.
+
+### Centralization and Smart Contract Risk
+
+GAIN depends on centralized operational functions, privileged contract roles, data inputs and third-party infrastructure. Smart contracts may contain defects or behave unexpectedly, while administrative permissions may be misused or compromised.
+
+**Risk controls may include:**
+
+- separating minting, operational and emergency roles;
+- using multisignature control and timelocks for privileged actions;
+- independent smart-contract review or audit before material deployment;
+- disclosing verified contract addresses and privileged permissions; and
+- maintaining emergency-pause and incident-response procedures.
+
+### Legal and Regulatory Risk
+
+Changes in laws, regulation, sanctions, tax treatment or regulatory interpretation may affect issuance, distribution, trading, strategy operations or user access. Restrictions may differ by jurisdiction and may change without notice.
+
+**Risk controls may include:**
+
+- ongoing legal and compliance review;
+- external legal advice where appropriate;
+- restricted-jurisdiction and sanctions controls;
+- monitoring changes affecting the issuer, product and trading venues; and
+- updating product terms, access controls or operations when required.
+
+## Transparency and Reporting
+
+Transparency is intended to help users understand how GAIN is valued and managed. It does not provide real-time visibility into every position, eliminate valuation uncertainty or prevent losses.
+
+| Disclosure Area | Information Presented | Frequency or Trigger |
+| :-- | :-- | :-- |
+| Product NAV | Official NAV per GAIN and valuation timestamp | Daily at 00:00 UTC |
+| Performance | Period returns and drawdown statistics | Periodically, based on published NAV |
+| Portfolio risk | Net exposure, gross leverage and concentration indicators | Periodically or through the product dashboard |
+| Liquidity | Available redemption methods, gate status and material settlement delays | Current status or when materially affected |
+| Product supply | Valid GAIN units outstanding and mint or burn activity | Onchain or periodically reconciled |
+| Smart contracts | Verified addresses, supported networks and privileged roles | At deployment and after material changes |
+| Material events | Events that may materially affect valuation, operations or redemption | As reasonably practicable |
+| Documents | Product terms, risk disclosures, NAV methodology and relevant policies | Current versions through official channels |
+
+### NAV and Performance Transparency
+
+The official NAV is determined using the product's stated valuation methodology and published daily at 00:00 UTC. Performance information should be calculated from published NAV after applicable fees reflected in NAV.
+
+<Warning>
+  Published NAV may rely on exchange balances, position data, market prices, valuation inputs and operational reconciliations. Data outages, stale prices, disputed balances or exceptional market conditions may require delayed publication, estimation or later correction under the NAV methodology.
+</Warning>
+
+### Portfolio Risk Transparency
+
+Risk reporting may include portfolio-level NLR, GLR, SNLR, UCR, drawdown, venue allocation, margin utilization and liquidity indicators. Public reporting may use aggregated figures or ranges where disclosing individual positions could harm execution, expose proprietary strategy information or increase security risk.
+
+### Onchain Transparency
+
+Onchain records can provide visibility into GAIN token issuance, transfers and burns on supported networks. However, onchain token activity does not by itself show all assets, liabilities or positions held in institutional exchange accounts.
+
+<Info>
+  Onchain supply data should be read together with the official NAV, product reporting and account reconciliation. Blockchain visibility is not equivalent to a complete real-time audit of the underlying portfolio.
+</Info>
+
+### Material Events and Corrections
+
+Material events may include exchange withdrawal restrictions, security incidents, significant NAV delays or corrections, prolonged redemption delays, smart-contract incidents and changes that materially affect product operation. Notices should be issued through official channels as reasonably practicable and subject to legal, security and confidentiality constraints.
+
+## Important Limitations
+
+- Risk metrics are point-in-time measurements and can change rapidly.
+- Results depend on the completeness and accuracy of exchange, balance, position, price and delta data.
+- Limits and controls may be breached during fast markets or operational disruption before corrective action can be completed.
+- Diversification across exchanges and assets reduces some concentrations but does not remove systemic or correlated risk.
+- Audits, smart-contract reviews and operational controls reduce certain risks but cannot guarantee security or product performance.
+- Past performance and historical drawdown do not predict future results.
+
+<Warning>
+  GAIN involves market, funding, basis, leverage, counterparty, liquidity, stablecoin, custody, cybersecurity, smart contract, operational, regulatory and tax risks. Users may lose some or all of their invested capital. Review the complete product terms and Risk Disclosure before subscribing.
+</Warning>
