@@ -1,10 +1,10 @@
 ---
 title: "Pricing a ETFT"
 sidebarTitle: "Pricing a ETFT"
-description: "An Onchain ETP is priced based on the value of its underlying portfolio."
+description: "An Onchain ETFT is priced based on the value of its underlying portfolio."
 ---
 
-Each ETP unit represents a proportional ownership interest in the underlying assets. The fair value of an ETP is determined through a transparent NAV calculation.
+Each ETFT unit represents a proportional ownership interest in the underlying assets. The fair value of an ETFT is determined through a transparent NAV calculation.
 
 The fundamental pricing relationship is:
 
@@ -18,13 +18,13 @@ $$
 
 | Component | Description |
 | --- | --- |
-| NAV | Total net value of the ETP portfolio |
-| Units | Total outstanding ETP supply |
-| ETP Price | Fair value per ETP unit |
+| NAV | Total net value of the ETFT portfolio |
+| Units | Total outstanding ETFT supply |
+| ETFT Price | Fair value per ETFT unit |
 
 # 1. Underlying Portfolio Valuation
 
-An ETP may hold multiple assets including equities, ETFs, commodities, or other financial instruments.
+An ETFT may hold multiple assets including equities, ETFs, commodities, or other financial instruments.
 
 The value of each position is calculated based on:
 
@@ -42,7 +42,7 @@ $$
 
 # 2. Net Asset Value (NAV)
 
-NAV represents the total economic value backing the ETP.
+NAV represents the total economic value backing the ETFT.
 
 The NAV calculation includes assets, cash balances, income, fees and liabilities.
 
@@ -65,9 +65,9 @@ Where:
 | Fees | Management and operational expenses |
 | Liabilities | Outstanding obligations |
 
-# 3. ETP Unit Pricing
+# 3. ETFT Unit Pricing
 
-The ETP unit price is calculated by dividing NAV by the total outstanding units.
+The ETFT unit price is calculated by dividing NAV by the total outstanding units.
 
 $$
 \boxed{
@@ -78,7 +78,7 @@ $$
 
 Example:
 
-An ETP has:
+An ETFT has:
 
 - NAV: \$10,000,000
 - Outstanding units: 1,000,000
@@ -99,7 +99,7 @@ $$
 
 # 4. Mint Pricing
 
-When a user creates new ETP units, the number of units received is based on the current NAV per unit.
+When a user creates new ETFT units, the number of units received is based on the current NAV per unit.
 
 $$
 \boxed{
@@ -115,7 +115,7 @@ Where:
 | --- | --- |
 | Deposit | Amount deposited by the user |
 | Fee | Minting fee charged by the protocol |
-| NAV per Unit | Current ETP fair value |
+| NAV per Unit | Current ETFT fair value |
 
 ## Example
 
@@ -165,7 +165,7 @@ $$
 
 # 5. Redemption Pricing
 
-When redeeming ETP units, holders receive the corresponding NAV value.
+When redeeming ETFT units, holders receive the corresponding NAV value.
 
 Gross redemption value:
 
@@ -187,7 +187,7 @@ Where:
 
 | Component | Description |
 | --- | --- |
-| Units | Amount of ETP tokens redeemed |
+| Units | Amount of ETFT tokens redeemed |
 | NAV per Unit | Settlement price |
 | Fee | Redemption fee rate |
 
@@ -215,7 +215,7 @@ Where:
 
 # 7. NAV Performance
 
-The return of an ETP is measured by the change in NAV over time.
+The return of an ETFT is measured by the change in NAV over time.
 
 $$
 Return_t=
@@ -283,7 +283,7 @@ The Alloco NAV Engine continuously calculates:
     Aggregate assets, cash, income, fees and liabilities.
   </Step>
   <Step title="Unit Pricing">
-    Determine the fair value price of each ETP unit.
+    Determine the fair value price of each ETFT unit.
   </Step>
   <Step title="Settlement">
     Apply NAV pricing for mint and redemption transactions.
@@ -291,5 +291,5 @@ The Alloco NAV Engine continuously calculates:
 </Steps>
 
 <Tip>
-  Every Alloco ETP unit is backed by a transparent NAV calculation, connecting onchain ownership with institutional-grade asset pricing.
+  Every Alloco ETFT unit is backed by a transparent NAV calculation, connecting onchain ownership with institutional-grade asset pricing.
 </Tip>
