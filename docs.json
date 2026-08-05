@@ -93,5 +93,11 @@
     "heading": {
       "family": "Inter"
     }
+  },
+  "background": {
+    "color": {
+      "light": "#C7CCC6",
+      "dark": "#07192F"
+    }
   }
 }
