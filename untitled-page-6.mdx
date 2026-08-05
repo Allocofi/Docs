@@ -3,202 +3,292 @@ title: "Investment Strategy "
 description: "How the underlying Trivesta strategy seeks income and capital appreciation"
 ---
 
-SURE is designed to obtain its principal investment exposure through the Trivesta Global Allocation Fund. The underlying sub-fund has a broad global mandate and may invest across traditional and alternative assets, while current product materials emphasize liquid foreign-exchange markets and precious metals, including gold.
+The underlying Trivesta Fund follows a systematic **foreign-exchange statistical arbitrage strategy** and supports SURE's single fixed annual distribution rate of **9%**.
 
-<Info>
-  The strategy is not fully described by a single formula or trading signal in the supplied documents. This page summarizes the disclosed mandate and operating framework without representing undisclosed models, positions or guarantees.
-</Info>
+Rather than relying primarily on whether one currency rises or falls, the strategy seeks to capture recurring pricing dislocations between currency pairs that demonstrate statistically meaningful relationships.
 
-## Investment Objective
-
-The underlying fund's stated objective is to seek **long-term income and capital appreciation**.
-
-Its permitted investment universe includes, among other things:
-
-- debt securities and obligations, including below-investment-grade instruments;
-- funds of funds, private funds, hedge funds and private-equity funds;
-- listed and unlisted equities and equity-related instruments;
-- structured products;
-- mutual funds, unit trusts, REITs and ETFs;
-- currencies and commodities;
-- futures, options, warrants and swaps;
-- exchange-traded and over-the-counter derivatives;
-- real estate, private projects and private companies; and
-- cash, cash equivalents and money-market funds.
-
-The investment manager may use short selling, margin trading, hedging, borrowing and other investment techniques permitted by the governing documents.
-
-## Current Strategy Emphasis
+The strategy has three principal components:
 
 <CardGroup cols={3}>
-  <Card title="Foreign Exchange" icon="money-bill-transfer">
-    Current product materials highlight liquid major currency pairs, including EUR/USD, GBP/USD, GBP/JPY and AUD/USD.
+  <Card title="Relationship Modelling" icon="diagram-project">
+    Quantitative models estimate the normal relationship between currency pairs and identify statistically unusual deviations.
   </Card>
 
-  <Card title="Precious Metals" icon="coins">
-    Gold exposure, including XAU/USD, is used to expand the opportunity set across different macroeconomic and volatility environments.
+  <Card title="Relative-Value Positions" icon="scale-balanced">
+    The strategy may use offsetting long and short FX positions to focus exposure on the relative spread instead of a single directional market view.
   </Card>
 
-  <Card title="Flexible Multi-Asset Mandate" icon="shapes">
-    The governing documents permit a much broader range of assets, funds and derivatives than the instruments highlighted in the marketing materials.
+  <Card title="Mean-Reversion Capture" icon="arrows-rotate">
+    Positions seek to generate returns when an abnormal spread moves back toward its historical or model-implied range.
   </Card>
 </CardGroup>
 
-## Core Trading Instruments Highlighted
-
-| Instrument | Market Exposure |
-| :-- | :-- |
-| EUR/USD | Euro against U.S. dollar |
-| GBP/USD | British pound against U.S. dollar |
-| GBP/JPY | British pound against Japanese yen |
-| AUD/USD | Australian dollar against U.S. dollar |
-| XAU/USD | Gold against U.S. dollar |
-
-These markets are generally actively traded, but execution quality and liquidity can deteriorate sharply during news events, market stress, roll periods, bank holidays or counterparty disruption.
-
-## Strategy Implementation Framework
-
-### 1. Opportunity Selection
-
-The investment team identifies opportunities across currencies, gold and other permitted markets. Selection may consider:
-
-- liquidity and executable depth;
-- volatility and market regime;
-- macroeconomic and policy conditions;
-- risk-adjusted return potential;
-- correlation with existing positions;
-- financing, carry and transaction costs; and
-- available margin and counterparty capacity.
-
-### 2. Position Construction
-
-The strategy may use:
-
-- long and short positions;
-- spot, forwards, futures and options;
-- directional, relative-value or hedging positions;
-- margin and collateralized trading;
-- allocations to funds or structured products; and
-- cash or cash equivalents when risk or opportunity conditions are unattractive.
-
-### 3. Active Risk Management
-
-The supplied materials describe a framework emphasizing:
-
-- predefined risk parameters;
-- active monitoring and position management;
-- volatility control;
-- drawdown management;
-- systematic execution;
-- adjustment to changing market conditions; and
-- the ability to close all or part of the portfolio and retain cash with the custodian.
-
-### 4. Portfolio Adaptation
-
-The investment manager may change the strategy in response to market conditions and is not necessarily required to notify shareholders of every strategy adjustment, subject to the governing documents and applicable law.
-
-<Warning>
-  The flexibility of the mandate allows the strategy to adapt, but it also creates mandate, model, leverage, liquidity and valuation risk. SURE should not be described as exposure only to a fixed basket of five instruments.
-</Warning>
-
-## Use of Leverage and Derivatives
-
-The Appendix states that the sub-fund may employ leverage through borrowing, structured notes, repurchase agreements, margin trading and derivatives.
-
-It describes an expected leverage level of up to **150% of NAV**, but also states that:
-
-- the expected level may be exceeded in certain circumstances; and
-- there is no absolute limit on the amount of leverage that may be employed.
-
-Accordingly, 150% should not be presented as a guaranteed hard cap.
-
-Leverage can:
-
-- magnify gains and losses;
-- increase margin and collateral requirements;
-- force liquidation at unfavorable prices;
-- create nonlinear derivative exposure;
-- increase counterparty and financing risk; and
-- cause losses even when the investment thesis is ultimately correct.
-
-## Distribution and Performance-Fee Design
-
-The underlying fund's three classes have annualized monthly distribution objectives of 8%, 9% and 10%.
-
-The performance-fee mechanism is economically important:
-
-1. each class has a corresponding simple hard hurdle of 8%, 9% or 10%;
-2. performance is assessed against a high-water mark;
-3. fees and expenses and distributions are taken into account under the Appendix methodology; and
-4. the investment manager is entitled to **100% of net new profit above the applicable hurdle and high-water mark**.
-
 <Info>
-  This structure is designed to direct performance above the relevant hurdle to the investment manager as a performance fee. It effectively caps the ordinary holder's participation in upside above the applicable hurdle, while the holder remains exposed to downside.
+  Statistical arbitrage describes a probabilistic investment process, not risk-free arbitrage. Historical relationships may change, fail to converge or remain dislocated for longer than expected.
 </Info>
 
-## Relationship Between Returns, Distributions and NAV
+## 1. Relationship Modelling
 
-A monthly distribution does not establish that the strategy earned the same amount during that month.
+The strategy evaluates historical and current FX data to identify currency pairs or groups with stable and economically meaningful relationships.
 
-Depending on performance and the governing documents:
+Inputs may include:
 
-- a distribution may be funded from income or gains;
-- a distribution may reduce NAV;
-- unrealized gains may reverse;
-- losses may be borne by investor capital;
-- fees may accrue on unrealized values; and
-- distributions may be changed or suspended.
+- spot and forward prices;
+- bid-ask spreads;
+- rolling returns;
+- realized volatility;
+- correlation and covariance;
+- interest-rate differentials;
+- liquidity and market depth;
+- execution costs; and
+- macroeconomic-event risk.
 
-SURE performance is therefore determined by both distributions received and changes in SURE NAV.
+Possible statistical methods may include:
 
-## Cash and Liquidity Management
+- correlation analysis;
+- cointegration testing;
+- spread and ratio analysis;
+- standardized-deviation signals;
+- volatility-adjusted thresholds;
+- regime classification; and
+- cross-sectional ranking.
 
-The underlying fund may hold cash or cash equivalents:
+### Standardized Spread
 
-- pending investment;
-- as collateral;
-- to manage market risk;
-- to support redemptions;
-- when the investment manager closes positions; or
-- when market conditions are unfavorable.
+A simplified standardized spread may be expressed as:
 
-Holding cash can reduce market exposure but may also create performance drag and bank or custodian concentration.
+$$
+z_t
+=
+\frac{
+S_t-\mu_t
+}{
+\sigma_t
+}
+$$
 
-## What the Strategy Is Not
+| Term | Meaning |
+| :-- | :-- |
+| $$S_t$$ | Current observed currency spread |
+| $$\mu_t$$ | Estimated mean of the spread |
+| $$\sigma_t$$ | Estimated standard deviation of the spread |
+| $$z_t$$ | Distance of the current spread from its estimated mean |
+
+A large positive or negative value may indicate that the relationship is unusually far from its expected range. A signal is not executed solely because a threshold is crossed; liquidity, costs, volatility, event risk and portfolio exposure must also be considered.
+
+## 2. Relative-Value Position Construction
+
+When a statistical relationship becomes sufficiently dislocated, the strategy may:
+
+1. take a long position in one currency pair;
+2. take an offsetting short position in a related currency pair;
+3. size both legs using the estimated hedge ratio;
+4. reduce unwanted exposure to individual currencies; and
+5. seek to close the position as the spread normalizes.
+
+A simplified relative-value position can be represented as:
+
+$$
+\Pi_{\text{pair},t}
+=
+w_A R_{A,t}
+-
+w_B R_{B,t}
+-
+C_{\text{trading},t}
+-
+C_{\text{financing},t}
+$$
+
+| Term | Meaning |
+| :-- | :-- |
+| $$w_A$$ | Long exposure weight |
+| $$w_B$$ | Short exposure weight |
+| $$R_{A,t}$$ | Return of the long FX leg |
+| $$R_{B,t}$$ | Return of the short FX leg |
+| Trading costs | Bid-ask spread, commission and slippage |
+| Financing costs | Swap, carry, margin and funding costs |
+
+### Illustrative Position
+
+Assume the model identifies an unusual divergence between two related FX instruments:
+
+| Position | Exposure | Objective |
+| :-- | :-- | :-- |
+| FX Instrument A | Long | Benefit if the undervalued leg strengthens |
+| FX Instrument B | Short | Hedge shared market exposure and benefit if the overvalued leg weakens |
+| Combined Position | Relative-value spread | Seek return as the relationship normalizes |
+
+The purpose of the position is to isolate the relative pricing difference. The hedge may be imperfect and residual directional exposure may remain.
+
+## 3. Currency-Pair Universe
+
+The strategy focuses on liquid global currency markets. Current reference instruments may include:
+
+| Currency Pair | Strategy Use |
+| :-- | :-- |
+| EUR/USD | Core relative-value and spread signals |
+| GBP/USD | Sterling-dollar relationship analysis |
+| GBP/JPY | Cross-currency volatility and relative-value opportunities |
+| AUD/USD | Macro-sensitive relative-value signals |
+| USD/JPY | Dollar-yen relationship and hedge construction |
+| EUR/GBP | European cross-currency spread analysis |
+
+The actual trading universe may change according to liquidity, statistical significance, transaction costs, counterparty capacity and approved risk limits.
+
+## Portfolio Construction
+
+The strategy does not allocate solely to the trade with the largest headline deviation. Each position is evaluated together with expected return, volatility, correlation, liquidity, leverage, margin and concentration.
+
+A simplified optimization objective is:
+
+$$
+\max_{w}
+\left[
+\mu^\top w
+-
+\lambda_{\text{risk}} w^\top \Sigma w
+-
+\lambda_{\text{cost}} C(w,w_0)
+-
+\lambda_{\text{concentration}} P(w)
+\right]
+$$
+
+The target portfolio may be subject to constraints such as:
+
+$$
+\begin{aligned}
+|\text{Net FX Exposure}| &\leq E_{\max} \\
+\text{Gross Leverage} &\leq L_{\max} \\
+w_i &\leq w_{i,\max} \\
+\text{Currency Concentration}_j &\leq C_{j,\max} \\
+\text{Margin Utilization} &\leq M_{\max}
+\end{aligned}
+$$
+
+<CardGroup cols={3}>
+  <Card title="Exposure Constraints" icon="sliders">
+    Net FX exposure, gross leverage, currency concentration and correlated-position limits.
+  </Card>
+
+  <Card title="Execution Constraints" icon="wave-square">
+    Bid-ask spread, available liquidity, slippage, trade size and market impact.
+  </Card>
+
+  <Card title="Financing Constraints" icon="coins">
+    Margin requirements, collateral availability, swap costs and cost of capital.
+  </Card>
+</CardGroup>
+
+## Signal-to-Execution Process
+
+<Steps>
+  <Step title="Observe">
+    Collect FX prices, spreads, volatility, liquidity, rates, trading costs and event-risk information.
+  </Step>
+  <Step title="Normalize">
+    Align quote conventions, timestamps, currency exposures, contract terms and data quality.
+  </Step>
+  <Step title="Estimate">
+    Calculate the expected relationship, current deviation, mean-reversion probability, costs and downside risk.
+  </Step>
+  <Step title="Optimize">
+    Select position sizes subject to exposure, leverage, concentration, liquidity and margin limits.
+  </Step>
+  <Step title="Execute">
+    Coordinate the long and short legs using price, slippage and order-size controls.
+  </Step>
+  <Step title="Monitor and Rebalance">
+    Track spread convergence, residual FX exposure, volatility, margin and model stability; then close or resize positions when required.
+  </Step>
+</Steps>
+
+### Trade Admission Rule
+
+An opportunity is eligible for execution only when its expected net return exceeds its risk-adjusted threshold:
+
+$$
+\mathbb{E}[\Pi_{\text{net}}]
+=
+\mathbb{E}[\Pi_{\text{spread convergence}}]
++
+\mathbb{E}[\Pi_{\text{carry}}]
+-
+\widehat{C}_{\text{trading}}
+-
+\widehat{C}_{\text{slippage}}
+-
+\widehat{C}_{\text{financing}}
+-
+\widehat{C}_{\text{risk}}
+> 0
+$$
+
+The strategy may require an additional safety buffer to account for model uncertainty and changing market conditions.
+
+## Sources of Strategy P&L
+
+The strategy's aggregate net result can be summarized as:
+
+$$
+\begin{aligned}
+\Pi_{\text{net}}
+=\;&
+\Pi_{\text{spread convergence}}
++
+\Pi_{\text{relative-value movement}}
++
+\Pi_{\text{carry}} \\
+&-
+C_{\text{trading}}
+-
+C_{\text{slippage}}
+-
+C_{\text{financing}}
+-
+C_{\text{operational}}
+\end{aligned}
+$$
+
+Positive statistical signals do not necessarily produce positive net returns. Profitability depends on convergence, execution quality, transaction costs, model stability, liquidity and risk management.
+
+## What Can Cause Losses?
 
 <AccordionGroup>
-  <Accordion title="Not a bank deposit">
-    The strategy invests in financial markets. It is not protected by deposit insurance and does not create a fixed repayment obligation comparable to a bank deposit.
+  <Accordion title="Relationship Breakdown" icon="link-slash">
+    A historical relationship may weaken, disappear or permanently change after the position is established.
   </Accordion>
 
-  <Accordion title="Not a guaranteed fixed-income product">
-    The distribution objectives are conditional. Investor capital bears losses when the strategy or structure experiences a drawdown.
+  <Accordion title="Delayed or Failed Convergence" icon="arrows-left-right-to-line">
+    The spread may continue widening or remain dislocated for longer than the strategy can hold the position.
   </Accordion>
 
-  <Accordion title="Not necessarily market neutral">
-    The supplied Trivesta documents do not characterize the strategy as consistently market neutral. It may take directional, derivative, currency and commodity exposure.
+  <Accordion title="Execution and Leg Risk" icon="arrows-split-up-and-left">
+    One leg may execute while the offsetting leg is delayed, rejected or partially filled, creating temporary directional exposure.
   </Accordion>
 
-  <Accordion title="Not limited to FX and gold">
-    The governing mandate permits a wide range of financial products, private assets and derivatives even though current materials emphasize FX and gold.
+  <Accordion title="Liquidity and Market Impact" icon="droplet">
+    Available liquidity may deteriorate, widening spreads and increasing the cost of entering, rebalancing or closing positions.
   </Accordion>
 
-  <Accordion title="Not continuously liquid">
-    The underlying fund deals monthly and may gate, defer, suspend or settle redemptions in kind.
+  <Accordion title="Leverage and Margin Risk" icon="triangle-exclamation">
+    Leverage may magnify a small model error and create margin calls or forced liquidation before the spread converges.
+  </Accordion>
+
+  <Accordion title="Crowded Position Unwind" icon="people-group">
+    Other market participants may hold similar positions and exit at the same time, causing rapid spread widening.
+  </Accordion>
+
+  <Accordion title="Counterparty Risk" icon="building-columns">
+    A bank, broker or liquidity provider may experience insolvency, trading restrictions, operational failure or legal intervention.
+  </Accordion>
+
+  <Accordion title="Model and Data Risk" icon="microchip">
+    Market data may be delayed or incorrect, and estimated correlations, volatility, costs or hedge ratios may differ from realized outcomes.
   </Accordion>
 </AccordionGroup>
 
-## Historical Information and Track Record
-
-The supplied materials include historical trading-account statements and a retrospective monthly performance table. They may be used only with clear limitations:
-
-- the live Trivesta Global Allocation Fund was newly established in 2026;
-- the supplied DDQ states that earlier records were not generated by the current Trivesta Capital Management (Hong Kong) Limited ownership;
-- the historical table describes retrospective, fee-adjusted illustrations based on closed-trade activity, not actual historical fund NAV;
-- the table omits the earlier operating period and uses stated illustrative fee assumptions;
-- the records are not the live performance of SURE; and
-- past performance is not indicative of future results.
-
 <Warning>
-  No historical strategy statement, group-experience claim or illustrative chart should be presented as audited SURE performance or as the audited performance of the current Hong Kong fund unless independently verified and expressly approved for that use.
+  The formulas and examples on this page are simplified illustrations. They do not represent actual current positions, guaranteed profits or a forecast of SURE performance. Strategy implementation remains subject to market conditions, approved risk limits and the definitive product documents.
 </Warning>

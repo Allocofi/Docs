@@ -3,167 +3,338 @@ title: "Risk & Transparency "
 description: "How SURE identifies material risks and reports product information"
 ---
 
-SURE combines an onchain token, an issuer, stablecoin and banking settlement, a Hong Kong private fund, a master-fund and trading structure, and multiple service providers. Risk controls are intended to identify and reduce risk; they cannot eliminate losses or guarantee uninterrupted subscriptions, distributions or redemptions.
+SURE uses a multi-layer risk framework covering its **foreign-exchange statistical arbitrage** Fund, statistical models, leverage, liquidity, counterparties, Token operations and product tracking.
+
+Risk controls are designed to identify and reduce risk. They cannot eliminate losses, guarantee a stable NAV or ensure uninterrupted distributions and redemptions.
 
 <CardGroup cols={3}>
   <Card title="Measure" icon="chart-mixed">
-    Monitor NAV, drawdown, leverage, liquidity, concentration, counterparty exposure and product liabilities.
+    Monitor tracking difference, net FX exposure, gross leverage, currency concentration, drawdown, margin and liquidity.
   </Card>
 
   <Card title="Control" icon="sliders">
-    Apply eligibility checks, exposure limits, reconciliations, liquidity reserves, approval procedures and incident escalation.
+    Apply approved portfolio limits, model controls, execution rules, reconciliation and escalation procedures.
   </Card>
 
   <Card title="Disclose" icon="eye">
-    Publish NAV, distributions, onchain supply, material events, governing documents and verified contract information through official channels.
+    Publish SURE NAV, distributions, Token supply, tracking information and material events through official channels.
   </Card>
 </CardGroup>
 
-## Principal Risks
+## Risk Measurement Framework
 
-| Risk | Why It Matters |
-| :-- | :-- |
-| Market Risk | FX, gold, equities, rates, credit, commodities and other permitted investments can move adversely and cause NAV losses |
-| Strategy and Model Risk | Trading assumptions, signals, hedges or discretionary decisions may fail or behave differently in changing market regimes |
-| Leverage and Derivatives Risk | Margin, borrowing and derivatives can magnify losses, create liquidation risk and produce nonlinear exposures |
-| Currency Risk | SURE is USD-based, but the underlying fund may invest in multiple currencies and incur conversion and hedging costs |
-| Liquidity Risk | The underlying fund deals monthly; positions or fund interests may not be liquidated at the expected price or time |
-| Redemption Risk | Requests may be gated, deferred, suspended, settled in kind or delayed by incomplete documentation or operational conditions |
-| Distribution Risk | The 8%, 9% and 10% figures are objectives. Payments may reduce NAV and are not guaranteed |
-| Performance-Fee Asymmetry | Holders bear downside, while performance above the applicable hurdle may be captured entirely by the investment manager |
-| Counterparty and Master-Fund Risk | SURE depends on the underlying fund, master-fund structure, brokers, banks, trading counterparties and service providers |
-| Custody and Banking Risk | Assets or cash may be frozen, delayed, misappropriated, subject to insolvency or unavailable during an operational incident |
-| Valuation Risk | Some assets may be difficult to value; official NAV may be delayed, estimated or corrected |
-| Issuer and Wrapper Risk | SURE holders have a claim against the SURE issuer under the product terms and may not have a direct claim on underlying assets |
-| Stablecoin Risk | Subscription or redemption assets may depeg, become illiquid or face issuer, banking, sanctions or redemption constraints |
-| Blockchain and Smart-Contract Risk | Contracts, wallets, bridges, networks, oracles and privileged roles may fail or be compromised |
-| Operational and Cyber Risk | Human error, system outages, reconciliation failures, fraud, cyber incidents or vendor failures may affect the product |
-| Legal, Regulatory and Tax Risk | Laws, licensing classifications, sanctions, public-offer restrictions and tax treatment may change |
-| Conflict-of-Interest Risk | Issuer, product manager, investment manager and service providers may face conflicts in valuation, fees, allocation and liquidity decisions |
-| Track-Record Risk | Historical account data and illustrative tables may be incomplete, unaudited or not attributable to the live fund or SURE |
+Risk is assessed at the SURE product level, the underlying Fund level and across the Fund's approved FX trading accounts.
 
-## Risk Controls
+| Risk Dimension | Metric | What It Measures |
+| :-- | :-- | :-- |
+| Token tracking | Tracking Difference | Difference between SURE total return and underlying Fund total return |
+| Portfolio directionality | Net FX Exposure Ratio | Residual directional currency exposure relative to Fund NAV |
+| Total position size | Gross Leverage Ratio | Aggregate long and short FX exposure before offsetting |
+| Currency concentration | Single Currency Exposure Ratio | Exposure attributable to one currency relative to Fund NAV |
+| Strategy concentration | Pair Concentration Ratio | Share of gross exposure attributable to one statistical relationship |
+| Portfolio loss | Maximum Drawdown | Largest decline from a historical peak NAV to a subsequent trough |
+| Distribution coverage | Distribution Coverage Ratio | Net return available relative to the fixed distribution paid |
+| Liquidity | Estimated Exit Time | Time and expected cost required to reduce or close positions |
 
-Risk controls may include:
+### Tracking Difference
 
-- professional-investor and jurisdictional eligibility checks;
-- AML, sanctions, PEP, adverse-media and wallet screening;
-- product-level asset and liability segregation in books and records;
-- bank, wallet and underlying-fund reconciliation;
-- multisignature control over privileged smart-contract functions;
-- limits on accelerated-redemption liquidity;
-- stablecoin and counterparty concentration limits;
-- stress testing of market, leverage, redemption and stablecoin scenarios;
-- review of official underlying NAV and administrator statements;
-- independent legal, audit, custody and administration arrangements where applicable;
-- incident-response and business-continuity procedures; and
-- suspension powers for legal, security, valuation or liquidity events.
+Tracking difference measures whether SURE has performed differently from the underlying Fund after distributions and product-level costs:
+
+$$
+\mathrm{Tracking\ Difference}
+=
+\mathrm{SURE\ Total\ Return}
+-
+\mathrm{Underlying\ Fund\ Total\ Return}
+$$
+
+Tracking difference may result from cash balances, conversion costs, fees, distribution timing, settlement delays, rounding and valuation corrections.
+
+### Net FX Exposure Ratio
+
+The Net FX Exposure Ratio measures residual directional currency exposure after long and short positions are offset:
+
+$$
+\mathrm{Net\ FX\ Exposure\ Ratio}
+=
+\frac{
+\left|\mathrm{Net\ Delta\ Adjusted\ FX\ Notional}\right|
+}{
+\mathrm{Fund\ NAV}
+}
+\times 100\%
+$$
+
+A lower ratio generally indicates that offsetting FX positions are more closely matched. A ratio of zero does not mean that the portfolio is risk-free.
+
+### Gross Leverage Ratio
+
+Gross leverage measures total FX exposure before long and short positions are offset:
+
+$$
+\mathrm{Gross\ FX\ Notional}
+=
+\sum_{j=1}^{n}
+\left|
+\mathrm{Delta\ Adjusted\ Notional}_j
+\right|
+$$
+
+$$
+\mathrm{Gross\ Leverage\ Ratio}
+=
+\frac{
+\mathrm{Gross\ FX\ Notional}
+}{
+\mathrm{Fund\ NAV}
+}
+\times 100\%
+$$
 
 <Warning>
-  A limit may be exceeded before corrective action can be completed, particularly during fast markets, bank closures, blockchain congestion, counterparty failure or data outages.
+  A portfolio may have low net directional exposure while maintaining substantial gross leverage. Statistical neutrality should therefore be assessed together with leverage, margin, liquidity, correlation and counterparty exposure.
 </Warning>
 
-## Transparency Framework
+### Single Currency Exposure Ratio
 
-| Disclosure Area | Information | Frequency or Trigger |
+This ratio measures residual exposure to one currency across all positions:
+
+$$
+\mathrm{SCER}_i
+=
+\frac{
+\left|
+\mathrm{Net\ Exposure\ to\ Currency}\ i
+\right|
+}{
+\mathrm{Fund\ NAV}
+}
+\times 100\%
+$$
+
+### Pair Concentration Ratio
+
+The Pair Concentration Ratio measures how much of the portfolio's gross exposure is allocated to one statistical relationship:
+
+$$
+\mathrm{PCR}_i
+=
+\frac{
+\mathrm{Gross\ Notional\ of\ Pair\ Strategy}\ i
+}{
+\mathrm{Total\ Gross\ FX\ Notional}
+}
+\times 100\%
+$$
+
+### Maximum Drawdown
+
+Maximum Drawdown measures the largest percentage decline from a historical peak NAV to the lowest subsequent NAV before a new peak is reached:
+
+$$
+\mathrm{MDD}
+=
+\frac{
+\mathrm{Peak\ NAV}
+-
+\mathrm{Subsequent\ Trough\ NAV}
+}{
+\mathrm{Peak\ NAV}
+}
+\times 100\%
+$$
+
+### Distribution Coverage Ratio
+
+SURE provides a fixed annual distribution rate of 9%, equivalent to 0.75% per month.
+
+Distribution coverage is measured as:
+
+$$
+\mathrm{Distribution\ Coverage\ Ratio}
+=
+\frac{
+\mathrm{Net\ Return\ Available\ for\ Distribution}
+}{
+\mathrm{Distribution\ Paid}
+}
+$$
+
+| Coverage Ratio | Interpretation |
+| :-- | :-- |
+| Above 1.0x | Net return exceeded the distribution amount |
+| Equal to 1.0x | Net return matched the distribution amount |
+| Below 1.0x | The distribution exceeded current-period net return |
+
+A coverage ratio below 1.0x may indicate that the distribution was supported by retained value, reserves or capital and may reduce SURE NAV.
+
+## Risk Limits and Response
+
+Each risk metric is monitored against an approved operating limit.
+
+| Metric | Measurement Scope | Limit |
 | :-- | :-- | :-- |
-| SURE NAV | Official product NAV, valuation date and whether the value is official or indicative | Monthly official; indicative updates when available |
-| Underlying NAV | Latest administrator-confirmed NAV used by SURE | Monthly or when corrected |
-| Distributions | Amount, record date, payment date and treatment in NAV | Monthly when declared |
-| Product Supply | Valid SURE units outstanding, minted and burned | Onchain and reconciled periodically |
-| Product Assets | Aggregated underlying fund value, attributed cash and material receivables | Periodically, subject to confidentiality |
-| Product Liabilities | Accrued fees, redemptions, distributions, expenses and reserves | Reflected in NAV; summarized periodically |
-| Liquidity | Standard and accelerated redemption status, gates and material delays | Current status and material-event updates |
-| Service Providers | Current issuer, manager, administrator, custodians, auditor and legal adviser | At launch and after material changes |
-| Smart Contracts | Verified addresses, networks, privileged roles, multisignature and upgrade controls | At deployment and after material changes |
-| Material Events | Events materially affecting valuation, security, custody, trading or redemption | As reasonably practicable |
-| Governing Documents | Product terms, risk disclosure, NAV methodology, redemption policy and restricted-jurisdiction policy | Current versions through official channels |
+| Tracking Difference | SURE versus underlying Fund | Approved product limit |
+| Net FX Exposure Ratio | All FX positions in aggregate | Approved Fund limit |
+| Gross Leverage Ratio | All FX positions in aggregate | Approved Fund limit |
+| Single Currency Exposure Ratio | Each currency | Approved Fund limit |
+| Pair Concentration Ratio | Each statistical relationship | Approved Fund limit |
+| Maximum Drawdown | Underlying Fund and SURE | Approved escalation threshold |
+| Distribution Coverage Ratio | SURE distribution structure | Monitored and disclosed |
+| Liquidity | Portfolio and redemption reserve | Approved liquidity threshold |
 
-## NAV and Performance Transparency
+<Steps>
+  <Step title="Detect">
+    Recalculate risk metrics using current positions, prices, balances, margin, Fund NAV and Token supply.
+  </Step>
+  <Step title="Investigate">
+    Identify whether the change results from market movement, model drift, incomplete execution, valuation timing, liquidity or a data-quality issue.
+  </Step>
+  <Step title="Correct">
+    Add or adjust hedges, reduce positions, rebalance collateral, restrict new trades or increase available liquidity where appropriate.
+  </Step>
+  <Step title="Escalate">
+    Material or persistent breaches may result in portfolio de-risking, subscription suspension, redemption controls or other actions permitted by the product documents.
+  </Step>
+</Steps>
 
-The official SURE NAV should use the latest official underlying-fund valuation and the SURE product's own cash, liabilities, fees, distributions and unit supply.
+## Principal Risk Categories
 
-Performance should be reported from SURE NAV and distributions after applicable costs. It should not be reconstructed solely from:
+### Statistical Model and Convergence Risk
 
-- a manager's trading-account statement;
-- a marketing deck;
-- a gross return series;
-- a separate historical account;
-- an illustrative fee-adjusted table; or
-- group-level experience.
+Currency relationships are estimated from historical and current data. They may change, weaken or fail to converge.
 
-<Info>
-  The investment manager's corporate financial statements are not fund performance statements. Likewise, an underlying strategy record is not the actual performance of SURE.
-</Info>
+**Risk controls may include:**
 
-## Onchain Transparency
+- correlation and cointegration monitoring;
+- model-drift detection;
+- regime analysis;
+- volatility-adjusted thresholds;
+- stop-loss and time-stop rules;
+- position diversification; and
+- independent model review.
 
-Blockchain records may show:
+### Market, Leverage and Margin Risk
+
+FX prices may change rapidly after economic data, policy decisions, intervention or geopolitical events. Leverage can magnify losses and create forced liquidation risk.
+
+**Risk controls may include:**
+
+- gross and net exposure limits;
+- leverage and margin-utilization limits;
+- stress testing;
+- event-risk reduction;
+- liquidation-distance monitoring; and
+- portfolio de-risking after drawdown triggers.
+
+### Execution and Liquidity Risk
+
+Multi-leg positions may be affected by partial fills, rejected orders, slippage, widening spreads and insufficient market depth.
+
+**Risk controls may include:**
+
+- maximum slippage parameters;
+- order-size and participation limits;
+- coordinated leg execution;
+- liquidity filters;
+- transaction-cost analysis; and
+- manual escalation for incomplete hedges.
+
+### Counterparty, Custody and Banking Risk
+
+The Fund and SURE depend on banks, brokers, custodians, administrators and other service providers.
+
+**Risk controls may include:**
+
+- due diligence before approving a service provider;
+- counterparty exposure limits;
+- segregation of duties;
+- cash and position reconciliation;
+- withdrawal and payment controls;
+- incident-response procedures; and
+- reducing exposure when risk indicators deteriorate.
+
+### Stablecoin and Blockchain Risk
+
+USDC, USDT and supported blockchain networks may experience depegging, liquidity stress, issuer restrictions, congestion, software failure or security incidents.
+
+**Risk controls may include:**
+
+- approved stablecoin and network lists;
+- stablecoin concentration limits;
+- wallet and address allowlists;
+- multisignature controls;
+- verified smart-contract addresses;
+- emergency-pause procedures; and
+- conversion and rebalancing plans.
+
+### Liquidity and Redemption Risk
+
+Redemption settlement depends on available product cash, the underlying Fund's dealing cycle and the ability to value and liquidate positions.
+
+**Risk controls may include:**
+
+- maintaining a liquidity reserve;
+- estimating exit time and market impact;
+- limiting position size relative to executable liquidity;
+- aligning subscriptions and redemptions with the Fund dealing cycle;
+- redemption gates and queues; and
+- suspension procedures for exceptional conditions.
+
+## Transparency and Reporting
+
+Transparency helps users understand how SURE tracks and reports the underlying Fund. It does not provide real-time visibility into every FX position or eliminate valuation uncertainty.
+
+| Disclosure Area | Information Presented | Frequency or Trigger |
+| :-- | :-- | :-- |
+| SURE NAV | Official NAV per SURE and valuation date | Monthly |
+| Underlying Fund NAV | Official Fund NAV used in the SURE calculation | Monthly |
+| Tracking Difference | Difference between SURE and underlying Fund total return | Periodically |
+| Distribution Rate | Fixed annual rate of 9% and monthly rate of 0.75% | Continuous disclosure |
+| Distribution Payment | Amount, record date and payment date | Monthly |
+| Distribution Coverage | Net return relative to distribution paid | Monthly or periodically |
+| Portfolio Risk | Net FX exposure, gross leverage, concentration and drawdown | Periodically |
+| Liquidity | Redemption status, gates and material settlement delays | Current status |
+| Product Supply | Valid SURE units outstanding and mint or burn activity | Onchain and reconciled |
+| Smart Contracts | Verified addresses, networks and privileged roles | At deployment and after changes |
+| Material Events | Events affecting valuation, trading, custody, distributions or redemption | As reasonably practicable |
+| Documents | Product terms, NAV methodology, risk disclosure and relevant policies | Current versions through official channels |
+
+### Onchain Transparency
+
+Onchain records may show:
 
 - SURE issuance;
-- transfers between addresses;
-- tokens held in redemption;
-- burns; and
-- contract-level administrative actions.
+- SURE transfers;
+- units pending redemption;
+- SURE burns; and
+- smart-contract administration events.
 
-Blockchain records do not automatically show:
+Onchain records do not automatically show:
 
+- the value of the underlying Fund position;
 - bank balances;
-- underlying fund shares;
-- master-fund assets;
-- broker positions;
-- liabilities and expenses;
-- pending subscriptions or redemptions;
-- offchain side letters; or
-- whether an underlying valuation is current and accurate.
+- open FX positions;
+- collateral and margin;
+- accrued Fund liabilities;
+- distribution coverage;
+- the accuracy of official NAV; or
+- counterparty solvency.
 
-<Warning>
-  Onchain visibility is not equivalent to proof of reserves, a real-time audit or legal ownership of the underlying portfolio.
-</Warning>
-
-## Due-Diligence Status Requiring Confirmation
-
-The supplied DDQ contains several time-sensitive statements that must be refreshed before launch or public publication:
-
-1. **Cayman registration:** the DDQ stated that registration of Trivesta Fund SPC with CIMA was being applied for at the time of response.
-2. **Master-level trading accounts:** the DDQ stated that accounts with Decode Global Limited and IG Bank were in the process of being established.
-3. **Master-fund custody:** the supplied materials do not conclusively establish the current independent cash custodian and asset-custody arrangements at master-fund level.
-4. **Administrator verification:** the materials identify Apex as administrator, but the precise scope of Apex's independent verification of master-fund assets and trade data should be confirmed.
-5. **Historical performance attribution:** the DDQ states that the earlier record was not generated by the current ownership of Trivesta Capital Management (Hong Kong) Limited, and the current fund was newly established.
-6. **Live SURE operations:** contract addresses, multisignature settings, stablecoin rails, fees, liquidity reserves and actual settlement service providers must be verified at deployment.
-
-<Note>
-  These items are launch and continuing due-diligence requirements. They should not be converted into positive claims unless supported by current signed agreements, regulator records or direct independent confirmation.
-</Note>
-
-## Material Events
-
-Material events may include:
-
-- a material NAV delay or correction;
-- suspension, gate or prolonged redemption delay;
-- a shortfall or change in distribution;
-- stablecoin depeg or redemption restriction;
-- bank, custodian, broker or counterparty failure;
-- master-fund registration or legal-status change;
-- administrator, custodian, auditor or manager replacement;
-- smart-contract exploit or privileged-key compromise;
-- sanctions or regulatory action;
-- material litigation or insolvency; or
-- termination or wind-down of SURE or the underlying fund.
-
-Notices should be issued through official channels as reasonably practicable, subject to legal, security, market-abuse and confidentiality constraints.
+<Info>
+  Onchain supply data should be read together with official Fund NAV, SURE NAV, product reporting and reconciliation. Blockchain visibility is not equivalent to a complete real-time audit.
+</Info>
 
 ## Important Limitations
 
-- Risk metrics are point-in-time estimates and may change rapidly.
-- Official underlying NAV is monthly and may not reflect current intramonth trading.
-- Diversification across markets and counterparties reduces some concentration but does not remove correlated or systemic risk.
-- Audits and administration reduce certain risks but do not guarantee asset safety, valuation accuracy or performance.
-- A liquidity reserve can be exhausted.
-- Smart-contract reviews cannot eliminate all code or governance risk.
-- Past performance does not predict future results.
+- Risk metrics are point-in-time measurements and can change rapidly.
+- Statistical relationships and hedge ratios are estimates.
+- Official Fund NAV is generally monthly and may not reflect current intramonth trading.
+- Risk limits may be breached before corrective action can be completed.
+- Diversification reduces some concentrations but does not remove systemic risk.
+- Audits, administration, custody and smart-contract reviews reduce certain risks but cannot guarantee security or performance.
+- Past performance and historical drawdown do not predict future results.
 
 <Warning>
-  SURE involves investment, market, leverage, counterparty, custody, liquidity, stablecoin, smart-contract, cybersecurity, operational, legal, regulatory and tax risks. Users may lose some or all of their invested capital.
+  SURE involves foreign-exchange, statistical-model, convergence, leverage, execution, counterparty, liquidity, stablecoin, custody, cybersecurity, smart-contract, operational, regulatory and tax risks. Users may lose some or all of their invested capital. Review the complete product terms and Risk Disclosure before subscribing.
 </Warning>
