@@ -30,7 +30,8 @@
             "pages": [
               "started/introduction",
               "started/how-it-works",
-              "started/eligibility"
+              "started/eligibility",
+              "untitled-page-14"
             ]
           },
           {
@@ -82,10 +83,6 @@
               "legal/privacy-policy"
             ],
             "hidden": true
-          },
-          {
-            "group": "Alloco Asset",
-            "pages": []
           }
         ]
       }
