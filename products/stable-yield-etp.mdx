@@ -1,81 +1,155 @@
 ---
-title: "Redeem"
-sidebarTitle: "Sell an ETFT"
-description: "Redeem Your ETFT in Three Simple Steps"
+title: "Selling an ETFT"
+sidebarTitle: "Redeem"
+description: "Learn how to sell an ETFT and receive USDC through execution of the underlying portfolio"
 ---
 
-## Step 1 — Submit Redemption Request
+## Overview
 
-Select the ETFT you want to redeem and enter the amount of tokens you wish to redeem.
+Selling an ETFT converts your ETFT position back into USDC through the execution of its underlying portfolio.
 
-Alloco will generate a redemption order containing:
+Enter the amount of ETFT you want to sell, review the real-time quote, and confirm the transaction. The corresponding underlying assets are then sold through Alloco's integrated brokerage infrastructure.
 
-- Selected ETFT product
-- Redemption amount
-- Current estimated NAV
-- Expected settlement details
-- Applicable redemption fees
+Once the underlying execution is complete, the resulting USDC becomes available to claim directly to your wallet.
 
-After reviewing the order details, confirm the redemption request from your wallet.
+<Info>
+  ETFT sales are execution-backed. The amount of USDC received is determined by the actual execution of the underlying portfolio, applicable transaction costs, and any applicable sell fee.
+</Info>
 
-**What happens next?**
+## Step 1 — Select an ETFT
 
-Your ETFT tokens are transferred to the redemption process and locked until settlement is completed.
+Open your portfolio and select the ETFT you want to sell.
 
-## Step 2 — Redemption Processing
+Before selling, you can review information including:
 
-Once your redemption request is submitted, Alloco begins the settlement process.
+- ETFT balance
+- Indicative NAV
+- Current portfolio holdings
+- Performance
+- Holding period
+- Applicable sell fee
 
-Your order moves through several stages:
+You can choose to sell all or part of your ETFT position.
 
-### 1. Redemption Submitted
+## Step 2 — Enter Your Sell Amount
 
-Your redemption request has been successfully created.
+Enter the amount of ETFT tokens you want to sell.
 
-### 2. ETFT Tokens Received
+For example:
 
-The requested ETFT tokens have been verified and received.
+> **You Sell:** 100 Pelosi ETFT<br />**You Receive:** ≥ \[Quoted Amount\] USDC
 
-### 3. NAV Calculation
+Alloco generates a real-time quote showing the **minimum amount of USDC expected to be received** from the transaction.
 
-The latest verified NAV is used to determine the redemption value.
+The quote takes into account:
 
-### 4. Basket Settlement
+- Current prices of the underlying assets
+- Current ETFT portfolio composition
+- Indicative NAV
+- Expected underlying execution
+- Applicable brokerage and transaction costs
+- Current market and liquidity conditions
+- Applicable sell fee
 
-The underlying assets are processed according to the ETFT redemption rules.
+<Info>
+  The quote is generated before the underlying portfolio is sold. Final transaction economics reflect the actual execution of the underlying assets.
+</Info>
 
-### 5. Settlement Confirmed
+## Step 3 — Review the Sell Fee
 
-The redemption amount is finalized and prepared for distribution.
+The applicable sell fee depends on how long the ETFT position has been held.
 
-### 6. USDC Transfer
+| Holding Period | Sell Fee |
+| :-- | --: |
+| **Less than 3 months** | 0.10% |
+| **3 months or longer** | 0% |
 
-The corresponding USDC amount is sent back to your wallet.
+Any applicable sell fee is reflected in the transaction before completion.
 
-## Step 3 — Redeemed Successfully
+<Note>
+  The applicable holding period is determined according to the methodology specified in the relevant product documentation.
+</Note>
 
-After settlement is completed, your redemption details will be displayed.
+## Step 4 — Confirm the Sell
 
-You will receive:
+Review the transaction details and click **Sell**.
 
-- Redemption NAV
-- Redeemed ETFT units
-- Settlement amount
-- Fees applied
-- Settlement timestamp
+Confirm the transaction with your wallet to initiate the sale.
 
-Your ETFT tokens are burned after redemption, ensuring that outstanding supply remains aligned with the underlying assets.
+Once confirmed, the order enters:
 
-## Transparent Redemption
+**Processing**
 
-Every redemption request is tracked from submission to settlement.
+At this stage, the corresponding underlying positions are routed through Alloco's integrated brokerage infrastructure for execution.
 
-Alloco provides visibility into:
+## Step 5 — Underlying Execution
 
-- Redemption status
-- NAV calculation
-- Token burn records
-- Settlement history
-- Final payout amount
+Selling an ETFT results in the corresponding portion of its underlying portfolio being sold.
 
-The redemption process ensures that every ETFT unit remains backed by transparent asset value.
+Using **Pelosi ETFT** as an example, the portfolio currently contains positions including GOOGL, AMZN, AVGO, NVDA, AAPL, V, MSFT, CRM, and other securities.
+
+Conceptually, the amount of each underlying asset to be liquidated is determined by:
+
+$$
+Liquidation\ Notional_i = Portfolio\ Value_{\text{sold}} \times Weight_i
+$$
+
+where:
+
+- $$Liquidation\ Notional_i$$ = target value of underlying asset $$i$$ to be sold
+- $$Portfolio\ Value_{\text{sold}}$$ = underlying portfolio value corresponding to the ETFT amount being sold
+- $$Weight_i$$ = applicable portfolio weight of underlying asset $$i$$
+
+The actual proceeds depend on the prices achieved when the underlying orders are executed.
+
+Execution may be affected by:
+
+- Market movement
+- Bid-ask spreads
+- Available liquidity
+- Partial or fractional execution
+- Extended-hours market conditions
+- Brokerage and transaction costs
+
+These execution results are incorporated through the ETFT's pass-through pricing methodology.
+
+## Step 6 — USDC Becomes Claimable
+
+Once the required underlying assets have been successfully sold, the order status changes from:
+
+**Processing → Claimable**
+
+The resulting USDC is now ready to claim.
+
+The claimable amount reflects the completed underlying execution, applicable transaction costs, and any applicable sell fee.
+
+## Step 7 — Claim Your USDC
+
+Click **Claim** and confirm the transaction with your wallet.
+
+The corresponding USDC will be transferred to your connected wallet on the supported network.
+
+Once the claim is successfully completed, the order status changes to:
+
+**Completed**
+
+The sell transaction is now fully settled.
+
+## Order Lifecycle
+
+| Status | What Happens |
+| :-- | :-- |
+| **Quote** | A real-time estimate of the minimum USDC amount is generated. |
+| **Processing** | The sell has been confirmed and the corresponding underlying assets are being sold. |
+| **Claimable** | Underlying execution is complete and USDC is ready to claim. |
+| **Completed** | USDC has been claimed to your wallet and the transaction is fully settled. |
+
+## Important Considerations
+
+<Warning>
+  The indicative NAV is not a guaranteed execution price. Market prices may change between quote generation and execution, and the final transaction economics may be affected by liquidity, bid-ask spreads, extended-hours conditions, and underlying execution costs.
+</Warning>
+
+Selling an ETFT requires execution of the corresponding underlying portfolio. Under stressed market conditions, market closures, trading halts, insufficient liquidity, broker interruptions, or other exceptional circumstances, execution may be delayed or otherwise affected.
+
+The availability of the **Claim** action depends on successful completion of the required underlying execution.
