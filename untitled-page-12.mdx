@@ -1,0 +1,178 @@
+---
+title: "Lifecycle Management"
+description: "How ETFTs are monitored, rebalanced, updated, and managed after launch"
+---
+
+## Overview
+
+Launching an ETFT is the beginning of its operational lifecycle.
+
+After launch, each product requires ongoing portfolio monitoring, pricing, rebalancing, corporate-action handling, execution oversight, reporting, and product maintenance.
+
+> **Monitor → Rebalance → Execute → Reconcile → Report**
+
+## Portfolio Monitoring
+
+The ETFT portfolio is monitored against its applicable methodology and product rules.
+
+Monitoring may include:
+
+- Current portfolio weights
+- Target portfolio weights
+- Portfolio drift
+- Asset eligibility
+- Market liquidity
+- Data availability
+- Corporate actions
+- Trading restrictions
+- Product-specific risk limits
+
+The purpose of monitoring is to identify events requiring a portfolio or operational response.
+
+## Portfolio Rebalancing
+
+An ETFT may use one or more rebalancing methods.
+
+### Calendar-Based Rebalancing
+
+The portfolio is reviewed or adjusted according to a predefined schedule.
+
+### Event-Driven Rebalancing
+
+A defined external event or methodology signal triggers a portfolio update.
+
+For example, a public-insight ETFT may update after relevant information becomes available and is incorporated according to the product methodology.
+
+### Drift-Based Rebalancing
+
+The portfolio may rebalance when actual or reference weights move outside predefined tolerances.
+
+### Methodology-Driven Rebalancing
+
+Custom strategies may define their own objective triggers, provided those rules can be implemented and disclosed consistently.
+
+## Rebalancing Execution
+
+When a rebalance is required, the new target portfolio is translated into the underlying trades needed to move from the existing exposure toward the updated allocation.
+
+The process generally includes:
+
+1. Determine the new target portfolio.
+2. Calculate the difference from the existing portfolio.
+3. Generate required Buy and Sell orders.
+4. Route the underlying orders for execution.
+5. Reconcile completed executions.
+6. Update portfolio records and reporting.
+
+Actual portfolio weights may temporarily differ from target weights because of execution timing, market movement, liquidity, or other market conditions.
+
+## Corporate Actions
+
+Corporate actions affecting underlying securities are handled according to the applicable ETFT methodology.
+
+Relevant events may include:
+
+- Dividends
+- Stock splits and reverse splits
+- Mergers and acquisitions
+- Spin-offs
+- Tender offers
+- Delistings
+- Symbol changes
+
+Corporate actions may require adjustments to prices, quantities, portfolio composition, or methodology treatment.
+
+The objective is to preserve economic continuity where reasonably possible while reflecting the actual event affecting the underlying asset.
+
+## NAV & Pricing Maintenance
+
+The ETFT pricing infrastructure continues to maintain:
+
+- Indicative NAV
+- Corporate-action adjustments
+- Management-fee accrual
+- Buy quotes
+- Sell quotes
+- Transaction-level execution adjustments
+
+The public iNAV remains a reference value based on the portfolio methodology, while executable pricing reflects actual transaction conditions.
+
+See **Pricing & NAV** for the detailed pricing framework.
+
+## Methodology Updates
+
+From time to time, a product methodology may require modification.
+
+Potential changes include:
+
+- Adding or removing eligible assets
+- Changing weighting rules
+- Updating rebalancing triggers
+- Changing a data source
+- Updating corporate-action treatment
+- Modifying product risk controls
+
+Material methodology changes should be reviewed before implementation and may require updated product documentation or investor communication.
+
+Historical methodology changes should not be used to retroactively rewrite previously published investment performance unless explicitly required by the applicable methodology or correction policy.
+
+## Fee Changes
+
+Changes to management fees or other product-level fees should be handled according to the applicable product terms and disclosure requirements.
+
+A fee change may require:
+
+- Product configuration updates
+- Updated documentation
+- Advance notice, where applicable
+- Legal or distribution review
+
+Transaction-level brokerage or market execution costs may change independently of product-level fees because they depend on external execution conditions.
+
+## Product Suspension
+
+Trading or product operations may need to be temporarily restricted under exceptional circumstances.
+
+Potential reasons include:
+
+- Underlying market closure
+- Trading halts
+- Insufficient market liquidity
+- Broker or execution interruption
+- Material pricing or data issues
+- Blockchain disruption
+- Smart contract incident
+- Legal or regulatory requirement
+
+A suspension is intended to protect the integrity of pricing, execution, or settlement and does not guarantee that losses can be prevented.
+
+## Product Termination
+
+An ETFT may eventually be discontinued according to its applicable product terms.
+
+A termination process may include:
+
+1. Suspend new Buy activity.
+2. Notify affected users where required.
+3. Determine the final portfolio treatment.
+4. Liquidate applicable underlying positions where required.
+5. Determine final settlement amounts.
+6. Make assets available for Claim.
+7. Complete outstanding settlement and close the product.
+
+The exact termination process depends on the legal and operational structure of the ETFT.
+
+## Reporting
+
+Lifecycle reporting may include:
+
+- Current holdings and weights
+- Indicative NAV
+- Historical performance
+- Rebalancing history
+- Methodology updates
+- Fee information
+- Material corporate actions
+- Product status
+
+The level and frequency of reporting may vary depending on the ETFT and applicable product requirements.

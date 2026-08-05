@@ -1,0 +1,145 @@
+---
+title: "Issuance & Infrastructure"
+description: "How ETFT Launcher connects portfolio logic, brokerage execution, smart contracts, and onchain settlement"
+---
+
+## Overview
+
+ETFT Launcher connects an investment methodology with the infrastructure required to price, execute, and settle an Onchain ETFT.
+
+The architecture spans both traditional financial markets and blockchain networks. Underlying securities are executed through integrated brokerage infrastructure, while ETFT ownership and investor settlement are handled through supported onchain systems.
+
+> **Portfolio Methodology → Pricing Engine → Brokerage Execution → ETFT Smart Contract → Investor Wallet**
+
+## Product Layer
+
+The product layer defines what the ETFT represents and how it behaves.
+
+It includes:
+
+- Eligible underlying assets
+- Portfolio weights
+- Rebalancing rules
+- Corporate-action methodology
+- Product fees
+- Supported networks
+- Trading and settlement rules
+
+These parameters form the operating specification used by the pricing, execution, and onchain infrastructure.
+
+## Pricing & NAV Engine
+
+The pricing layer maintains the relationship between the reference portfolio and the investable ETFT.
+
+It supports:
+
+- Indicative NAV calculation
+- Corporate-action adjustments
+- Net Product NAV calculations
+- Buy quote generation
+- Sell quote generation
+- Execution-cost incorporation
+- Fee calculations
+
+The public iNAV is a reference portfolio value. Actual investor transactions use execution-adjusted pricing based on the corresponding underlying market transaction.
+
+This separation prevents brokerage costs, spreads, or order-specific execution effects from distorting the reference performance series.
+
+## Brokerage Execution
+
+ETFTs are designed as **execution-backed products**.
+
+When an investor confirms a Buy, the system generates the corresponding underlying basket and routes the required orders through supported brokerage infrastructure.
+
+When an investor confirms a Sell, the process operates in reverse and the corresponding underlying exposure is liquidated.
+
+Execution may involve multiple underlying orders because a single ETFT can represent a portfolio of multiple securities.
+
+The transaction remains **Processing** while the required underlying execution is being completed.
+
+## Smart Contract Infrastructure
+
+The onchain layer manages the ETFT transaction lifecycle on supported networks.
+
+Core functions may include:
+
+- ETFT token issuance
+- Token accounting
+- Buy and Sell transaction state
+- Claim logic
+- Supported asset settlement
+- Product-level access controls, where applicable
+
+ETFTs are currently designed to support:
+
+- **Ethereum**
+- **BNB Chain**
+
+Network support may vary by product.
+
+## Buy Infrastructure
+
+At a high level, a Buy follows this sequence:
+
+1. Investor enters an amount of USDC.
+2. The pricing engine generates a quote and minimum expected ETFT output.
+3. Investor confirms the Buy onchain.
+4. The underlying basket is submitted for execution.
+5. The order remains **Processing** during execution.
+6. Successful execution makes the ETFT **Claimable**.
+7. Investor claims the ETFT to the connected wallet.
+8. The transaction becomes **Completed**.
+
+## Sell Infrastructure
+
+A Sell follows the reverse sequence:
+
+1. Investor enters an amount of ETFT to sell.
+2. The pricing engine generates a quote and minimum expected USDC output.
+3. Investor confirms the Sell onchain.
+4. The corresponding underlying exposure is submitted for liquidation.
+5. The order remains **Processing** during execution.
+6. Successful execution makes the resulting USDC **Claimable**.
+7. Investor claims USDC to the connected wallet.
+8. The transaction becomes **Completed**.
+
+## Onchain and Offchain Boundaries
+
+An ETFT combines components operating in different environments.
+
+| Component | Environment |
+| :-- | :-- |
+| Portfolio methodology | Product infrastructure |
+| Market prices and underlying execution | Traditional market / brokerage infrastructure |
+| iNAV and executable quote calculation | Pricing infrastructure |
+| ETFT token | Blockchain |
+| Wallet confirmation and Claim | Blockchain |
+| U.S. equity settlement | Traditional financial-market infrastructure |
+
+Onchain transparency does not mean that every component of underlying securities trading or settlement occurs onchain.
+
+## Testing & Controls
+
+Before a product is enabled for live distribution, Alloco validates the interaction between the product, pricing, execution, and settlement layers.
+
+Testing may include:
+
+- Portfolio calculations
+- NAV calculations
+- Quote generation
+- Underlying basket construction
+- Order execution
+- Execution reconciliation
+- Smart contract state transitions
+- Claim settlement
+- Failed or interrupted transaction handling
+
+The objective is to validate the complete product lifecycle rather than only the token contract.
+
+## Infrastructure Dependencies
+
+ETFT operation depends on third-party and external infrastructure, which may include market data providers, brokers, trading venues, blockchain networks, stablecoin infrastructure, and other service providers.
+
+Service interruptions, market closures, trading halts, network congestion, or other external conditions may affect ETFT availability or execution.
+
+See **Risk & Disclosures** in the Onchain ETFT documentation for additional information.

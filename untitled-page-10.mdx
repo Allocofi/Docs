@@ -1,0 +1,166 @@
+---
+title: "Product Configuration"
+description: "Define the portfolio, methodology, fees, and operating rules of an ETFT"
+---
+
+## Overview
+
+Product configuration converts an investment idea into a precise set of rules that can be priced, executed, monitored, and operated as an ETFT.
+
+The objective is to make the methodology sufficiently clear that portfolio construction and lifecycle events can be handled consistently.
+
+## Core Configuration
+
+Each ETFT begins with a product specification.
+
+| Configuration | Description | Example |
+| :-- | :-- | :-- |
+| **Product Name** | Public name of the ETFT | Pelosi ETFT |
+| **Symbol** | Product ticker | \[Ticker\] |
+| **Product Type** | Classification of the methodology | KOL / Public Insight ETFT |
+| **Asset Universe** | Assets eligible for inclusion | U.S.-listed equities |
+| **Base Currency** | Currency used for portfolio valuation | USD |
+| **Trading Asset** | Asset used for Buy and Sell settlement | USDC |
+| **Trading Model** | Investor transaction model | Real-time Buy / Sell |
+| **Supported Networks** | Networks on which the ETFT is available | Ethereum / BNB Chain |
+| **Management Fee** | Annual product management fee | Product-specific |
+| **Sell Fee** | Applicable sell fee methodology | Product-specific |
+| **Rebalancing** | Method used to update portfolio exposure | Event / Calendar / Drift |
+
+## Asset Universe
+
+The asset universe defines which instruments may be included in the ETFT.
+
+Asset eligibility depends on factors including:
+
+- Brokerage availability
+- Market liquidity
+- Fractional trading support
+- Market data coverage
+- Trading-hour availability
+- Corporate-action support
+- Applicable legal and operational restrictions
+
+An asset being publicly traded does not automatically make it eligible for every ETFT.
+
+## Portfolio Weights
+
+Each portfolio assigns a target weight to its underlying assets.
+
+For a fully allocated portfolio:
+
+$$
+\sum_{i=1}^{n} w_i = 1
+$$
+
+where $$w_i$$ is the target weight of asset $$i$$.
+
+Weighting methodologies may include:
+
+- Fixed weights
+- Equal weights
+- Market-cap-based weights
+- Signal-based weights
+- Score-based weights
+- Risk-adjusted weights
+- Custom methodology-defined weights
+
+The methodology should also define how rounding, cash, unavailable assets, and temporary restrictions are handled.
+
+## Rebalancing Rules
+
+Rebalancing determines when and how the portfolio returns to its intended allocation.
+
+### Calendar-Based
+
+The portfolio is reviewed or rebalanced at predefined intervals, such as monthly or quarterly.
+
+### Event-Driven
+
+A portfolio update is triggered by a defined event, such as a new public disclosure or methodology signal.
+
+### Drift-Based
+
+Rebalancing occurs when one or more holdings move outside predefined allocation tolerances.
+
+### Hybrid
+
+An ETFT may combine multiple conditions, subject to the product methodology.
+
+The methodology should define the effective time of a portfolio update and how the iNAV series is chain-linked across rebalancing events.
+
+## Pricing Configuration
+
+Each ETFT requires rules for both reference valuation and executable transactions.
+
+The product configuration should define:
+
+- Indicative NAV methodology
+- Corporate-action adjustments
+- Management-fee accrual
+- Buy quote methodology
+- Sell quote methodology
+- Execution-cost treatment
+- Quote validity and execution parameters
+
+The **Indicative NAV (iNAV)** represents the theoretical value of the reference portfolio and should remain distinct from the actual executable Buy or Sell price.
+
+See **Pricing & NAV** in the Onchain ETFT documentation for the full methodology.
+
+## Fee Configuration
+
+Product fees are specified before launch and disclosed on the applicable ETFT product page.
+
+Configurable fee components may include:
+
+- Management fee
+- Sell fee
+- Holding-period-based fee rules
+
+Underlying brokerage, spread, slippage, market impact, and other execution-level costs are treated separately from Alloco product fees and reflected through executable transaction pricing where applicable.
+
+## Corporate Actions
+
+The configuration must define how corporate actions affecting underlying assets are handled.
+
+These may include:
+
+- Cash dividends
+- Stock dividends
+- Stock splits and reverse splits
+- Mergers and acquisitions
+- Spin-offs
+- Tender offers
+- Delistings
+
+Corporate-action treatment should preserve the economic continuity of the portfolio where reasonably possible while following the applicable methodology.
+
+## Risk Controls
+
+Depending on the ETFT, product-level controls may include:
+
+- Maximum single-asset weight
+- Maximum sector concentration
+- Minimum liquidity requirements
+- Eligible-security rules
+- Rebalancing tolerances
+- Restricted-asset rules
+- Trading suspension conditions
+- Data-quality requirements
+
+Risk controls reduce specific operational or portfolio risks but do not eliminate investment loss.
+
+## Methodology Changes
+
+Material changes to an ETFT methodology should be documented and reviewed before becoming effective.
+
+Depending on the nature of the change, updates may require:
+
+- Product configuration changes
+- New testing
+- Updated disclosures
+- Smart contract or infrastructure changes
+- Investor communication
+- Legal or distribution review
+
+The applicable product documentation should identify the methodology currently in effect.

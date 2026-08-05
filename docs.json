@@ -68,7 +68,11 @@
             "group": "ETFT Launcher",
             "pages": [
               "account/wallets",
-              "account/kyc-verification"
+              "account/kyc-verification",
+              "untitled-page-10",
+              "untitled-page-11",
+              "untitled-page-12",
+              "untitled-page-13"
             ]
           },
           {
@@ -78,6 +82,10 @@
               "legal/privacy-policy"
             ],
             "hidden": true
+          },
+          {
+            "group": "Alloco Asset",
+            "pages": []
           }
         ]
       }

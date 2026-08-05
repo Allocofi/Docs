@@ -1,81 +1,196 @@
 ---
-title: "How it Works"
+title: "Launching an ETFT"
 sidebarTitle: "How it Works"
-description: "Investment Idea -> Product Design -> ETP Factory -> NAV Engine -> Onchain Distribution"
+description: "The end-to-end workflow for turning an investment methodology into a live Onchain ETFT"
 ---
 
-# Theme Selection
+## Overview
 
-Every ETP begins with an investment thesis.
+Launching an ETFT is a structured process that connects investment design, portfolio methodology, execution infrastructure, onchain issuance, and ongoing product operations.
 
-Creators define:
+The exact launch timeline depends on product complexity, asset availability, required integrations, legal review, and distribution requirements.
 
-- Market opportunity
-- Target assets
-- Investment objective
-- Portfolio methodology
+## Step 1 — Define the Investment Idea
 
-Examples:
+Start by defining what the ETFT is intended to represent.
 
-- Artificial Intelligence Infrastructure
-- Robotics
-- Semiconductor Supply Chain
-- Digital Assets
-- Commodities
-- Private Markets
+The initial product brief should include:
 
----
+- Product name and proposed ticker
+- Investment thesis
+- Product type
+- Target asset universe
+- Portfolio objective
+- Intended investor or distribution audience
+- Reference portfolio, strategy, or data source
 
-# Product Configuration
+For example, a public-insight ETFT may begin with the objective of translating disclosed investment activity into a rules-based equity portfolio.
 
-Creators configure:
+## Step 2 — Configure the Portfolio
 
-## Underlying Assets
+Define how the investment idea becomes a portfolio.
 
-Supported assets may include:
+Core portfolio parameters include:
 
-- Public equities
-- ETFs
-- Commodities
-- Digital assets
-- Alternative assets
+- Eligible underlying assets
+- Target weights
+- Weighting methodology
+- Maximum or minimum position limits
+- Cash treatment
+- Rebalancing rules
+- Data sources
+- Corporate-action treatment
 
-## Portfolio Rules
+For a fixed-weight portfolio:
 
-Allocation methodologies may include:
+$$
+\sum_{i=1}^{n} w_i = 1
+$$
 
-- Fixed allocation
-- Market-cap weighted
-- Factor-based
-- Quantitative strategies
-- Custom methodologies
+where $$w_i$$ represents the target weight of each underlying asset.
 
-## Risk Parameters
+Portfolio rules should be sufficiently clear to reproduce the intended exposure consistently.
 
-Creators define:
+## Step 3 — Define Product Rules
 
-- Position limits
-- Rebalancing frequency
-- Exposure limits
-- Liquidity requirements
+Once the portfolio methodology is established, define how the investable ETFT should operate.
 
----
+Typical parameters include:
 
-# ETP Factory
+| Parameter | Example |
+| :-- | :-- |
+| **Trading Asset** | USDC |
+| **NAV Currency** | USD |
+| **Trading Model** | Real-time Buy / Sell |
+| **Management Fee** | Product-specific |
+| **Sell Fee** | Product-specific |
+| **Supported Networks** | Ethereum / BNB Chain |
+| **Rebalancing** | Calendar / Event / Drift based |
+| **Execution Venue** | Supported integrated brokerage infrastructure |
 
-ETP Factory creates the product infrastructure.
+Product-specific rules are documented before launch and should remain consistent with the applicable product methodology and disclosures.
 
-It manages:
+## Step 4 — Feasibility Review
 
-- Product deployment
-- Token generation
-- Smart contract configuration
-- Asset accounting
-- Supply management
+Alloco reviews whether the proposed ETFT can be operated as designed.
 
-Each ETP receives:
+The review may include:
 
-- Product identifier
-- Token contract
-- NAV framework
-- Documentation package
+### Asset & Execution
+
+- Asset availability
+- Fractional trading support
+- Market liquidity
+- Trading hours
+- Order-size constraints
+- Corporate actions
+- Market or asset restrictions
+
+### Data
+
+- Market data availability
+- Historical price data
+- Corporate-action data
+- Strategy or signal data
+- Licensing and permitted use
+
+### Product Operations
+
+- NAV methodology
+- Rebalancing feasibility
+- Execution workflow
+- Settlement workflow
+- Smart contract requirements
+
+### Legal & Distribution
+
+- Proposed issuer and product structure
+- Target jurisdictions
+- Investor eligibility
+- Marketing and distribution constraints
+- Required product disclosures
+
+A proposed ETFT may require changes to its portfolio or operating rules before it can proceed to build.
+
+## Step 5 — Structure & Deploy
+
+After the product passes feasibility review, Alloco configures the infrastructure required to operate the ETFT.
+
+This may include:
+
+- ETFT product configuration
+- Portfolio and weighting logic
+- iNAV calculation
+- Buy and Sell quote logic
+- Brokerage execution workflow
+- Fee configuration
+- Smart contract deployment
+- Supported network configuration
+- Claim and settlement logic
+- Reporting infrastructure
+
+The resulting structure connects the creator's methodology with the infrastructure required for real-world execution and onchain settlement.
+
+## Step 6 — Test & Validate
+
+Before launch, the product is tested across its complete lifecycle.
+
+Typical validation includes:
+
+**Pricing**
+
+- Indicative NAV calculation
+- Corporate-action adjustments
+- Buy quotes
+- Sell quotes
+- Fee calculations
+
+**Trading**
+
+- Underlying basket generation
+- Brokerage order routing
+- Partial or failed execution handling
+- Execution reconciliation
+
+**Onchain**
+
+- Wallet interactions
+- Buy confirmation
+- Claim flow
+- Sell confirmation
+- USDC settlement
+
+The core transaction path should be validated end-to-end:
+
+> **Quote → Processing → Claimable → Completed**
+
+## Step 7 — Launch
+
+Once testing and required product reviews are complete, the ETFT can be enabled for its approved distribution channels.
+
+At launch, investors should be able to access the applicable:
+
+- Product overview
+- Holdings and weights
+- Methodology
+- Indicative NAV
+- Fees
+- Risk disclosures
+- Legal documentation
+- Buy and Sell interface
+
+Launch does not end the product lifecycle. The ETFT then enters ongoing monitoring and management.
+
+See **Lifecycle Management** for post-launch operations.
+
+## Launch Checklist
+
+| Area | Required Before Launch |
+| :-- | :-- |
+| **Portfolio** | Assets, weights, methodology, rebalancing rules |
+| **Pricing** | iNAV and executable pricing validated |
+| **Execution** | Underlying execution workflow tested |
+| **Smart Contract** | Supported network deployment validated |
+| **Settlement** | Buy, Sell, and Claim flows tested |
+| **Disclosure** | Product terms, fees, risks, and methodology available |
+| **Distribution** | Eligibility and distribution requirements confirmed |
