@@ -1,169 +1,265 @@
 ---
-title: "Fee "
-sidebarTitle: "Fees"
-description: "Alloco's ETFT fee structure is designed to align with long-term investors while maintaining transparent and predictable costs."
+title: "Fees"
+sidebarTitle: "Fee "
+description: "Understand the product, execution, and network costs associated with trading an ETFT"
 ---
 
-The total cost of holding an ETFT consists of:
+## Overview
 
-- Minting fees
-- Redemption fees
-- Management fees
-- Other operational expenses
+ETFT fees are designed to be transparent and aligned with how the underlying portfolio is actually executed.
 
-# 1. Mint Fee
+There is **no separate fee to buy an ETFT**. Investors may incur a management fee while holding the product, an early sell fee where applicable, and transaction-level costs associated with executing the underlying portfolio.
 
-## No Mint Fee
+These costs fall into three categories:
 
-Alloco does not charge any fee when users mint new ETFT units.
+1. **Product Fees** — fees charged at the ETFT level
+2. **Execution Costs** — costs associated with buying or selling the underlying assets
+3. **Network Costs** — blockchain transaction costs associated with onchain interactions
 
-Users receive ETFT units based on the current NAV per unit:
+## Fee Summary
 
-$$
-Minted\ Units=
-\frac{Deposit}
-{NAV_{per\ Unit}}
-$$
+| Fee | Amount | How It Is Applied |
+| :-- | :-- | :-- |
+| **Buy Fee** | 0% | No separate Alloco fee for buying an ETFT |
+| **Management Fee** | 0.5%–2.0% p.a. | Accrued over time and reflected in the product's net economics |
+| **Sell Fee** | 0.10% if held for less than 3 months | Deducted from applicable sell proceeds |
+| **Sell Fee after 3 months** | 0% | Waived after the applicable holding period |
+| **Underlying Execution Costs** | Variable | Reflected in executable Buy/Sell pricing |
+| **Network Fees** | Variable | Determined by the applicable blockchain network |
 
-This structure allows investors to enter an ETFT at the same underlying asset value without additional issuance costs.
+---
 
-# 2. Redemption Fee
+## Buy Fee
 
-Redemption fees are designed to encourage long-term holding and protect ETFT liquidity.
+**0%**
 
-The redemption fee may be reduced or waived depending on the holding period.
+Alloco does not charge a separate product fee when an investor buys an ETFT.
 
-$$
-Redemption\ Fee=f(Holding\ Period)
-$$
+However, buying an ETFT requires the corresponding underlying portfolio to be established through the integrated brokerage infrastructure.
 
-Where:
-
-| Component | Description |
-| --- | --- |
-| Holding Period | Duration that ETFT units are held before redemption |
-| Redemption Fee | Fee applied when redeeming ETFT units |
-
-## Holding Period Example
-
-| Holding Period | Redemption Fee |
-| --- | --- |
-| Short-term holding | Applicable fee |
-| Medium-term holding | Reduced fee |
-| Long-term holding | Potential fee waiver |
-
-The final redemption amount is calculated as:
+As a result:
 
 $$
-USDC_{Received}
+Buy\ Fee = 0
+$$
+
+while the executable transaction price may still reflect the actual cost of acquiring the underlying assets.
+
+<Info>
+  A 0% Buy Fee does not mean that the underlying market transaction has zero cost. Brokerage, spreads, execution costs, and other applicable transaction-level costs may still affect the amount of ETFT received.
+</Info>
+
+---
+
+## Management Fee
+
+Each ETFT charges an annual management fee ranging from:
+
+**0.5%–2.0% p.a.**
+
+The applicable rate depends on the individual ETFT and is disclosed on its product page.
+
+The management fee compensates for ongoing product management, including portfolio methodology, monitoring, rebalancing, operational infrastructure, and product administration.
+
+The fee is accrued over time rather than charged as a separate upfront payment when an investor buys an ETFT.
+
+Conceptually, a daily management fee accrual may be represented as:
+
+$$
+Fee_{daily}
 =
-Units
+NAV_{gross}
 \times
-NAV_{Unit}
-\times
-(1-Redemption\ Fee)
+\frac{m}{365}
 $$
 
-# 3. Management Fee
+where:
 
-Alloco charges an annual management fee based on the ETFT assets under management.
+- $$NAV_{gross}$$ = applicable gross product value
+- $$m$$ = annual management fee rate
+- $$Fee_{daily}$$ = applicable daily fee accrual
 
-The management fee range:
+Management fees are **not included in the public Indicative NAV (iNAV)**, which is designed to represent the gross performance of the reference portfolio.
+
+They are reflected in the economics of the investable ETFT through the Net Product NAV.
+
+---
+
+## Sell Fee
+
+ETFTs use a holding-period-based sell fee.
+
+| Holding Period | Sell Fee |
+| :-- | --: |
+| **Less than 3 months** | 0.10% |
+| **3 months or longer** | 0% |
+
+For an applicable sell transaction:
 
 $$
-\boxed{
-0.5\%-2.0\% \ per\ year
-}
-$$
-
-The management fee is accrued over time:
-
-$$
-Management\ Fee_t
+Sell\ Fee
 =
-NAV_t
+Gross\ Sell\ Proceeds
 \times
-Annual\ Fee
-\times
-\frac{Days}{365}
+Fee\ Rate
 $$
 
-Where:
+For example, if an ETFT position is subject to the 0.10% sell fee, the applicable fee is deducted from the proceeds of the transaction before the final claimable amount is determined.
 
-| Component | Description |
-| --- | --- |
-| NAV | Net asset value of the ETFT |
-| Annual Fee | Annual management fee rate |
-| Days | Number of days elapsed |
+<Note>
+  The methodology used to determine the applicable holding period is specified in the relevant ETFT product documentation.
+</Note>
 
-## Example
+---
 
-Assume:
+## Underlying Execution Costs
 
-- ETP NAV: \$10,000,000
-- Management fee: 1% annually
-- Holding period: 30 days
+ETFTs are **execution-backed products**.
 
-The accrued fee:
+When an investor buys or sells an ETFT, corresponding transactions are executed in the underlying securities through Alloco's integrated brokerage infrastructure.
+
+These transactions may generate costs that vary depending on the portfolio, order size, trading session, and prevailing market conditions.
+
+### Brokerage Execution Fees
+
+Underlying U.S. equity execution may be subject to brokerage charges based on factors such as:
+
+- Number of shares executed
+- Applicable execution tier
+- Trading session
+- Order type
+- Characteristics of the underlying security
+
+Execution outside the regular U.S. market session, including pre-market, post-market, and overnight trading, may be subject to a different brokerage cost structure.
+
+These costs are not charged as a separate Alloco Buy Fee. Where applicable, they are incorporated into the executable pricing of the ETFT transaction.
+
+### Market Spreads and Slippage
+
+Bid-ask spreads and slippage may also affect execution.
+
+These are **not fees charged by Alloco or the broker**. They arise from the prices available in the underlying market when orders are executed.
+
+For example:
 
 $$
-10,000,000
-\times
-1\%
-\times
-\frac{30}{365}
-$$
-
-$$
+Execution\ Cost
 =
-8,219.18
-$$
-
-The fee is reflected in NAV calculation.
-
-# 4. Other Expenses
-
-Certain operational expenses may be reflected in the ETP NAV.
-
-These may include:
-
-| Expense Category | Description |
-| --- | --- |
-| Custody Costs | Fees charged by qualified custodians |
-| Brokerage Costs | Execution and settlement costs |
-| Trading Costs | Market execution related expenses |
-| Network Fees | Blockchain transaction costs |
-| Administration Costs | Fund administration and reporting expenses |
-
-# 5. Total Cost Impact
-
-The effective cost of an ETP can be summarized as:
-
-$$
-Total\ Cost
-=
-Management\ Fee
+Explicit\ Brokerage\ Costs
 +
-Redemption\ Fee
-+
-Operational\ Expenses
+Implicit\ Market\ Costs
 $$
 
-Minting does not incur additional issuance fees:
+where implicit market costs may include bid-ask spread, slippage, and market impact.
+
+### Regulatory and Third-Party Costs
+
+Certain underlying transactions may also be subject to regulatory, exchange, corporate-action, or other third-party charges.
+
+Where applicable to an ETFT transaction, these costs may be passed through as part of the underlying execution economics.
+
+---
+
+## Stablecoin Conversion
+
+ETFTs are traded using **USDC**, while the underlying U.S. securities are priced and executed in **USD**.
+
+Where conversion between USDC and USD is required as part of the execution process, applicable conversion costs may be incorporated into the transaction economics.
+
+Any such cost forms part of the execution process rather than a separate ETFT Buy Fee.
+
+---
+
+## Network Fees
+
+ETFTs operate across supported blockchain networks, including:
+
+- **Ethereum**
+- **BNB Chain**
+
+Wallet interactions may require blockchain network fees, including when:
+
+- Confirming a Buy
+- Confirming a Sell
+- Claiming ETFT tokens
+- Claiming USDC
+- Transferring supported tokens
+
+Network fees are determined by the applicable blockchain and current network conditions. They are not charged or controlled by Alloco.
+
+---
+
+## How Fees Affect a Buy
+
+For a Buy transaction, the relationship can be expressed conceptually as:
 
 $$
-Mint\ Fee=0
+USDC
+\rightarrow
+Underlying\ Execution
+\rightarrow
+ETFT
 $$
 
-# Transparent Fee Model
+with:
 
-All fees are disclosed and reflected through the ETP NAV calculation.
+$$
+Net\ Executable\ Value
+=
+USDC\ Amount
+-
+Underlying\ Execution\ Costs
+$$
 
-Investors can verify:
+There is no additional Alloco Buy Fee.
 
-- Current NAV
-- Accrued management fees
-- Redemption terms
-- Operational expenses
+The final ETFT amount is determined by the actual execution economics and applicable ETFT pricing methodology.
 
-This ensures that every ETP unit represents a transparent and verifiable ownership interest in the underlying assets.
+---
+
+## How Fees Affect a Sell
+
+For a Sell transaction:
+
+$$
+ETFT
+\rightarrow
+Underlying\ Liquidation
+\rightarrow
+USDC
+$$
+
+and:
+
+$$
+Net\ Sell\ Proceeds
+=
+Gross\ Execution\ Proceeds
+-
+Execution\ Costs
+-
+Applicable\ Sell\ Fee
+$$
+
+The resulting amount becomes available to the investor once the transaction reaches **Claimable** status.
+
+---
+
+## What Is Not a Fee?
+
+It is important to distinguish fees from changes caused by market execution.
+
+The following may affect the final amount received but are not Alloco product fees:
+
+- Bid-ask spreads
+- Market price movements
+- Slippage
+- Market impact
+- Differences between Indicative NAV and executable prices
+- Extended-hours liquidity conditions
+
+These factors are inherent to executing the underlying portfolio and may vary from transaction to transaction.
+
+<Info>
+  For a detailed explanation of the relationship between Indicative NAV, Net Product NAV, and executable prices, see **Pricing & NAV**.
+</Info>
