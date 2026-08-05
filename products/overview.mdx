@@ -18,6 +18,10 @@ Leveraging our native ETFT infrastructure, Alloco develops three specialized cat
 | **Hedge Fund Replicated ETFT** | Systematically replicates the public filings, long-term holdings, and top-tier strategies of premier institutional asset managers. | Duan Yongping ETFT (DYP), Coatue ETFT |
 | **Thematic ETFT** | Aggregates targeted baskets of assets to deliver single-token exposure to emerging tech shifts, sector narratives, and macro megatrends. | Robotics ETFT (RBI) |
 
+<Frame>
+  ![Image](/images/image-7.png "Image")
+</Frame>
+
 ## Key Product Terms
 
 | Item | Details |
@@ -41,23 +45,39 @@ Leveraging our native ETFT infrastructure, Alloco develops three specialized cat
 
 ## How It Works
 
+ETFT connects onchain assets with real-world market execution. From selecting a product to receiving ETFT tokens or stablecoins, each trade follows a transparent execution and settlement process.
+
 <Steps>
-  <Step title="Discover an ETFT">
-    Explore products built around people, strategies, themes, or innovative indices.
+  <Step title="Choose an ETFT & Connect Your Wallet">
+    Explore ETFT based on your investment preferences and risk profile. Review the underlying portfolio, strategy, performance, and key risks, then connect your wallet to begin trading.
   </Step>
-  <Step title="Understand the Exposure">
-    Review the underlying assets, strategy rules, performance, fees, and key risks.
+  <Step title="Get a Quote">
+    For a **Buy**, enter the amount of stablecoins you want to invest. The system provides a quote showing the **minimum amount of ETFT tokens you are expected to receive**.
+
+    For a **Sell**, enter the amount of ETFT tokens you want to sell. The system provides a quote showing the **minimum amount of stablecoins you are expected to receive**.
   </Step>
-  <Step title="Confirm Eligibility">
-    Connect a wallet and complete the required eligibility and compliance checks.
+  <Step title="Execute — Processing">
+    Click **Buy** or **Sell** and confirm the transaction. The corresponding order is submitted to Alpaca, where the underlying assets are bought or sold.
+
+    While the underlying trade is being executed, the order status is shown as **Processing**.
   </Step>
-  <Step title="Invest in One Product">
-    Subscribe using supported assets and receive ETFT units representing the selected exposure.
+  <Step title="Claim — Claimable">
+    Once the underlying asset execution has been successfully completed, the order status changes to **Claimable**.
+
+    Interact with your wallet again to claim your assets:
+
+    - **Buy:** Receive the corresponding ETFT tokens.
+    - **Sell:** Receive the corresponding stablecoins.
   </Step>
-  <Step title="Track and Trade">
-    Monitor NAV, portfolio holdings, performance, and market price in real time.
-  </Step>
-  <Step title="Redeem When Ready">
-    Redeem ETFT units based on the applicable NAV and receive the supported settlement asset.
+  <Step title="Settlement — Completed">
+    Once the assets have been successfully claimed to your wallet, the order status changes to **Completed**. The transaction is now fully settled.
   </Step>
 </Steps>
+
+## Order Status
+
+| Status | What It Means |
+| :-- | :-- |
+| **Processing** | Your order has been submitted and the underlying assets are being executed. |
+| **Claimable** | Underlying execution is complete and your ETFT tokens or stablecoins are ready to claim. |
+| **Completed** | The assets have been claimed and the transaction is fully settled. |

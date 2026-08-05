@@ -37,7 +37,6 @@
             "group": "Onchain ETFT",
             "pages": [
               "products/overview",
-              "products/kol-etp",
               "products/hedge-fund-etp",
               "products/stable-yield-etp",
               "products/themes-etp",
