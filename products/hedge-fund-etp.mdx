@@ -1,66 +1,177 @@
 ---
-title: "Mint"
+title: "Buy an ETFT"
 sidebarTitle: "Buy an ETFT"
-description: "Mint Your ETFT in Three Simple Steps"
+description: "Learn how to buy an ETFT with USDC and how your order is executed against the underlying portfolio"
 ---
 
-## Step 1 — **Confirm Your Deposit**
+## Overview
 
-Select the ETFT you want to create and enter your deposit amount. Alloco will generate a mint order containing:
+Buying an ETFT connects an onchain transaction with the execution of the underlying portfolio.
 
-- Selected ETP product
-- Deposit asset (e.g. USDC)
-- Deposit amount
-- Network information
-- Mint contract address
-- Estimated transaction fee
+Instead of purchasing each underlying asset individually, you select an ETFT, enter the amount of USDC you want to invest, and receive a real-time quote for the minimum amount of ETFT tokens expected from the transaction.
 
-After reviewing the order details, confirm the transaction from your wallet.
+Once confirmed, the corresponding underlying assets are executed through Alloco's integrated brokerage infrastructure. After execution is complete, your ETFT becomes available to claim directly to your wallet.
 
-**What happens next?**
+<Info>
+  ETFT purchases are execution-backed. The amount of ETFT received is determined by the value and execution of the underlying portfolio, rather than by a standalone token price.
+</Info>
 
-Your USDC deposit is received by the Alloco minting process and a subscription order is created.
+## Step 1 — Choose an ETFT
 
-## Step 2 — Order Processing
+Explore available ETFTs and select a product based on your investment preferences and risk profile.
 
-After receiving your deposit, Alloco begins the asset acquisition process.
+Before buying, you can review information including:
 
-Your order moves through several verification stages:
+- Underlying holdings
+- Portfolio weights
+- Investment methodology
+- Historical performance
+- Indicative NAV
+- Management fee
+- Key risks
 
-### 1. Mint Submitted
+For example, **Pelosi ETFT** provides exposure to a portfolio constructed from publicly disclosed positions associated with Nancy Pelosi.
 
-Your mint request has been successfully created.
+### Pelosi ETFT — Example Portfolio
 
-### 2. Stablecoin Received
+| Ticker | Target Weight |
+| :-- | --: |
+| GOOGL | 13.06% |
+| AMZN | 13.02% |
+| AVGO | 12.49% |
+| NVDA | 12.04% |
+| AAPL | 11.76% |
+| V | 10.89% |
+| MSFT | 10.53% |
+| CRM | 7.45% |
+| CRWD | 3.73% |
+| AXP | 1.94% |
+| NFLX | 1.62% |
+| IBKR | 0.71% |
+| CMCSA | 0.43% |
+| DBX | 0.32% |
 
-Your deposit has been confirmed.
+<Note>
+  Portfolio composition and weights may change over time in accordance with the methodology of the relevant ETFT. The table above is provided as an illustrative snapshot.
+</Note>
 
-### 3. Ramp-off Processing
+## Step 2 — Connect Your Wallet
 
-Funds are prepared for execution.
+Connect a supported wallet on **Ethereum** or **BNB Chain**.
 
-### 4. Broker Buying Power Confirmed
+USDC is currently used as the trading asset for ETFT purchases. Your wallet must contain sufficient USDC to cover the intended purchase and applicable network costs.
 
-Execution capacity is verified with the connected broker.
+## Step 3 — Enter Your Buy Amount
 
-### 5. Basket Executing
+Enter the amount of **USDC** you want to invest.
 
-The underlying assets of the ETFT are purchased according to the predefined strategy and allocation rules.
+For example:
 
-### 6. Claimable
+> **You Pay:** 1,000 USDC<br />**You Receive:** ≥ \[Quoted Amount\] Pelosi ETFT
 
-Once the basket is fully executed and NAV is calculated, your ETFT tokens are ready to claim.
+Before you confirm the transaction, Alloco generates a real-time quote showing the **minimum amount of ETFT tokens expected to be received**.
 
-## Step 3 — Claim Your ETP Tokens
+The quote takes into account:
 
-After execution is completed, Alloco calculates the final execution NAV and determines the number of ETFT units issued.
+- Current prices of the underlying assets
+- Current ETFT portfolio weights
+- Indicative NAV
+- Expected underlying execution
+- Applicable brokerage and transaction costs
+- Current market and liquidity conditions
 
-You will receive:
+There is no separate ETFT buy fee. Applicable underlying execution costs are incorporated into the transaction through the ETFT's pass-through pricing methodology.
 
-- Final execution NAV
-- Total minted units
-- Deposit amount
-- Fees
-- Settlement timestamp
+<Info>
+  The displayed quote is generated before the underlying portfolio is executed. The final transaction is based on the actual execution of the underlying assets.
+</Info>
 
-Once confirmed, your ETFT tokens can be claimed directly to your wallet. Your tokens represent ownership of the corresponding ETFT structure and its underlying assets.
+## Step 4 — Confirm the Buy
+
+Review the transaction details and click **Buy**.
+
+Confirm the transaction in your wallet to initiate the purchase.
+
+Once confirmed, the order enters:
+
+**Processing**
+
+At this stage, Alloco routes the corresponding underlying orders through its integrated brokerage infrastructure for execution.
+
+Using Pelosi ETFT as an example, a single ETFT purchase results in execution across its underlying portfolio according to the applicable target weights.
+
+Conceptually:
+
+$$
+Target\ Notional_i = Executable\ Portfolio\ Value \times Weight_i
+$$
+
+where:
+
+- $$Target\ Notional_i$$ = target exposure to underlying asset $$i$$
+- $$Executable\ Portfolio\ Value$$ = value available for underlying execution
+- $$Weight_i$$ = target portfolio weight of underlying asset $$i$$
+
+For example, approximately **13.06%** of the applicable portfolio exposure is allocated to GOOGL, **13.02%** to AMZN, **12.49%** to AVGO, and so on, subject to actual market execution.
+
+## Step 5 — Underlying Execution
+
+While the order is **Processing**, the underlying assets are bought through Alpaca.
+
+Execution prices may differ from the market prices observed when the initial quote was generated due to:
+
+- Market movement
+- Bid-ask spreads
+- Available liquidity
+- Partial or fractional execution
+- Extended-hours market conditions
+- Brokerage and transaction costs
+
+The completed underlying executions are reflected in the applicable transaction pricing.
+
+This execution-backed mechanism is designed to keep the ETFT aligned with its underlying portfolio while incorporating the actual cost of entering the positions.
+
+## Step 6 — Claim Your ETFT
+
+Once the required underlying execution has been completed successfully, the order status changes from:
+
+**Processing → Claimable**
+
+Your ETFT tokens are now ready to be claimed.
+
+Click **Claim** and confirm the transaction with your wallet. The corresponding ETFT tokens will be transferred to your connected wallet on the supported network.
+
+## Step 7 — Completed
+
+Once the ETFT tokens have been successfully claimed, the order status changes to:
+
+**Completed**
+
+The purchase is now fully settled and the ETFT will appear in your portfolio.
+
+You can monitor its:
+
+- Current indicative NAV
+- Portfolio holdings
+- Performance
+- Portfolio allocation
+- Transaction history
+
+## Order Lifecycle
+
+| Status | What Happens |
+| :-- | :-- |
+| **Quote** | A real-time estimate of the minimum ETFT amount is generated. |
+| **Processing** | The buy has been confirmed and the underlying portfolio is being executed. |
+| **Claimable** | Underlying execution is complete and the ETFT is ready to claim. |
+| **Completed** | The ETFT has been claimed to your wallet and the transaction is fully settled. |
+
+## Important Considerations
+
+<Warning>
+  ETFT prices and underlying asset prices may change between quote generation and execution. Market volatility, liquidity, spreads, extended-hours trading, and execution conditions may affect the final transaction.
+</Warning>
+
+An ETFT represents exposure according to its defined product structure and methodology. Holding an ETFT should not be assumed to constitute direct registered ownership of each underlying security. Refer to the applicable **Legal & Compliance** documentation for the specific legal rights associated with an ETFT.
+
+Past performance, portfolio composition, or public disclosures do not guarantee future performance. Public-figure and institutional portfolio ETFTs may also be affected by delays or changes in the information used to construct their reference portfolios.
