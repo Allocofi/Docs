@@ -6,7 +6,9 @@ description: "Onchain ETFT turns ideas and assets into investable financial prod
 
 ## Product Types
 
-Leveraging our native ETFT infrastructure, Alloco develops three specialized categories of financial products tailored to dynamic market demand. Products of this nature were historically the exclusive domain of traditional asset management giants like BlackRock and State Street. Through Alloco’s smart contract architecture, these structured strategies are now fully programmable, transparent, and accessible directly on-chain.
+Leveraging our native ETFT infrastructure, Alloco develops three specialized categories of financial products tailored to dynamic market demand. Products of this nature were historically the exclusive domain of traditional asset management giants like BlackRock and State Street. 
+
+Alloco develops three categories of ETFTs designed to transform portfolios, market signals, and investment themes into investable onchain products. Each ETFT combines transparent tokenized ownership with predefined portfolio methodologies, real-time pricing, and integrated execution of the underlying assets.
 
 <Frame>
   ![1784880755492](/images/1784880755492.jpg "1784880755492")
@@ -15,7 +17,7 @@ Leveraging our native ETFT infrastructure, Alloco develops three specialized cat
 | Product Type | Description | Representative Examples |
 | --- | --- | --- |
 | **Key Opinion Leader (KOL) ETFT** | Captures market sentiment by tracking public portfolios, high-conviction insights, and regulatory disclosures of influential figures and policymakers. | [Pelosi’s Portfolio](https://app.alloco.finance/themes/pelosi), Trump’s Portfolio, X’s KOL Concept |
-| **Hedge Fund Replicated ETFT** | Systematically replicates the public filings, long-term holdings, and top-tier strategies of premier institutional asset managers. | Duan Yongping ETFT (DYP), Coatue ETFT |
+| **Hedge Fund Replicated ETFT** | Builds systematic portfolios based on publicly disclosed holdings and observable investment positions of leading institutional investors. | Duan Yongping ETFT (DYP), Coatue ETFT |
 | **Thematic ETFT** | Aggregates targeted baskets of assets to deliver single-token exposure to emerging tech shifts, sector narratives, and macro megatrends. | Robotics ETFT (RBI) |
 
 <Frame>
@@ -31,13 +33,13 @@ Leveraging our native ETFT infrastructure, Alloco develops three specialized cat
 | **Product Type** | KOL ETFT / Hedge Fund Replicated ETFT / Thematic ETFT |
 | **Underlying Assets** | U.S.-listed equities and other eligible securities defined by the relevant ETFT methodology |
 | **Broker** | Alpaca |
-| **Trading Model** | Real-time buy and sell |
+| **Trading Model** | Real-time, execution-backed buy and sell |
 | **Trading Hours** | 24 hours a day, 5 days a week |
 | **Trading Asset** | USDC |
 | **Supported Networks** | Ethereum / BNB Chain |
 | **NAV Currency** | USD |
 | **NAV Frequency** | Real-time |
-| **NAV Methodology** | In-through NAV, incorporating applicable brokerage and execution costs |
+| **NAV Methodology** | Pass-through Execution Pricing |
 | **Buy Fee** | 0% |
 | **Sell Fee** | 0.10% if held for less than 3 months; 0% after 3 months |
 | **Management Fee** | 0.5%–2.0% p.a., depending on the ETFT |
@@ -57,7 +59,7 @@ ETFT connects onchain assets with real-world market execution. From selecting a 
     For a **Sell**, enter the amount of ETFT tokens you want to sell. The system provides a quote showing the **minimum amount of stablecoins you are expected to receive**.
   </Step>
   <Step title="Execute — Processing">
-    Click **Buy** or **Sell** and confirm the transaction. The corresponding order is submitted to Alpaca, where the underlying assets are bought or sold.
+    Click **Buy** or **Sell** and confirm the transaction. The corresponding underlying orders are routed through Alpaca for execution.
 
     While the underlying trade is being executed, the order status is shown as **Processing**.
   </Step>
