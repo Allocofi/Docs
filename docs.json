@@ -65,7 +65,7 @@
             ]
           },
           {
-            "group": "ETP Launcher",
+            "group": "ETFT Launcher",
             "pages": [
               "account/wallets",
               "account/kyc-verification"
