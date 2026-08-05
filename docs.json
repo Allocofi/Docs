@@ -34,7 +34,7 @@
             ]
           },
           {
-            "group": "ETFT",
+            "group": "Onchain ETFT",
             "pages": [
               "products/overview",
               "products/kol-etp",
