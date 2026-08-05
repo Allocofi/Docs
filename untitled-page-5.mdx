@@ -12,7 +12,9 @@ flowchart TD
     A["Eligible SURE Holder"] -->|"Supported stablecoin"| B["Allocofi Limited — SURE Issuer"]
     B --> C["SURE-attributed cash and liquidity reserve"]
     C --> D["Subscription and settlement into USD"]
-    D --> E["Trivesta Global Allocation Fund"]
+    D --> E["Trivesta Global Allocation Fund — Hong Kong OFC sub-fund"]
+    E --> F["Trivesta master-fund / trading structure"]
+    F --> G["FX, gold and other permitted investments"]
     E --> H["Administrator-confirmed underlying NAV"]
     H --> I["SURE product NAV and reconciliation"]
     I -->|"Mint / burn"| J["SURE Token"]
@@ -28,12 +30,12 @@ flowchart TD
 | :-- | :-- | :-- |
 | SURE Issuer | Allocofi Limited | Issues and redeems SURE, maintains product-level records and attributes assets and liabilities to SURE |
 | Platform | Alloco | User interface, wallet interaction, disclosures and transaction workflow |
-| Underlying Fund | Trivesta Global Allocation Fund | Private Hong Kong OFC fund providing the principal investment exposure |
-| Underlying Investment Manager | Trivesta Capital Management | Portfolio management and investment oversight for the sub-fund |
-| Underlying Administrator | Apex Fund Services Limited | Fund administration and NAV-related functions under the governing agreements |
-| Underlying Custodians Named in the PPM | DBS Bank Ltd; <br />Interactive Brokers Limited | Custody and related services for the OFC structure, subject to the governing agreements |
+| Underlying Fund | Trivesta Global Allocation Fund | Private Hong Kong OFC sub-fund providing the principal investment exposure |
+| Underlying Investment Manager | Trivesta Capital Management (Hong Kong) Limited | Portfolio management and investment oversight for the sub-fund |
+| Underlying Administrator | Apex Fund Services (HK) Limited | Fund administration and NAV-related functions under the governing agreements |
+| Underlying Custodians Named in the PPM | DBS Bank Ltd., Hong Kong Branch; Interactive Brokers Hong Kong Limited | Custody and related services for the OFC structure, subject to the governing agreements |
 | Underlying Auditor | OOP CPA & Co. | Auditor of the OFC |
-| Hong Kong Legal Adviser | Rowdget W. Young & Co. | Legal adviser to the OFC |
+| Hong Kong Legal Adviser | Rowdget W. Young & Co. | Hong Kong legal adviser to the OFC |
 
 ## Subscription Process
 
