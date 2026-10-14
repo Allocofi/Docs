@@ -4,82 +4,73 @@ sidebarTitle: "ETFT Overview"
 description: "Onchain ETFT turns ideas and assets into investable financial products for everyone"
 ---
 
-## Product Types
+![1784880755492](/images/1784880755492.jpg "1784880755492")
 
-Leveraging our native ETFT infrastructure, Alloco develops three specialized categories of financial products tailored to dynamic market demand. Products of this nature were historically the exclusive domain of traditional asset management giants like BlackRock and State Street. 
+An ETFT (ETF Token) represents an economic interest in a defined portfolio or investment strategy. Alloco connects portfolio construction, asset execution, net asset value calculation, and token issuance within one product framework.
 
-Alloco develops three categories of ETFTs designed to transform portfolios, market signals, and investment themes into investable onchain products. Each ETFT combines transparent tokenized ownership with predefined portfolio methodologies, real-time pricing, and integrated execution of the underlying assets.
+Instead of assembling each underlying position individually, investors hold units of the ETFT. The value of each unit changes with the portfolio's assets, liabilities, income, expenses, and trading results.
 
-<Frame>
-  ![1784880755492](/images/1784880755492.jpg "1784880755492")
-</Frame>
+![01 Architecture](/images/01-architecture.png "01 Architecture")
 
-| Product Type | Description | Representative Examples |
-| --- | --- | --- |
-| **Key Opinion Leader (KOL) ETFT** | Captures market sentiment by tracking public portfolios, high-conviction insights, and regulatory disclosures of influential figures and policymakers. | [Pelosi’s Portfolio](https://app.alloco.finance/themes/pelosi), Trump’s Portfolio, X’s KOL Concept |
-| **Hedge Fund Replicated ETFT** | Builds systematic portfolios based on publicly disclosed holdings and observable investment positions of leading institutional investors. | Duan Yongping ETFT (DYP), Coatue ETFT |
-| **Thematic ETFT** | Aggregates targeted baskets of assets to deliver single-token exposure to emerging tech shifts, sector narratives, and macro megatrends. | Robotics ETFT (RBI) |
+## What an ETFT contains
 
-<Frame>
-  ![Image](/images/image-7.png "Image")
-</Frame>
+Every ETFT has an investment objective, a portfolio methodology, an execution model, a valuation policy, and creation and redemption terms. These determine what the product owns or references, how it changes over time, and how investors enter or exit.
 
-## Key Product Terms
+<table>
+  <colgroup>
+    <col width="228" />
+    <col width="425" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>What it defines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Investment mandate</td>
+      <td>The opportunity the product is designed to access</td>
+    </tr>
+    <tr>
+      <td>Portfolio methodology</td>
+      <td>Asset selection, weighting, and rebalancing</td>
+    </tr>
+    <tr>
+      <td>Implementation</td>
+      <td>Securities, derivatives, cash, or a combination</td>
+    </tr>
+    <tr>
+      <td>Unit accounting</td>
+      <td>How portfolio value maps to token units</td>
+    </tr>
+    <tr>
+      <td>Market access</td>
+      <td>Primary creation and redemption, plus secondary trading where enabled</td>
+    </tr>
+  </tbody>
+</table>
 
-| Item | Details |
-| :-- | :-- |
-| **Product Name** | \[Product Name\] ETFT |
-| **Symbol** | \[Ticker\] |
-| **Product Type** | KOL ETFT / Hedge Fund Replicated ETFT / Thematic ETFT |
-| **Underlying Assets** | U.S.-listed equities and other eligible securities defined by the relevant ETFT methodology |
-| **Broker** | Alpaca |
-| **Trading Model** | Real-time, execution-backed buy and sell |
-| **Trading Hours** | 24 hours a day, 5 days a week |
-| **Trading Asset** | USDC |
-| **Supported Networks** | Ethereum / BNB Chain |
-| **NAV Currency** | USD |
-| **NAV Frequency** | Real-time |
-| **NAV Methodology** | Pass-through Execution Pricing |
-| **Buy Fee** | 0% |
-| **Sell Fee** | 0.10% if held for less than 3 months; 0% after 3 months |
-| **Management Fee** | 0.5%–2.0% p.a., depending on the ETFT |
-| **Portfolio Rebalancing** | According to the methodology of the relevant ETFT |
+## One framework, different implementations
 
-## How It Works
+**Equity-backed ETFTs** hold supported securities and cash through the product's designated accounts. **Synthetic ETFTs** use approved derivatives to obtain contract-defined exposure. **Hybrid ETFTs** combine securities, derivatives, and cash.
 
-ETFT connects onchain assets with real-world market execution. From selecting a product to receiving ETFT tokens or stablecoins, each trade follows a transparent execution and settlement process.
+These implementations have different risks. A perpetual contract referencing an unlisted company is a derivative position. It does not give the product ownership of that company's private shares or a right to receive shares after an IPO.
 
-<Steps>
-  <Step title="Choose an ETFT & Connect Your Wallet">
-    Explore ETFT based on your investment preferences and risk profile. Review the underlying portfolio, strategy, performance, and key risks, then connect your wallet to begin trading.
-  </Step>
-  <Step title="Get a Quote">
-    For a **Buy**, enter the amount of stablecoins you want to invest. The system provides a quote showing the **minimum amount of ETFT tokens you are expected to receive**.
+## Two ways to transact
 
-    For a **Sell**, enter the amount of ETFT tokens you want to sell. The system provides a quote showing the **minimum amount of stablecoins you are expected to receive**.
-  </Step>
-  <Step title="Execute — Processing">
-    Click **Buy** or **Sell** and confirm the transaction. The corresponding underlying orders are routed through Alpaca for execution.
+In the **primary market**, eligible participants create or redeem units through the product's issuance mechanism. Creation adds capital and units; redemption removes units and delivers the applicable proceeds.
 
-    While the underlying trade is being executed, the order status is shown as **Processing**.
-  </Step>
-  <Step title="Claim — Claimable">
-    Once the underlying asset execution has been successfully completed, the order status changes to **Claimable**.
+Where enabled, the **secondary market** lets participants trade existing units with a pool or another market participant. A secondary trade normally changes who holds the units, without changing the product's assets or outstanding supply.
 
-    Interact with your wallet again to claim your assets:
+See [Product lifecycle](/onchain-etft/lifecycle) and [Secondary markets](/onchain-etft/secondary-markets).
 
-    - **Buy:** Receive the corresponding ETFT tokens.
-    - **Sell:** Receive the corresponding stablecoins.
-  </Step>
-  <Step title="Settlement — Completed">
-    Once the assets have been successfully claimed to your wallet, the order status changes to **Completed**. The transaction is now fully settled.
-  </Step>
-</Steps>
+## Issuance and investor rights
 
-## Order Status
+Alloco acts as the issuer within the ETFT framework. Each product's documents identify the specific legal issuing entity and any separate investment manager or service providers.
 
-| Status | What It Means |
-| :-- | :-- |
-| **Processing** | Your order has been submitted and the underlying assets are being executed. |
-| **Claimable** | Underlying execution is complete and your ETFT tokens or stablecoins are ready to claim. |
-| **Completed** | The assets have been claimed and the transaction is fully settled. |
+ETFT is a product term, not a statement that a token is a US-registered ETF, exchange-listed security, or SEC-approved product. Investor rights, asset ownership arrangements, eligibility, and transfer restrictions are defined by the relevant product documents. Holding an ETFT does not automatically confer direct ownership or voting rights in the underlying companies.
+
+## Product-level availability
+
+A product's page identifies its current market stage, supported assets and networks, dealing terms, and enabled features. A mechanism described in these docs does not mean that every ETFT supports it. Read the [product specification](/onchain-etft/product-specification) before transacting.

@@ -1,0 +1,33 @@
+---
+title: "Execution venues"
+---
+
+ETFT portfolios use venues appropriate to their assets. Alpaca provides the securities execution and account-service path. Hyperliquid provides a derivatives execution path for approved, supported contracts. These services are not interchangeable.
+
+|  | Alpaca path | Hyperliquid path |
+| --- | --- | --- |
+| Instrument | Supported securities | Approved perpetual contracts |
+| Account record | Securities, cash, and settlement items | Collateral, positions, account equity, and funding |
+| Exposure | Securities held within the product structure | Contract-defined synthetic exposure |
+| Key constraints | Trading hours, halts, settlement, account permissions | Margin, liquidity, liquidation, oracle, and contract rules |
+| Exit | Sale and settlement, or an enabled in-kind process | Position close-out and release of withdrawable collateral |
+
+## Contract-level approval
+
+A derivative is identified by its actual market, contract identifier, collateral asset, and specifications. A company name is not enough to establish what a contract references or how it settles.
+
+For builder-deployed Hyperliquid markets, the deployer defines and operates important contract and oracle parameters. Products using these contracts disclose the relevant deployer and contract terms, including termination and settlement conditions.
+
+Source: [Hyperliquid — HIP-3](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-3-builder-deployed-perpetuals).
+
+## Execution controls
+
+Orders are checked against permitted instruments, available cash or margin, size limits, expiry, and price constraints. Partial fills and changes in venue availability are handled under the order and product rules.
+
+A cross-venue transaction can execute on one venue before another. The resulting exposure must be managed while the remaining legs are completed, reduced, or unwound.
+
+## Settlement is not universally atomic
+
+Blockchain transfers, securities execution, stablecoin conversion, and derivatives settlement do not form one automatically reversible transaction. Order records connect requests, fills, asset movements, and unit events.
+
+A confirmed deposit is not proof that securities have been purchased. A fill is not proof that its proceeds are immediately withdrawable. Final unit or cash delivery follows reconciliation of the relevant obligations.

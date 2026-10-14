@@ -1,0 +1,37 @@
+---
+title: "Secondary markets"
+---
+
+Secondary trading transfers existing ETFT units between participants. Unless the route explicitly includes a primary operation, it does not create units, cancel units, or change the underlying portfolio.
+
+|  | Primary market | Secondary market |
+| --- | --- | --- |
+| Transaction | Creation or redemption | Purchase or sale of existing units |
+| Pricing | Product valuation and order-specific costs | Executable pool or order-book price |
+| Supply | Increases or decreases | Normally unchanged |
+| Timing | Asset execution and settlement process | Venue and network execution |
+| Principal costs | Product, execution, conversion, and network charges | Spread, trading fee, price impact, and network charges |
+
+## Premiums and discounts
+
+A premium occurs when market price exceeds the relevant NAV reference. A discount occurs when it is lower.
+
+`Premium / discount = market price / reference NAV - 1`
+
+The market price, NAV timestamp, and underlying market state must be considered together. A difference from a stale closing NAV is not necessarily an executable arbitrage opportunity.
+
+![06 Arbitrage](/images/06-arbitrage.png "06 Arbitrage")
+
+## How primary participation can reduce deviations
+
+When a realizable secondary sale price exceeds the full cost of creating and delivering units, a participant may create units and sell them. When the realizable redemption proceeds exceed the full cost of buying units, a participant may buy and redeem them.
+
+These activities can bring market price closer to portfolio value. They depend on available inventory, eligibility, fees, dealing windows, funding, and processing capacity. They do not guarantee a fixed price or a risk-free trade.
+
+At a reference NAV of USD 10, a hypothetical USD 0.08 per-unit creation-and-sale cost implies a static breakeven above USD 10.08. A USD 0.07 purchase-and-redemption cost implies a static breakeven below USD 9.93. Price changes while the trade is processed can eliminate either opportunity.
+
+## Trading outside underlying market hours
+
+A pool can remain tradable while the underlying securities market is closed. Liquidity providers then bear inventory and price-discovery risk, and spreads or deviations from the last NAV may increase. A live blockchain does not make underlying assets continuously redeemable.
+
+Use only the official pool addresses and supported routes identified for the product. Independent pools can have different liquidity, fees, and risks.

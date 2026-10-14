@@ -37,13 +37,38 @@
             "group": "Onchain ETFT",
             "pages": [
               "products/overview",
-              "products/hedge-fund-etp",
-              "products/stable-yield-etp",
-              "products/themes-etp",
-              "products/private-markets",
+              {
+                "group": "Categories",
+                "pages": [
+                  "overview",
+                  "public-figure-etfts",
+                  "institutional-portfolio-etfts",
+                  "manager-led-etfts"
+                ]
+              },
+              "leveraged-inverse-and-hedged-exposure",
+              "product-lifecycle",
               "untitled-page-9"
             ],
             "hidden": true
+          },
+          {
+            "group": "Trading and participation",
+            "pages": [
+              "products/hedge-fund-etp",
+              "products/stable-yield-etp",
+              "untitled-page-14",
+              "liquidity-programs"
+            ]
+          },
+          {
+            "group": "Portfolio mechanics",
+            "pages": [
+              "products/themes-etp",
+              "portfolio-and-rebalancing",
+              "execution-venues",
+              "products/private-markets"
+            ]
           },
           {
             "group": "SURE",

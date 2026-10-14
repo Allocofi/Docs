@@ -1,0 +1,68 @@
+---
+title: "Exposure"
+---
+
+Exposure labels describe the return objective of an ETFT relative to a specified reference portfolio or benchmark. They are separate from its product family.
+
+<table>
+  <colgroup>
+    <col width="135" />
+    <col width="530" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Objective</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Long 1x</td>
+      <td>Approximately one unit of long exposure per unit of NAV</td>
+    </tr>
+    <tr>
+      <td>Long 2x</td>
+      <td>A target of twice the specified reference exposure or return over the stated period</td>
+    </tr>
+    <tr>
+      <td>Inverse -1x</td>
+      <td>A target opposite to the reference return over the stated period</td>
+    </tr>
+    <tr>
+      <td>Inverse -2x</td>
+      <td>A target of negative twice the reference return over the stated period</td>
+    </tr>
+    <tr>
+      <td>Hedged</td>
+      <td>Reduction of specified risks under a defined hedging policy</td>
+    </tr>
+  </tbody>
+</table>
+
+These labels describe possible structures, not universal availability. The product defines the exact objective, benchmark, instruments, and reset period. Leverage targets are not guaranteed outcomes.
+
+## Reset periods matter
+
+A daily leveraged or inverse product targets a one-day result. It rebalances exposure relative to its changing NAV. Its return over several days depends on the sequence of market moves, rebalancing, financing, and fees.
+
+Consider a reference portfolio that rises 10% and then falls approximately 9.09%, returning to its initial value. Ignoring costs and tracking differences:
+
+| Product | Day 1 value | Day 2 value | Two-day return |
+| --- | --- | --- | --- |
+| Reference, starting at 100 | 110.00 | 100.00 | 0.00% |
+| Daily 2x, starting at 100 | 120.00 | 98.18 | -1.82% |
+| Daily -1x, starting at 100 | 90.00 | 98.18 | -1.82% |
+
+The difference comes from compounding and daily resets. It is not an accounting error.
+
+## Inverse does not mean hedged
+
+An inverse product targets the opposite direction of a specified benchmark. A hedged product may reduce only a particular risk, such as market beta or currency exposure. It can retain other directional, basis, liquidity, or counterparty risks.
+
+A market-neutral strategy seeks to control specified net exposures. It does not guarantee a stable NAV or protection from loss.
+
+## Product controls
+
+Before transacting, review the target multiple, benchmark, reset time, rebalance rules, gross and net exposure limits, margin buffer, funding costs, and emergency deleveraging policy. In stressed markets, risk reduction may cause actual exposure to move below the target.
+
+See [Execution venues](/onchain-etft/execution-venues) and [Risks](/onchain-etft/risks).
