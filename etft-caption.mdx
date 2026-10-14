@@ -1,0 +1,36 @@
+---
+title: "ETFT Caption"
+---
+
+ETFT Caption is Alloco's infrastructure for bringing externally managed portfolios into the ETFT framework. It connects a manager's investment mandate with product issuance, execution, NAV accounting, and primary-market operations.
+
+Manager onboarding and product launch depend on approval and the applicable operating arrangements. A description of Caption does not mean that permissionless deployment or every external strategy is supported.
+
+## From mandate to product
+
+![07 Caption](/images/07-caption.png "07 Caption")
+
+1. **Manager and strategy review.** Establish the manager's identity, investment process, operational capability, and conflicts of interest.
+2. **Product structure.** Identify the issuer, investor rights, manager mandate, and service agreements.
+3. **Configuration.** Define eligible instruments, venues, risk limits, fees, valuation, and dealing terms.
+4. **Operational validation.** Validate execution, reconciliation, unit accounting, and exception handling.
+5. **Primary launch.** Introduce capital and enable primary operations under the approved product terms.
+6. **Ongoing operation.** Monitor the mandate and evaluate secondary-market readiness separately.
+
+## Manager authority
+
+A manager can make portfolio decisions within its approved scope. That authority does not automatically include unrestricted withdrawals, unit issuance, fee changes, or changes to the NAV methodology.
+
+Critical responsibilities are separated so that a portfolio instruction does not itself authorize asset release or creation of unbacked units.
+
+## Product separation
+
+Each product has its own attributable assets, liabilities, expenses, and unit accounting. Assets of one ETFT are not available to meet another product's losses or margin obligations without a specifically authorized arrangement reflected in its documents.
+
+Legal isolation depends on the actual issuance structure and agreements, not solely on separate internal ledgers.
+
+## Changes and termination
+
+Manager replacement, mandate changes, restrictions, and product wind-down follow the product's governing process. Portfolio changes are recorded separately from changes to management authority.
+
+Caption is the infrastructure. [Manager-Led ETFTs](/onchain-etft/categories/manager-led) are one product family that uses it. Approved rules-based and thematic products can also use the same operating framework.

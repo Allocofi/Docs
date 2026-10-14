@@ -1,0 +1,31 @@
+---
+title: "ETFT Yielding"
+---
+
+**Status: In development.** ETFT Yielding is not currently part of the standard ETFT mechanism. Participation terms, supported assets, and risk parameters will be published before access is enabled.
+
+Yielding explores the use of eligible assets as collateral for a separately controlled market-neutral strategy. The objective is to create an additional return source while explicitly accounting for financing, execution, and strategy risk.
+
+![09 Yielding](/images/09-yielding.png "09 Yielding")
+
+## Separate participation
+
+Yielding is being developed for separately identified, opt-in products or series with their own risk allocation, accounting, and governing terms. Standard ETFT holders are not automatically assigned collateral or strategy risks simply because Yielding is described in these docs.
+
+## Intended mechanism
+
+Eligible assets would be converted where required, accepted as collateral under an approved account arrangement, and used to support a permitted strategy. Actual collateral eligibility, haircuts, financing access, withdrawal conditions, and liquidation rules must be confirmed independently.
+
+Tradability does not establish collateral eligibility. Collateral eligibility does not necessarily provide borrowable or withdrawable capital.
+
+## Return attribution
+
+Additional strategy results would be measured after funding, borrowing, trading, conversion, management costs, and losses. Changes in the original equity portfolio would be reported separately from the additional strategy's return.
+
+There is no fixed APY commitment. Funding and basis opportunities can reverse, costs can exceed income, and losses are possible.
+
+## Risk boundary
+
+A market-neutral overlay does not remove the underlying equities' market exposure. Collateral value can fall while the additional strategy loses money, creating simultaneous pressure on margin and redemptions.
+
+Launch requires a defined collateral allocation, margin buffer, hedge-deviation limits, venue exposure limits, stress procedures, and an executable process for reducing the strategy and releasing assets for redemption. Product documentation will explain how gains, losses, costs, and exit priorities are allocated.

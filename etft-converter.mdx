@@ -1,0 +1,41 @@
+---
+title: "ETFT Converter"
+---
+
+**Status: Planned.** Converter is not a general-purpose deposit route. Supported products, assets, issuers, networks, and destinations will be listed explicitly before a route is enabled.
+
+ETFT Converter is designed to combine an in-kind redemption with an authorized stock-tokenization process. An eligible participant would exchange ETFT units for the supported assets attributable to those units, with any residual cash handled under the conversion terms.
+
+![08 Converter](/images/08-converter.png "08 Converter")
+
+## The intended conversion process
+
+1. Check the ETFT, underlying basket, asset availability, and receiving requirements.
+2. Quote the supported tokenized securities, residual cash, costs, and conversion validity period.
+3. Lock units and establish the applicable in-kind redemption obligation.
+4. Convert eligible securities through an authorized issuer and account arrangement.
+5. Reconcile the units, securities, issued tokens, and delivery obligations before completing delivery.
+
+A basket can result in several stock tokens and a cash remainder. It does not necessarily become one replacement token.
+
+## Asset and destination checks
+
+Each enabled route requires confirmation of the underlying security, token issuer, conversion ratio, precision, minimums, network, token contract, wallet eligibility, and destination deposit support.
+
+Alpaca's Instant Tokenization Network documents an authorized path for converting supported securities into participating issuers' tokens. Access requires the relevant issuer authorization and account setup. It does not establish that any token, network, or destination combination is available to Alloco or an end user.
+
+Source: [Alpaca — Tokenization Guide for Authorized Participant](https://docs.alpaca.markets/us/docs/tokenization-guide-for-authorized-participant).
+
+## Trading support is not deposit or collateral support
+
+A token can be tradable without being depositable to a particular account or accepted as collateral. These are separate capabilities.
+
+Exchange delivery is available only through an explicitly supported route. The stock-token issuer, receiving network, and destination account eligibility are verified separately. A third party's acceptance of a stock token is not an endorsement or guarantee of an ETFT.
+
+## Unsupported components and failures
+
+A perpetual position cannot be directly converted into company shares. Unsupported components are either ineligible or settled under an expressly accepted alternative, such as cash after close-out.
+
+A failed tokenization or delivery step does not erase the participant's unsettled claim. Units, assets in transit, and obligations remain reconciled until the route completes or its specified recovery process resolves the request.
+
+Never send ETFT units to a stock-token deposit address unless that destination separately supports the exact ETFT contract and network.

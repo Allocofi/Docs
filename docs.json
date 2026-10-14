@@ -43,12 +43,12 @@
                   "overview",
                   "public-figure-etfts",
                   "institutional-portfolio-etfts",
-                  "manager-led-etfts"
+                  "manager-led-etfts",
+                  "thematic-etfts"
                 ]
               },
               "leveraged-inverse-and-hedged-exposure",
-              "product-lifecycle",
-              "untitled-page-9"
+              "product-lifecycle"
             ]
           },
           {
@@ -67,6 +67,22 @@
               "portfolio-and-rebalancing",
               "execution-venues",
               "products/private-markets"
+            ]
+          },
+          {
+            "group": "Transparency and risks",
+            "pages": [
+              "untitled-page-9",
+              "reading-a-product-specification",
+              "faq"
+            ]
+          },
+          {
+            "group": "ETFT Infrastructure",
+            "pages": [
+              "etft-caption",
+              "etft-converter",
+              "etft-yielding"
             ]
           },
           {
