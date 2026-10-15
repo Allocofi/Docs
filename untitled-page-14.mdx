@@ -20,7 +20,7 @@ The label indicates product-level availability, not guaranteed liquidity, execut
 | --- | --- | --- |
 | Actions | Mint / Redeem | Buy / Sell |
 | Transaction | Create new units or redeem existing units | Transfer existing units between participants |
-| Pricing | Product valuation and actual order-specific execution costs | Executable pool or order-book price |
+| Pricing | Mint / Redeem Quote before submission; Final Mint / Redeem Outcome after execution and reconciliation | Executable pool or order-book price for the requested trade |
 | Supply | Increases on mint; decreases on redemption | Normally unchanged |
 | Timing | Conversion where applicable, asset execution, reconciliation, and settlement | Venue and network execution |
 | Costs | Applicable primary fees, execution, conversion, and network costs | Spread, trading fee, price impact, and network costs |
@@ -33,26 +33,56 @@ Secondary transactions follow the selected venue's order, execution, and settlem
 
 ![06 Arbitrage](/images/06-arbitrage.png "06 Arbitrage")
 
-A premium occurs when market price exceeds the relevant NAV reference. A discount occurs when it is lower.
+A premium occurs when the secondary-market price per ETFT unit exceeds the identified **Product NAV per Unit**. A discount occurs when it is lower. Product NAV measures actual attributable assets less liabilities per economic unit; it is not the theoretical **Reference Portfolio Value**.
 
-```text
-Premium / discount = market price / reference NAV - 1
-```
+The comparison identifies which product valuation is used:
 
-Compare values in the same currency, with compatible timestamps. For a non-USD quote asset, use the applicable conversion rate rather than assuming it equals one dollar. The underlying market state also matters: a difference from a stale closing NAV is not necessarily executable arbitrage.
+| Comparison label | Valuation basis |
+| --- | --- |
+| **Premium / Discount to iNAV** | **Indicative Product NAV (iNAV)**: an intraday estimate using the latest available product assets, liabilities, prices, and economic-unit records |
+| **Premium / Discount to Daily NAV** | **Daily Product NAV**: the value at the specified daily valuation point, published after reconciliation |
+| **Premium / Discount vs. Last Daily NAV** | The latest published Daily Product NAV when comparing with a later market price; the valuation date and time remain visible |
+
+Both iNAV and Daily Product NAV reflect applicable accrued product fees and recognized product costs. Neither is a guaranteed executable price.
+
+$$
+\mathrm{Premium/Discount\ to\ iNAV}_t
+=\frac{P_t^{\mathrm{market}}}{iNAV_t}-1
+$$
+
+$$
+\mathrm{Premium/Discount\ to\ Daily\ NAV}_{t,d}
+=\frac{P_t^{\mathrm{market}}}{NAV_d^{\mathrm{daily}}}-1
+$$
+
+Here $$P_t^{\mathrm{market}}$$ is the identified secondary-market price per unit at time $$t$$, and $$NAV_d^{\mathrm{daily}}$$ is the Daily Product NAV for valuation point $$d$$. Multiply the ratio difference by 100 to display a percentage. The denominator must be positive and usable; otherwise, a percentage premium or discount is not presented as meaningful.
+
+Reference Portfolio Value is a theoretical performance series and must not be used as the denominator of a product premium or discount. A difference from that reference series is a performance comparison, not a premium or discount to actual Product NAV.
+
+### Price basis, currency, and timestamps
+
+A displayed comparison identifies the venue, price basis, market-price timestamp, NAV type, NAV timestamp, and underlying market status. A last trade, midpoint, executable bid, and executable ask can produce different comparisons. A displayed last price or midpoint does not establish an executable price for a particular order size.
+
+Compare values in the same currency and per-unit denomination. For a non-USD quote asset, convert the market price using the applicable exchange rate rather than assuming the asset equals one dollar. Do not divide a per-unit market price by total Product Net Assets.
+
+Use compatible timestamps where available. If the comparison uses an older Daily Product NAV, label it **vs. Last Daily NAV** and retain its valuation date and time. A calculation refresh does not make stale underlying prices or accounting records current. A difference from a stale closing valuation is not necessarily executable arbitrage.
+
+See [Pricing & NAV](/products/themes-etp) for the distinction between Reference Portfolio Value, Product NAV, and order-specific pricing.
 
 ## How primary participation can reduce deviations
 
 When a realizable secondary sale price exceeds the full cost of minting and delivering units, a participant may mint and then sell. When realizable redemption proceeds exceed the full cost of buying units, a participant may buy and then redeem.
 
-These activities can bring market price closer to portfolio value. They depend on eligibility, inventory, liquidity, fees, dealing windows, processing capacity, and price changes while the transaction is processed. They do not guarantee a fixed price or risk-free profit.
+These activities can bring market price closer to Product NAV. They depend on eligibility, inventory, liquidity, fees, dealing windows, processing capacity, and price changes while the transaction is processed. They do not guarantee a fixed price or risk-free profit.
 
-For an illustrative NAV of USD 10, an all-in mint-and-sale cost of USD 0.08 per unit implies a static breakeven sale price above USD 10.08. An all-in purchase-and-redemption cost of USD 0.07 implies a static breakeven purchase price below USD 9.93. These are hypothetical aggregate costs, not a fee quote.
+For an illustrative Product NAV of USD 10 per unit, assume that the underlying entitlement can be established or liquidated at that value before the separately counted aggregate costs, with no intervening market movement or valuation difference. An all-in mint-and-sale cost of USD 0.08 per unit then gives a static breakeven sale price of USD 10.08; a higher price is needed for a positive net result. An all-in purchase-and-redemption cost of USD 0.07 gives a static breakeven purchase price of USD 9.93; a lower price is needed for a positive net result. These are hypothetical aggregate costs, not a fee quote or a promise of execution at Product NAV.
 
-An arbitrage calculation must include any USDT-to-USDC conversion, underlying execution costs, secondary fees, network charges, and the applicable holding-period redemption fee. Buying in the secondary market does not itself waive the redemption fee.
+An observed premium or discount is not itself an arbitrage profit. Participants assess the **Mint / Redeem Quote**, its output limits and validity, and the executable secondary price for the intended size. The **Final Mint / Redeem Outcome** depends on actual execution, conversion, costs, and reconciliation; it may differ from the initial estimate.
+
+An arbitrage calculation must include any USDT-to-USDC conversion, any required USDC-to-USD or USD-to-USDC conversion, underlying execution costs, secondary fees, network charges, and the applicable holding-period redemption fee. Costs already reflected in actual fills, net conversion amounts, or Product NAV must not be deducted again as the same cost. Buying in the secondary market does not itself waive the redemption fee.
 
 ## Trading outside underlying market hours
 
-Depending on its operating model, a secondary venue may remain tradable while the underlying securities market is closed. Liquidity providers then bear inventory and price-discovery risk, and spreads or deviations from the latest NAV can increase. A live blockchain does not make underlying assets continuously redeemable.
+Depending on its operating model, a secondary venue may remain tradable while the underlying securities market is closed. Liquidity providers then bear inventory and price-discovery risk, and spreads or deviations from the last available iNAV or Daily Product NAV can increase. The displayed comparison must identify the valuation used and its timestamp; an older valuation is not a current executable price. A live blockchain does not make underlying assets continuously redeemable.
 
 Use only the official venue links, market identifiers, and any applicable contract addresses published for each enabled product. Independent venues can have different liquidity, fees, supported assets, and risks.
