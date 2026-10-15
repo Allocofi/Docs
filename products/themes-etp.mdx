@@ -6,23 +6,38 @@ mode: "default"
 
 ## Overview
 
-ETFT pricing distinguishes the performance of an investment methodology, the value attributable to product holders, and the economics of an individual primary-market order.
+ETFT pricing distinguishes three economic layers: the theoretical performance of a reference portfolio, the actual net assets attributable to each product unit, and the economics of an individual primary-market order.
 
-| Pricing layer | What it measures | Treatment of costs |
+| Layer | Term | What it measures |
 | --- | --- | --- |
-| Reference portfolio value | Theoretical performance of the defined reference portfolio | Excludes product management fees and actual execution costs unless the reference methodology expressly includes them |
-| Product NAV per unit | Product assets less liabilities, allocated across the corresponding economic units | Includes accrued product fees and costs already borne by the product |
-| Mint / Redeem pricing | The outcome of an individual primary-market transaction | Reflects actual execution, applicable conversion, and order-specific costs and fees |
+| Reference performance | **Reference Portfolio Value** | Theoretical performance under the defined reference methodology; not actual product assets or a transaction price |
+| Product valuation | **Product NAV per Unit**, shortened to **Product NAV** | Actual attributable assets less liabilities, divided by the corresponding economic units outstanding |
+| Primary transaction pricing | **Mint / Redeem Pricing** | Order-specific estimates before execution and confirmed outcomes after execution and reconciliation |
+
+Product valuation and primary transaction pricing each distinguish an estimate from a confirmed result:
+
+| Term | Meaning |
+| --- | --- |
+| **Indicative Product NAV (iNAV)** | An intraday estimate of Product NAV using the latest available asset, liability, price, and economic-unit records |
+| **Daily Product NAV** | Product NAV calculated for the specified daily valuation point and published after reconciliation |
+| **Mint / Redeem Quote** | Order-specific estimated output, estimated costs, validity, and applicable output limits before submission |
+| **Final Mint / Redeem Outcome** | Confirmed units or net proceeds, actual costs, and any remaining funds after required execution and reconciliation |
+
+**iNAV is an estimate of actual Product NAV. It is not the theoretical Reference Portfolio Value.** Daily Product NAV and iNAV use the same product-accounting principles; they differ in valuation time, available inputs, and reconciliation status.
 
 In this documentation, **Mint** and **Redeem** refer to primary issuance and redemption. **Buy** and **Sell** refer to secondary-market trading. Secondary prices are determined by the relevant trading venue and are covered separately.
 
-The theoretical reference series was previously described as iNAV. To distinguish it from an estimate of actual product net assets, this page calls it **reference portfolio value**. An **indicative product NAV** is an intraday estimate of product NAV based on available positions, prices, and accounting records.
+**Product Net Assets** means the total attributable net asset amount. **Product NAV** means the value per economic unit. Total exposure and leverage ratios use Product Net Assets, not the per-unit NAV.
 
-## Reference portfolio value
+## Reference Portfolio Value
 
-Reference portfolio value shows how the defined strategy would have performed under its methodology. It is independent of the amount invested in the product and the number of holders.
+Reference Portfolio Value shows how the defined strategy would have performed under its methodology. It is independent of the amount invested in the product and the number of holders.
 
 It provides a consistent performance reference, but is not a statement of actual brokerage holdings or a guaranteed mint or redemption price.
+
+Unless explicitly labeled as a separate adjusted reference series, Reference Portfolio Value excludes product management fees and actual product execution costs. Any modeled taxes, funding, financing, or trading costs are specified in the reference methodology. A series adjusted for modeled product fees is labeled **Fee-Adjusted Reference Portfolio Value** and remains a theoretical reference, not Product NAV.
+
+Reference performance charts identify their methodology, cost assumptions, and whether the history is simulated. A reference series rebased to 100 represents index points, not USD per ETFT. Comparisons with live product performance use compatible dates, return conventions, and a common rebased scale.
 
 ### Calculation
 
@@ -43,6 +58,14 @@ w_{i,r}\frac{A_{i,t}}{A_{i,r}}
 $$
 
 where:
+
+| Symbol | Meaning |
+| --- | --- |
+| $$V_t^{\mathrm{ref}}$$ | Reference Portfolio Value at time $$t$$ |
+| $$V_r^{\mathrm{ref}}$$ | Reference Portfolio Value at the start of the current rebalance period |
+| $$w_{i,r}$$ | Target weight of component $$i$$ at the start of that period |
+| $$A_{i,t}/A_{i,r}$$ | Component return factor under the reference methodology, including its specified corporate-action and income treatment |
+| $$n$$ | Number of reference components, including cash where applicable |
 
 Weights are fixed at the start of the period for this calculation; their market-value proportions can drift as prices change. A cash allocation, where present, is included as a separate component with its own return convention.
 
@@ -95,7 +118,7 @@ Corporate-action-adjusted reference returns and actual cash entitlements are sep
 
 ## Product NAV
 
-Product NAV reflects the assets and liabilities attributable to an ETFT, rather than only the theoretical performance of its reference basket.
+Product NAV is the net asset value per economic unit of an ETFT. It reflects actual attributable assets and liabilities, rather than only the theoretical performance of its reference basket.
 
 For a securities-backed product:
 
@@ -125,7 +148,7 @@ where:
   <tbody>
     <tr>
       <td>(E_t)</td>
-      <td>Net assets attributable to the corresponding economic units</td>
+      <td>Product Net Assets: total net assets attributable to the corresponding economic units</td>
     </tr>
     <tr>
       <td>(q\_{i,t})</td>
@@ -154,9 +177,33 @@ where:
   </tbody>
 </table>
 
-All components are translated into the same valuation currency. Product NAV is expressed in USD unless the product specification states otherwise. A USD valuation is distinct from a USDC payment amount; any required conversion is accounted for separately.
+All components are translated into the same valuation currency. Product Net Assets are expressed in USD and Product NAV in USD per ETFT unit unless the product specification states otherwise. A USD valuation is distinct from a USDC payment amount; any required conversion is accounted for separately.
 
-Unsettled transactions must be recognized consistently so that an asset, receivable, cash balance, or liability is not counted twice. Product NAV may differ from reference portfolio value because of cash balances, execution timing, taxes, fees, actual rebalancing, and other tracking differences.
+Unsettled transactions must be recognized consistently so that an asset, receivable, cash balance, or liability is not counted twice. Product NAV performance may differ from Reference Portfolio Value performance because of cash balances, execution timing, taxes, fees, actual rebalancing, and other tracking differences.
+
+### Indicative Product NAV (iNAV)
+
+Indicative Product NAV is an intraday estimate of Product NAV:
+
+$$
+iNAV_t=\frac{\widehat E_t}{\widehat N_t}
+$$
+
+Here $$\widehat E_t$$ is the estimated Product Net Assets and $$\widehat N_t$$ is the corresponding economic units outstanding, using the latest available records. Both must refer to the same economic interests.
+
+The estimate reflects applicable accrued management fees, other recognized liabilities, and costs already borne by the product. It is not a gross or fee-free valuation. Pending subscriptions, redemptions, claims, and settlement items follow the same recognition principles as Product NAV.
+
+Prices, positions, liabilities, and unit records may update at different times. Delayed or incomplete inputs can cause iNAV to differ from a subsequently reconciled valuation. A calculation based only on target weights and market prices is Reference Portfolio Value, not iNAV.
+
+### Daily Product NAV
+
+Daily Product NAV is calculated for the product's specified daily valuation point and published after reconciliation of attributable assets, liabilities, and economic units. The product specification defines the cutoff, publication timing, non-trading-day treatment, and correction policy.
+
+Daily Product NAV is not iNAV with management fees deducted again. Both reflect applicable accrued fees and recognized product costs. Differences can result from valuation timing, updated records, reconciliations, or corrections.
+
+Daily Product NAV is neither a guaranteed transaction price nor a statement that all underlying trades have settled in cash. Receivables and unsettled obligations remain subject to the applicable accounting policy.
+
+Historical charts distinguish **Reference Portfolio Performance** from **Live Product NAV Performance**. Product valuation displays identify whether the value is iNAV or Daily Product NAV, together with its valuation time and currency.
 
 ### Pending mints and redemptions
 
@@ -190,19 +237,9 @@ $$
 \Delta M_d=B_d\frac{m}{365}
 $$
 
-Here (B_d) is the applicable fee base. The product terms define that base, day-count convention, and accrual timing.
+Here $$B_d$$ is the applicable fee base in the product valuation currency, $$m$$ is the annual fee rate expressed as a decimal, and $$\Delta M_d$$ is the daily fee accrual. The product terms define the fee base, day-count convention, and accrual timing.
 
-A theoretical reference series adjusted only for a constant management fee may be illustrated as:
-
-$$
-V_t^{\mathrm{ref,net}}
-=
-V_t^{\mathrm{ref}}F_t,
-\qquad
-F_t=\prod_{d=1}^{D}\left(1-\frac{m}{365}\right)
-$$
-
-This is a simplified fee-adjusted reference, not a substitute for actual product NAV. It does not automatically capture cash drag, taxes, funding, or actual execution costs. Do not apply this factor again to a product NAV that already includes the management-fee liability.
+Both iNAV and Daily Product NAV reflect applicable accrued management fees. A Fee-Adjusted Reference Portfolio Value remains theoretical: deducting modeled fees from Reference Portfolio Value does not reproduce actual Product NAV, which also reflects actual positions, cash, taxes, funding, execution, and other accounting items.
 
 ## Trading sessions and valuation sources
 
@@ -240,15 +277,15 @@ A 24/7 derivatives market does not mean the referenced company's shares trade co
 
 ## Update frequency and data freshness
 
-Indicative valuations are refreshed **approximately once per minute during supported trading sessions**, using the latest available data from the applicable source.
+Reference Portfolio Value and iNAV are refreshed **approximately once per minute during supported trading sessions**, using their respective reference-methodology and product-accounting inputs. A refresh does not guarantee a new observation for every input.
 
 | Information | Update basis |
 | --- | --- |
-| Reference portfolio value | Approximately once per minute during supported sessions |
-| Indicative product NAV | Approximately once per minute, using available prices and product accounting inputs |
-| Mint / Redeem quote | Generated separately for the requested order using the latest available inputs |
-| Final order result | Determined after required execution and reconciliation |
-| Reconciled daily NAV | Calculated for the product's stated daily valuation point and published after reconciliation |
+| Reference Portfolio Value | Approximately once per minute during supported sessions, using the reference methodology |
+| Indicative Product NAV (iNAV) | Approximately once per minute, using available prices and product accounting inputs |
+| Mint / Redeem Quote | Generated separately for the requested order using the latest available inputs |
+| Final Mint / Redeem Outcome | Confirmed after required execution, conversion, cost allocation, and reconciliation |
+| Daily Product NAV | Calculated for the product's stated daily valuation point and published after reconciliation |
 
 The public refresh interval is not a quote-validity period, a promise of a new underlying price observation every minute, or the cadence of leverage and margin risk monitoring.
 
@@ -262,9 +299,9 @@ Daily valuation cutoffs, publication timing, and treatment of non-trading days f
 
 A displayed value must not imply current pricing when its inputs are stale or unavailable. Any fallback valuation must identify its basis rather than silently substituting an old price as live data.
 
-A portfolio estimate may remain visible for reference even when a reliable executable quote cannot be produced. Quote availability, pauses, and treatment of already accepted orders follow the product's execution and exception rules. Data-age thresholds and fallback methods are specified for the relevant market and product.
+An explicitly labeled Reference Portfolio Value or iNAV may remain visible even when a reliable Mint / Redeem Quote cannot be produced. Quote availability, pauses, and treatment of already accepted orders follow the product's execution and exception rules. Data-age thresholds and fallback methods are specified for the relevant market and product.
 
-## Mint pricing
+## Mint Pricing
 
 Minting establishes the corresponding underlying portfolio exposure. The final units reflect the applicable product valuation and the actual cost of executing the request.
 
@@ -274,22 +311,21 @@ $$
 U_{\mathrm{USDC}}=U_{\mathrm{USDT}}x_{\mathrm{swap}}-K_{\mathrm{swap}}
 $$
 
+Here $$U_{\mathrm{USDT}}$$ is the contributed USDT, $$x_{\mathrm{swap}}$$ is the achieved conversion rate in USDC per USDT before separately deducted conversion costs, and $$K_{\mathrm{swap}}$$ is those separately deducted costs in USDC. If a reported conversion output is already net of costs, use it directly without deducting those costs again.
+
 The minimum mint amount is 100 USDC after the required USDT conversion and its costs, before underlying execution costs. Network gas does not count toward this minimum.
 
-An order-level expression is:
+Before submission, the **Mint Quote** shows estimated ETFT output, applicable minimum output, estimated costs, and quote validity. It does not establish a final unit entitlement at the displayed iNAV.
 
-$$
-Q_{\mathrm{mint}}
-=
-\frac{U_{\mathrm{USDC}}-K_{\mathrm{mint}}}
-{P_{\mathrm{mint}}^{\mathrm{exec}}}
-$$
+The **Final Mint Outcome** confirms the units established under the product's issuance and accounting methodology, actual execution and conversion costs, and any remaining USDC returned. Funds included as product cash backing the issued entitlement are distinct from unused funds returned to the investor.
 
-where:
+The product methodology defines the applicable valuation and entitlement-recognition time, the allocation of execution-period market movements, and the treatment of pending funds. The actual contribution and the corresponding new economic units must be recognized consistently so that issuance alone does not improperly transfer value between new and existing holders.
+
+Execution costs embedded in actual fills or net conversion amounts are not deducted again as separate charges. Reference Portfolio Value is not the price used to issue actual product units.
 
 There is **no separate ETFT mint fee**. This does not eliminate brokerage costs, spreads, market impact, required currency conversion, or network charges.
 
-## Redeem pricing
+## Redeem Pricing
 
 Redemption reduces the corresponding actual positions or exposures. For a pro-rata securities redemption, a simplified relationship is:
 
@@ -301,14 +337,25 @@ $$
 
 Actual holdings, cash, liabilities, pending flows, fractional quantities, and product allocation rules must be reconciled. Stale target weights do not automatically determine the positions to liquidate. Derivative products use their applicable exposure-reduction method.
 
+Before submission, the **Redeem Quote** shows estimated USDC proceeds, applicable minimum output, estimated costs, and the redemption fee. The **Final Redeem Outcome** confirms net USDC proceeds and the actual transaction breakdown after execution and reconciliation.
+
 Net redemption proceeds can be expressed as:
 
 $$
 U_{\mathrm{redeem}}
 =
-Q_{\mathrm{redeem}}P_{\mathrm{redeem}}^{\mathrm{exec}}
+G_{\mathrm{redeem}}
 -K_{\mathrm{redeem}}-F_{\mathrm{redeem}}
 $$
+
+| Symbol | Meaning |
+| --- | --- |
+| $$G_{\mathrm{redeem}}$$ | Gross USDC proceeds attributable to the redeemed entitlement after actual execution, applicable settlement conversion, and allocation of product cash and liabilities, but before the separately deducted amounts below |
+| $$K_{\mathrm{redeem}}$$ | Order-specific execution, conversion, or settlement charges in USDC not already reflected in gross proceeds |
+| $$F_{\mathrm{redeem}}$$ | Applicable redemption fee in USDC |
+| $$U_{\mathrm{redeem}}$$ | Net USDC entitlement available for delivery once required funding and settlement conditions are met |
+
+Gross proceeds are an order-accounting amount, not Reference Portfolio Value multiplied by redeemed units. Costs or product liabilities already reflected in gross proceeds are not deducted again. The product's redemption terms define the applicable fee base.
 
 | Holding period | Redemption fee rate |
 | --- | --: |
@@ -319,23 +366,21 @@ The product terms define the fee base, holding-period calculation, and treatment
 
 Redemption proceeds are delivered in **USDC**, including when the original mint was funded with USDT. A completed securities sale does not necessarily mean cash is immediately available for delivery; required funding and settlement steps affect when the request becomes Claimable.
 
-## Indicative NAV versus execution pricing
+## Product NAV and Transaction Pricing
 
-For a common valuation time and currency, execution-adjusted prices may be represented conceptually as:
+Product NAV values all corresponding economic units on a common accounting basis. Mint / Redeem Pricing concerns one request, including its size, direction, execution timing, conversion route, and applicable costs.
 
-$$
-P^{\mathrm{mint}}=NAV^{\mathrm{ref}}+\Delta^{\mathrm{mint}},
-\qquad
-P^{\mathrm{redeem}}=NAV^{\mathrm{ref}}+\Delta^{\mathrm{redeem}}
-$$
+Neither Reference Portfolio Value, iNAV, nor Daily Product NAV guarantees an order's final output. Actual execution prices are not a separate type of NAV.
 
-Spreads and transaction costs commonly make entering more expensive than exiting on a comparable basis. However, prices can move during processing, and reference-price methodologies can differ from executed prices. A fixed inequality between a displayed NAV and all later executions is therefore not guaranteed.
+Spreads and transaction costs commonly make entering more expensive than exiting on a comparable basis. However, prices can move during processing, and valuation methodologies can differ from executed prices. A fixed inequality between a displayed Product NAV and all later execution results is therefore not guaranteed.
 
-A lower or higher final outcome does not necessarily represent an additional platform fee. It may reflect market movement, liquidity, spreads, market impact, conversion, and the timing of fills.
+Comparisons use the same currency and identify the valuation and execution times. Product NAV in USD per ETFT is not automatically equivalent to a transaction amount in USDC per ETFT. Any required conversion must be accounted for explicitly.
 
-## Quotes, output limits, and final execution
+A lower or higher Final Mint / Redeem Outcome does not necessarily represent an additional platform fee. It may reflect market movement, liquidity, spreads, market impact, conversion, and the timing of fills.
 
-A quote is generated before the underlying portfolio has been fully executed. It is specific to the requested amount, direction, market conditions, and applicable costs. It is not simply the public one-minute valuation used as a guaranteed transaction price.
+## Quotes, Output Limits, and Final Outcomes
+
+A Mint / Redeem Quote is generated before the underlying portfolio has been fully executed. It is specific to the requested amount, direction, market conditions, and applicable costs. It is not the public iNAV or Reference Portfolio Value used as a guaranteed transaction price.
 
 Where a quote specifies an enforceable minimum output, simplified bounds can be expressed as:
 
@@ -347,7 +392,7 @@ $$
 U_{\min}=Q_{\mathrm{redeem}}P_{\min}^{\mathrm{redeem,net}}
 $$
 
-The first expression uses the minimum amount available after conversion and separately deducted costs, together with the applicable maximum per-unit mint price. The second uses a net per-unit redemption limit that already includes applicable costs and fees. Rounding and token precision are applied consistently with the accepted quote.
+The first expression uses the minimum USDC amount available after conversion and separately deducted costs, together with the applicable maximum per-unit mint price in USDC per ETFT. That price boundary excludes the same separately deducted costs and is an order constraint, not Product NAV. The second uses a net per-unit redemption limit in USDC per ETFT that already includes applicable costs and fees. Rounding and token precision are applied consistently with the accepted quote.
 
 These limits are meaningful only if supported by the order's execution rules. An estimated output alone must not be presented as a guaranteed minimum. Quote expiry, acceptance conditions, and execution limits are distinct from the expected processing duration.
 
@@ -366,16 +411,16 @@ Under normal market and operating conditions, Processing typically completes wit
 
 Partial fills, trading halts, unavailable assets, conversion delays, venue interruptions, and funding constraints may extend processing. The time the user takes to claim and the claim transaction's confirmation time are additional.
 
-## Pricing summary
+## Pricing Summary
 
-| Item | Reference portfolio value | Product NAV | Mint / Redeem outcome |
+| Item | Reference Portfolio Value | Product NAV: iNAV / Daily Product NAV | Final Mint / Redeem Outcome |
 | --- | --- | --- | --- |
 | Portfolio basis | Methodology-defined reference | Actual attributable assets and liabilities | Order-specific executed allocation |
 | Market prices | Reference data | Valuation data | Actual execution and required conversions |
-| Management fees | Excluded from gross reference | Accrued in NAV | Included through the applicable valuation; not deducted twice |
-| Historical product expenses | Not automatically reflected | Reflected when borne by the product | Already reflected in the applicable NAV |
+| Management fees | Excluded; any fee-adjusted reference is labeled separately | Applicable accrued fees reflected in both iNAV and Daily Product NAV | Already reflected through product accounting; not deducted twice |
+| Historical product expenses | Actual product expenses are not reflected; modeled assumptions are disclosed separately | Reflected when borne by the product | Already reflected in the applicable NAV |
 | New order-specific costs | Excluded | Not automatically charged to existing holders | Reflected in price or deducted separately, once |
 | Redemption fee | Excluded | Not a general deduction from every holder | Applied to the relevant redemption |
 | Purpose | Strategy reference | Product valuation | Final transaction entitlement |
 
-A reference series, a product NAV, and a transaction outcome answer different questions. Review the valuation timestamp, data source, market state, and accepted order terms together.
+Reference Portfolio Value, Product NAV, and a Final Mint / Redeem Outcome answer different questions. iNAV estimates actual Product NAV; a Mint / Redeem Quote estimates an order outcome and states its applicable conditions. Review the valuation timestamp, data source, market state, and accepted order terms together.
