@@ -5,260 +5,277 @@ sidebarTitle: "Fee "
 
 ## Overview
 
-ETFT fees are designed to be transparent and aligned with how the underlying portfolio is actually executed.
+ETFT fees distinguish ongoing product expenses from the costs of an individual primary-market transaction.
 
-There is **no separate fee to buy an ETFT**. Investors may incur a management fee while holding the product, an early sell fee where applicable, and transaction-level costs associated with executing the underlying portfolio.
+There is **no separate Alloco mint fee**. A position may incur an annual management fee, a holding-period-based redemption fee, and the actual costs associated with executing and settling the underlying portfolio.
 
-These costs fall into three categories:
+This page covers **Mint** and **Redeem** transactions. Secondary-market Buy and Sell transactions follow the relevant venue's fee schedule and do not automatically use the primary redemption fee schedule.
 
-1. **Product Fees** — fees charged at the ETFT level
-2. **Execution Costs** — costs associated with buying or selling the underlying assets
-3. **Network Costs** — blockchain transaction costs associated with onchain interactions
+Costs fall into three categories:
 
-## Fee Summary
+1. **Product fees and expenses:** management fees, applicable redemption fees, and disclosed expenses borne by the product.
+2. **Execution and conversion costs:** costs of establishing or reducing underlying exposure and making required currency or stablecoin conversions.
+3. **Network costs:** blockchain charges for supported onchain actions.
 
-| Fee | Amount | How It Is Applied |
-| :-- | :-- | :-- |
-| **Mint Fee** | 0% | No separate Alloco fee for minting an ETFT |
-| **Management Fee** | 0.5%–2.0% p.a. | Accrued over time and reflected in the product's net economics |
-| **Redeem Fee** | 0.10% if held for less than 3 months | Deducted from applicable redeem proceeds |
-| **Redeem Fee after 3 months** | 0% | Waived after the applicable holding period |
-| **Underlying Execution Costs** | Variable | Reflected in executable Buy/Sell pricing |
-| **Network Fees** | Variable | Determined by the applicable blockchain network |
+## Fee summary
 
----
+| Fee or cost | Amount | How it is applied |
+| --- | --- | --- |
+| Mint fee | **0%** | No separate Alloco product fee for minting |
+| Management fee | **0.5%–2.0% p.a.** | Accrued over time and reflected in product NAV; the product page states the applicable rate |
+| Redemption fee: held less than 3 months | **0.10%** | Deducted from the relevant redemption proceeds |
+| Redemption fee: held 3 months or longer | **0%** | No redemption fee after the applicable holding period |
+| Underlying execution costs | Variable | Reflected in actual execution prices or separately allocated transaction charges |
+| Stablecoin and currency conversion | Variable | Reflected in actual conversion rates and any separately charged conversion fees |
+| Network fees | Variable | Determined by the network and the transactions required |
 
-## Buy Fee
+A zero mint fee or redemption fee does not eliminate other costs. The quote and transaction breakdown identify applicable charges and distinguish estimated amounts from final execution results.
+
+## Mint fee
 
 **0%**
 
-Alloco does not charge a separate product fee when an investor buys an ETFT.
-
-However, buying an ETFT requires the corresponding underlying portfolio to be established through the integrated brokerage infrastructure.
-
-As a result:
+Alloco does not charge a separate product fee when you mint an ETFT:
 
 $$
-Buy\ Fee = 0
+F_{\mathrm{mint}}=0
 $$
 
-while the executable transaction price may still reflect the actual cost of acquiring the underlying assets.
+Minting nevertheless requires the underlying portfolio exposure to be established. Brokerage charges, spreads, price impact, required conversions, and other applicable costs can affect the units received.
 
 <Info>
-  A 0% Buy Fee does not mean that the underlying market transaction has zero cost. Brokerage, spreads, execution costs, and other applicable transaction-level costs may still affect the amount of ETFT received.
+  A 0% mint fee means there is no separate Alloco mint charge. It does not mean that establishing the underlying portfolio is cost-free.
 </Info>
 
----
+## Management fee
 
-## Management Fee
+Each ETFT has an annual management fee within the **0.5%–2.0% p.a.** range. The applicable rate is disclosed on the product page.
 
-Each ETFT charges an annual management fee ranging from:
+The management fee compensates for ongoing product management, including methodology maintenance, monitoring, rebalancing oversight, operational infrastructure, and administration. It is accrued over time rather than charged as a separate upfront mint payment.
 
-**0.5%–2.0% p.a.**
+### Accrual
 
-The applicable rate depends on the individual ETFT and is disclosed on its product page.
-
-The management fee compensates for ongoing product management, including portfolio methodology, monitoring, rebalancing, operational infrastructure, and product administration.
-
-The fee is accrued over time rather than charged as a separate upfront payment when an investor buys an ETFT.
-
-Conceptually, a daily management fee accrual may be represented as:
+Using a daily accrual and a 365-day convention, the calculation can be represented conceptually as:
 
 $$
-Fee_{daily}
-=
-NAV_{gross}
-\times
-\frac{m}{365}
+\Delta M_d=B_d\times\frac{m}{365}
 $$
 
 where:
 
-- $$NAV_{gross}$$ = applicable gross product value
-- $$m$$ = annual management fee rate
-- $$Fee_{daily}$$ = applicable daily fee accrual
+| Symbol | Meaning |
+| --- | --- |
+| (\\Delta M_d) | Management fee accrued for day (d) |
+| (B_d) | Applicable total product fee base for that day |
+| (m) | Annual management fee rate expressed as a decimal |
 
-Management fees are **not included in the public Indicative NAV (iNAV)**, which is designed to represent the gross performance of the reference portfolio.
+For example, an illustrative USD 1,000,000 fee base at 1% p.a. produces approximately USD 27.40 of daily accrual under this convention. The product terms define the fee base, day-count convention, and accrual timing.
 
-They are reflected in the economics of the investable ETFT through the Net Product NAV.
+### Effect on product NAV
 
----
-
-## Sell Fee
-
-ETFTs use a holding-period-based sell fee.
-
-| Holding Period | Sell Fee |
-| :-- | --: |
-| **Less than 3 months** | 0.10% |
-| **3 months or longer** | 0% |
-
-For an applicable sell transaction:
+Accrued unpaid management fees are product liabilities. They reduce the net assets attributable to holders:
 
 $$
-Sell\ Fee
-=
-Gross\ Sell\ Proceeds
-\times
-Fee\ Rate
+NAV_t=\frac{A_t-L_t}{N_t}
 $$
 
-For example, if an ETFT position is subject to the 0.10% sell fee, the applicable fee is deducted from the proceeds of the transaction before the final claimable amount is determined.
+Here (A_t) is attributable product assets, (L_t) includes accrued fees and other liabilities, and (N_t) is the corresponding economic unit count.
+
+Paying a fee that has already been accrued settles the liability; it is not a second deduction from NAV. Management fees already reflected in NAV are not deducted again as an order-level charge when minting or redeeming.
+
+### Reference performance and product value
+
+The **gross reference portfolio value** excludes management fees and represents the theoretical performance of the investment methodology. It is separate from actual product NAV.
+
+**Indicative product NAV** and reconciled product NAV reflect applicable accrued management fees. A theoretical reference series adjusted only for management fees is not a substitute for actual product valuation.
+
+## Redemption fee
+
+The redemption fee depends on the holding period of the units being redeemed.
+
+| Holding period | Redemption fee rate |
+| --- | --: |
+| Less than 3 months | 0.10% |
+| 3 months or longer | 0% |
+
+For units subject to a single fee rate:
+
+$$
+F_{\mathrm{redeem}}=G_{\mathrm{redeem}}\times f
+$$
+
+Gross proceeds already reflect the prices achieved in execution. Spread or slippage embedded in those prices is not added back to create an artificial gross amount or charged again as a separate deduction.
+
+For example, gross redemption proceeds of 1,000 USDC subject to a 0.10% fee incur a 1 USDC redemption fee. Other applicable transaction costs are accounted for separately, without duplication.
+
+Where multiple acquisition lots have different applicable rates, the fee is calculated using the gross proceeds attributable to each lot:
+
+$$
+F_{\mathrm{redeem}}=\sum_{\ell}G_{\ell}f_{\ell}
+$$
 
 <Note>
-  The methodology used to determine the applicable holding period is specified in the relevant ETFT product documentation.
+  The product methodology defines the holding-period start and end points, calendar convention, lot attribution, and treatment of transfers and secondary acquisitions. The three-month threshold does not imply a particular day count or lot-selection method unless those terms expressly specify one.
 </Note>
 
----
+This is a primary redemption fee. It does not automatically apply to a sale of existing ETFT units on a secondary venue. A secondary acquisition also does not automatically qualify the acquired units for fee-free redemption.
 
-## Underlying Execution Costs
+## Underlying execution costs
 
-ETFTs are **execution-backed products**.
+ETFT minting and redemption are execution-backed. Establishing or reducing the corresponding underlying portfolio can generate costs that vary by product, order size, market conditions, and trading session.
 
-When an investor buys or sells an ETFT, corresponding transactions are executed in the underlying securities through Alloco's integrated brokerage infrastructure.
+### Brokerage and venue charges
 
-These transactions may generate costs that vary depending on the portfolio, order size, trading session, and prevailing market conditions.
+Underlying securities execution may incur charges based on the applicable brokerage arrangement, number of shares, execution tier, order type, session, and security.
 
-### Brokerage Execution Fees
+Pre-market, post-market, and overnight execution may have different cost structures from regular-session execution. The applicable charges form part of the request's execution economics; they are not a separate Alloco mint fee.
 
-Underlying U.S. equity execution may be subject to brokerage charges based on factors such as:
+For products using derivatives, venue trading fees and other relevant execution charges follow the product's implementation and fee disclosures.
 
-- Number of shares executed
-- Applicable execution tier
-- Trading session
-- Order type
-- Characteristics of the underlying security
+### Spreads, slippage, and market impact
 
-Execution outside the regular U.S. market session, including pre-market, post-market, and overnight trading, may be subject to a different brokerage cost structure.
+These are economic effects of execution, not automatically separate fees charged by Alloco or the broker.
 
-These costs are not charged as a separate Alloco Buy Fee. Where applicable, they are incorporated into the executable pricing of the ETFT transaction.
-
-### Market Spreads and Slippage
-
-Bid-ask spreads and slippage may also affect execution.
-
-These are **not fees charged by Alloco or the broker**. They arise from the prices available in the underlying market when orders are executed.
-
-For example:
+Execution analysis may distinguish:
 
 $$
-Execution\ Cost
+C_{\mathrm{economic}}
 =
-Explicit\ Brokerage\ Costs
-+
-Implicit\ Market\ Costs
+C_{\mathrm{explicit}}+C_{\mathrm{implicit}}
 $$
 
-where implicit market costs may include bid-ask spread, slippage, and market impact.
+Explicit costs include separately charged brokerage or transaction fees. Implicit costs describe differences between an appropriate reference price and the achieved execution price.
 
-### Regulatory and Third-Party Costs
+This expression is an analytical decomposition, not an instruction to deduct every component again from actual proceeds. If actual fills already reflect spreads and price impact, those effects are not subtracted a second time. Different slippage and spread measurements can also overlap and must not be added mechanically.
 
-Certain underlying transactions may also be subject to regulatory, exchange, corporate-action, or other third-party charges.
+### Regulatory and third-party charges
 
-Where applicable to an ETFT transaction, these costs may be passed through as part of the underlying execution economics.
+Applicable transactions may incur regulatory, exchange, settlement, or other third-party charges. Charges attributable to a particular request may be passed through under the product's execution methodology.
 
----
+Expenses associated with portfolio operations, corporate actions, or taxes may instead belong to the product as a whole. Their allocation follows the product terms rather than automatically charging them to the next user who mints or redeems.
 
-## Stablecoin Conversion
+### Rebalancing and ongoing portfolio costs
 
-ETFTs are traded using **USDC**, while the underlying U.S. securities are priced and executed in **USD**.
+A management fee does not imply that every underlying rebalance is free to execute. Where the product bears rebalancing costs or other disclosed ongoing expenses, they affect product NAV.
 
-Where conversion between USDC and USD is required as part of the execution process, applicable conversion costs may be incorporated into the transaction economics.
+For derivative-based ETFTs, funding payments may be payable or receivable, and financing or borrowing costs may apply. Their treatment follows the product methodology. Amounts already recognized in cash or liabilities must not be recorded again as additional costs.
 
-Any such cost forms part of the execution process rather than a separate ETFT Buy Fee.
+## Stablecoin and currency conversion
 
----
+### Minting with USDT
 
-## Network Fees
+You can fund supported mints with USDC or USDT. USDT is automatically converted into USDC before the underlying execution process.
 
-ETFTs operate across supported blockchain networks, including:
-
-- **Ethereum**
-- **BNB Chain**
-
-Wallet interactions may require blockchain network fees, including when:
-
-- Confirming a Buy
-- Confirming a Sell
-- Claiming ETFT tokens
-- Claiming USDC
-- Transferring supported tokens
-
-Network fees are determined by the applicable blockchain and current network conditions. They are not charged or controlled by Alloco.
-
----
-
-## How Fees Affect a Buy
-
-For a Buy transaction, the relationship can be expressed conceptually as:
+Conceptually:
 
 $$
-USDC
-\rightarrow
-Underlying\ Execution
-\rightarrow
-ETFT
-$$
-
-with:
-
-$$
-Net\ Executable\ Value
+U_{\mathrm{USDC}}
 =
-USDC\ Amount
--
-Underlying\ Execution\ Costs
+U_{\mathrm{USDT}}x_{\mathrm{swap}}-K_{\mathrm{swap}}
 $$
 
-There is no additional Alloco Buy Fee.
+If the reported conversion output is already net of those costs, use that output directly. Do not deduct the same costs again. Conversion rates are not assumed to be one-for-one, and spreads, fees, and slippage can reduce the amount available for minting.
 
-The final ETFT amount is determined by the actual execution economics and applicable ETFT pricing methodology.
+The 100 USDC mint minimum is tested after USDT conversion and its costs, before underlying portfolio execution costs. Network gas does not count toward the minimum.
 
----
+### USDC and USD
 
-## How Fees Affect a Sell
+U.S. securities are priced and executed in USD. When the funding or settlement route requires conversion between USDC and USD, the achieved rate and any applicable conversion charges form part of the transaction economics.
 
-For a Sell transaction:
+Costs already reflected in a net conversion rate or net settlement amount are not deducted again. A USD NAV and a USDC payment amount should not be treated as identical without applying the relevant conversion basis.
+
+### Redemption asset
+
+Primary redemptions deliver **USDC**, including when the original mint was funded with USDT. Earlier USDT conversion costs are not reversed by a later redemption. USDT mint support does not imply a USDT redemption option.
+
+## Execution buffers and remaining funds
+
+Alloco's U.S. equity execution policy uses marketable limit orders with price protection. An execution buffer provides limited room for market movement; it is **not a fee** and is not automatically charged in full.
+
+A limit price defines the permitted execution boundary. Final pricing reflects actual fills and disclosed costs, even when execution occurs at a better price than the limit.
+
+Any funds reserved for potential costs remain subject to reconciliation. After a successful mint, USDC that was neither used to establish the issued entitlement nor included as cash backing that entitlement is returned under the order terms. A legitimate product cash allocation remains part of the product exposure.
+
+Unused buffer amounts are not platform revenue. See **Trading hours & order execution** for price limits, execution windows, and partial-fill handling.
+
+## Network fees
+
+Supported onchain actions on networks such as Ethereum and BNB Chain may require gas, including:
+
+- Token approvals where required.
+- Submitting a mint or redemption request.
+- Claiming ETFT tokens or USDC.
+- Transferring supported tokens.
+
+Network fees are determined by the applicable blockchain and network conditions, rather than being an Alloco product fee. Depending on the route, separate actions can require separate transactions. A failed or reverted onchain transaction may still consume gas.
+
+A USDC or USDT balance alone does not necessarily cover gas; the network's native token is normally required unless a supported route expressly sponsors the charge. Any separately charged service or delivery cost must be identified separately from network gas.
+
+## How costs affect a mint
+
+After any required USDT conversion, a simplified order-level relationship is:
 
 $$
-ETFT
-\rightarrow
-Underlying\ Liquidation
-\rightarrow
-USDC
-$$
-
-and:
-
-$$
-Net\ Sell\ Proceeds
+Q_{\mathrm{mint}}
 =
-Gross\ Execution\ Proceeds
--
-Execution\ Costs
--
-Applicable\ Sell\ Fee
+\frac{U_{\mathrm{USDC}}-K_{\mathrm{mint}}}
+{P_{\mathrm{mint}}^{\mathrm{exec}}}
 $$
 
-The resulting amount becomes available to the investor once the transaction reaches **Claimable** status.
+where:
 
----
+## How costs affect a redemption
 
-## What Is Not a Fee?
+Using gross proceeds based on actual execution and the applicable settlement conversion:
 
-It is important to distinguish fees from changes caused by market execution.
+$$
+U_{\mathrm{net}}
+=
+G_{\mathrm{redeem}}-K_{\mathrm{redeem}}-F_{\mathrm{redeem}}
+$$
 
-The following may affect the final amount received but are not Alloco product fees:
+For illustration:
 
-- Bid-ask spreads
-- Market price movements
-- Slippage
-- Market impact
-- Differences between Indicative NAV and executable prices
-- Extended-hours liquidity conditions
+| Item | Amount |
+| --- | --: |
+| Gross execution-based redemption proceeds | 1,000 USDC |
+| Separately deducted execution and conversion charges | 2 USDC |
+| Redemption fee at 0.10% of gross proceeds | 1 USDC |
+| Net redemption proceeds | **997 USDC** |
 
-These factors are inherent to executing the underlying portfolio and may vary from transaction to transaction.
+The example is hypothetical and excludes separately paid network gas. At a 0% redemption fee, the same gross proceeds and other charges would produce 998 USDC.
 
-<Info>
-  For a detailed explanation of the relationship between Indicative NAV, Net Product NAV, and executable prices, see **Pricing & NAV**.
-</Info>
+Net USDC becomes Claimable when the required execution, reconciliation, and funding steps are complete. An underlying fill alone does not establish that the funds are immediately available for delivery.
+
+## Avoiding duplicate charges
+
+The transaction and valuation methodology distinguishes costs already reflected in value from costs still to be deducted:
+
+| Item | Treatment |
+| --- | --- |
+| Accrued management fee | Reflected in product NAV; not charged again on the order |
+| Historical costs borne by the product | Already affect NAV; not automatically deducted again |
+| Spread or slippage in actual fills | Reflected in achieved prices; not automatically a separate debit |
+| Fee included in net conversion output | Not deducted again from that output |
+| Separately charged order fee | Allocated once to the relevant request |
+| Reserved but unused buffer | Not a fee; reconciled with the user's entitlement and any return |
+
+Market movements, liquidity conditions, source differences, and the timing of execution can change the final amount without representing additional Alloco fees.
+
+## Exceptions and incentives
+
+If execution is incomplete or cannot satisfy accepted limits, the request follows the disclosed exception policy. Completed conversions or trades may generate costs even when the original request does not complete normally.
+
+Alloco bears additional remediation costs caused by platform technical errors. Other exceptional costs follow the terms disclosed before acceptance and are not automatically transferred to other ETFT holders.
+
+Participation rewards or fee credits do not waive charges unless the published program expressly identifies the charge and benefit. A proposed liquidity-partner arrangement is not an automatic exemption from the standard redemption schedule.
+
+## Related documentation
+
+- **Pricing & NAV:** reference performance, product valuation, and order-specific pricing.
+- **Minting an ETFT:** contribution assets, quotes, and claiming issued units.
+- **Redeeming an ETFT:** redemption requests and USDC delivery.
+- **Trading hours & order execution:** market availability, price protection, execution deadlines, and exceptions.
+- **Secondary markets:** trading existing ETFT units and venue-specific costs.
+
+Review the applicable product rate and transaction breakdown before confirming. Annual management fees, execution costs, and market performance are separate inputs to the overall result of holding an ETFT.
