@@ -2,36 +2,57 @@
 title: "Secondary markets"
 ---
 
-Secondary trading transfers existing ETFT units between participants. Unless the route explicitly includes a primary operation, it does not create units, cancel units, or change the underlying portfolio.
+Secondary trading transfers existing ETFT units between participants. **Buy** and **Sell** describe these secondary-market transactions. **Mint** and **Redeem** describe primary-market creation and redemption.
+
+Unless a route explicitly includes a primary operation, a secondary trade does not create units, cancel units, or change the underlying portfolio.
+
+## Availability
+
+Alloco-supported secondary trading is available only for ETFTs carrying the **Secondary trading** label and an active official trading route. An ETFT without this label is not enabled for Alloco-supported secondary buying or selling; use its available Mint and Redeem functions for primary participation.
+
+**The secondary trading venue and matching model have not yet been selected.** Venue details, supported networks, trading pairs, access requirements, fees, and official links will be announced before activation. This documentation does not announce a listing or integration with a particular exchange or protocol.
+
+The label indicates product-level availability, not guaranteed liquidity, execution, or continuous access. Always check the current route status. An independently created market does not establish official support.
+
+## Primary and secondary transactions
 
 |  | Primary market | Secondary market |
 | --- | --- | --- |
-| Transaction | Creation or redemption | Purchase or sale of existing units |
-| Pricing | Product valuation and order-specific costs | Executable pool or order-book price |
-| Supply | Increases or decreases | Normally unchanged |
-| Timing | Asset execution and settlement process | Venue and network execution |
-| Principal costs | Product, execution, conversion, and network charges | Spread, trading fee, price impact, and network charges |
+| Actions | Mint / Redeem | Buy / Sell |
+| Transaction | Create new units or redeem existing units | Transfer existing units between participants |
+| Pricing | Product valuation and actual order-specific execution costs | Executable pool or order-book price |
+| Supply | Increases on mint; decreases on redemption | Normally unchanged |
+| Timing | Conversion where applicable, asset execution, reconciliation, and settlement | Venue and network execution |
+| Costs | Applicable primary fees, execution, conversion, and network costs | Spread, trading fee, price impact, and network costs |
+
+Primary minting accepts USDC or USDT, with USDT automatically converted to USDC before execution. Primary redemption delivers USDC. Secondary trading pairs and settlement assets depend on the enabled venue; primary USDT support does not establish that an ETFT/USDT pool exists.
+
+Secondary transactions follow the selected venue's order, execution, and settlement process. The primary **Quote → Processing → Claimable → Completed** lifecycle and typical processing estimate do not describe secondary trades.
 
 ## Premiums and discounts
 
+![06 Arbitrage](/images/06-arbitrage.png "06 Arbitrage")
+
 A premium occurs when market price exceeds the relevant NAV reference. A discount occurs when it is lower.
 
-`Premium / discount = market price / reference NAV - 1`
+```text
+Premium / discount = market price / reference NAV - 1
+```
 
-The market price, NAV timestamp, and underlying market state must be considered together. A difference from a stale closing NAV is not necessarily an executable arbitrage opportunity.
-
-![06 Arbitrage](/images/06-arbitrage.png "06 Arbitrage")
+Compare values in the same currency, with compatible timestamps. For a non-USD quote asset, use the applicable conversion rate rather than assuming it equals one dollar. The underlying market state also matters: a difference from a stale closing NAV is not necessarily executable arbitrage.
 
 ## How primary participation can reduce deviations
 
-When a realizable secondary sale price exceeds the full cost of creating and delivering units, a participant may create units and sell them. When the realizable redemption proceeds exceed the full cost of buying units, a participant may buy and redeem them.
+When a realizable secondary sale price exceeds the full cost of minting and delivering units, a participant may mint and then sell. When realizable redemption proceeds exceed the full cost of buying units, a participant may buy and then redeem.
 
-These activities can bring market price closer to portfolio value. They depend on available inventory, eligibility, fees, dealing windows, funding, and processing capacity. They do not guarantee a fixed price or a risk-free trade.
+These activities can bring market price closer to portfolio value. They depend on eligibility, inventory, liquidity, fees, dealing windows, processing capacity, and price changes while the transaction is processed. They do not guarantee a fixed price or risk-free profit.
 
-At a reference NAV of USD 10, a hypothetical USD 0.08 per-unit creation-and-sale cost implies a static breakeven above USD 10.08. A USD 0.07 purchase-and-redemption cost implies a static breakeven below USD 9.93. Price changes while the trade is processed can eliminate either opportunity.
+For an illustrative NAV of USD 10, an all-in mint-and-sale cost of USD 0.08 per unit implies a static breakeven sale price above USD 10.08. An all-in purchase-and-redemption cost of USD 0.07 implies a static breakeven purchase price below USD 9.93. These are hypothetical aggregate costs, not a fee quote.
+
+An arbitrage calculation must include any USDT-to-USDC conversion, underlying execution costs, secondary fees, network charges, and the applicable holding-period redemption fee. Buying in the secondary market does not itself waive the redemption fee.
 
 ## Trading outside underlying market hours
 
-A pool can remain tradable while the underlying securities market is closed. Liquidity providers then bear inventory and price-discovery risk, and spreads or deviations from the last NAV may increase. A live blockchain does not make underlying assets continuously redeemable.
+Depending on its operating model, a secondary venue may remain tradable while the underlying securities market is closed. Liquidity providers then bear inventory and price-discovery risk, and spreads or deviations from the latest NAV can increase. A live blockchain does not make underlying assets continuously redeemable.
 
-Use only the official pool addresses and supported routes identified for the product. Independent pools can have different liquidity, fees, and risks.
+Use only the official venue links, market identifiers, and any applicable contract addresses published for each enabled product. Independent venues can have different liquidity, fees, supported assets, and risks.

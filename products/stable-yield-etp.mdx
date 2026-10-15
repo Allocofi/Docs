@@ -6,150 +6,103 @@ description: "Learn how to sell an ETFT and receive USDC through execution of th
 
 ## Overview
 
-Selling an ETFT converts your ETFT position back into USDC through the execution of its underlying portfolio.
+Redeeming an ETFT converts your units into USDC through the primary-market redemption process. Enter the units to redeem, review the quote and applicable fee, and confirm the transaction. The corresponding underlying positions are then reduced or liquidated under the product's execution methodology.
 
-Enter the amount of ETFT you want to sell, review the real-time quote, and confirm the transaction. The corresponding underlying assets are then sold through Alloco's integrated brokerage infrastructure.
+When execution, reconciliation, and the required funding steps are complete, the resulting USDC becomes available to claim.
 
-Once the underlying execution is complete, the resulting USDC becomes available to claim directly to your wallet.
+Redemption is distinct from selling existing ETFT units to another participant in a secondary market. **Redemption proceeds are delivered in USDC**, including when the original mint was funded with USDT. USDT mint support does not imply a USDT redemption option.
 
-<Info>
-  ETFT sales are execution-backed. The amount of USDC received is determined by the actual execution of the underlying portfolio, applicable transaction costs, and any applicable sell fee.
-</Info>
+## 1. Quote
 
-## Step 1 — Select an ETFT
+Quote is the pre-submission stage. Reviewing a quote does not submit a redemption request.
 
-Open your portfolio and select the ETFT you want to sell.
+### Select an ETFT
 
-Before selling, you can review information including:
+Open your portfolio and select the ETFT to redeem. Review your unit balance, indicative NAV, actual portfolio composition, holding period, applicable redemption fee, and risks.
 
-- ETFT balance
-- Indicative NAV
-- Current portfolio holdings
-- Performance
-- Holding period
-- Applicable sell fee
+You may redeem all or part of your position, subject to the product's dealing terms. The 100 USDC mint minimum does not itself establish a redemption minimum. Any product-specific redemption minimum or full-balance exception is disclosed before confirmation.
 
-You can choose to sell all or part of your ETFT position.
-
-## Step 2 — Enter Your Sell Amount
-
-Enter the amount of ETFT tokens you want to sell.
+### Enter your redemption amount
 
 For example:
 
-> **You Sell:** 100 Pelosi ETFT<br />**You Receive:** ≥ \[Quoted Amount\] USDC
+```text
+You redeem: 100 Pelosi ETFT
+Minimum output: [Quoted amount] USDC
+```
 
-Alloco generates a real-time quote showing the **minimum amount of USDC expected to be received** from the transaction.
+The quote reflects current underlying prices, portfolio composition, indicative NAV, expected execution, market liquidity, applicable execution costs, and the redemption fee.
 
-The quote takes into account:
+The quote is provided before the underlying positions are liquidated. Actual proceeds depend on completed execution. Review the quote validity and minimum-output conditions; indicative NAV is not a guaranteed executable price.
 
-- Current prices of the underlying assets
-- Current ETFT portfolio composition
-- Indicative NAV
-- Expected underlying execution
-- Applicable brokerage and transaction costs
-- Current market and liquidity conditions
-- Applicable sell fee
+### Review the redemption fee
 
-<Info>
-  The quote is generated before the underlying portfolio is sold. Final transaction economics reflect the actual execution of the underlying assets.
-</Info>
+| Holding period | Redemption fee |
+| --- | --: |
+| Less than 3 months | 0.10% |
+| 3 months or longer | 0% |
 
-## Step 3 — Review the Sell Fee
+The applicable holding period and fee calculation follow the relevant product methodology and are reflected in the quote and final transaction breakdown. The method must account for the units being redeemed, including where a position contains multiple acquisition lots.
 
-The applicable sell fee depends on how long the ETFT position has been held.
+A zero redemption fee does not eliminate underlying execution, conversion, settlement, or network costs. This fee schedule applies to primary redemption, not automatically to secondary-market trades.
 
-| Holding Period | Sell Fee |
-| :-- | --: |
-| **Less than 3 months** | 0.10% |
-| **3 months or longer** | 0% |
+## 2. Processing
 
-Any applicable sell fee is reflected in the transaction before completion.
+Review the details, click **Redeem**, and confirm the required wallet transaction. The order enters **Processing**, and the submitted units are reserved against the request to prevent duplicate redemption or transfer.
 
-<Note>
-  The applicable holding period is determined according to the methodology specified in the relevant product documentation.
-</Note>
+The applicable underlying positions are routed for execution. Unit cancellation and any unsettled redemption entitlement are reconciled so that a pending claim is not lost or included in the value attributable to remaining holders.
 
-## Step 4 — Confirm the Sell
+### Underlying execution
 
-Review the transaction details and click **Sell**.
+For an equity-backed product, redemption reduces the attributable securities positions. Conceptually, for a pro-rata redemption:
 
-Confirm the transaction with your wallet to initiate the sale.
+```text
+Redemption fraction
+    = units being redeemed / applicable economic units outstanding
 
-Once confirmed, the order enters:
+Quantity of security i to liquidate
+    = redemption fraction × attributable quantity of security i
+```
 
-**Processing**
+This relationship uses actual portfolio positions, not stale target weights. Cash, liabilities, pending flows, fractional quantities, and the product's allocation rules are accounted for separately. Synthetic or leveraged products follow their specified exposure-reduction method rather than treating derivative notional as securities owned.
 
-At this stage, the corresponding underlying positions are routed through Alloco's integrated brokerage infrastructure for execution.
+Actual proceeds depend on execution prices and can be affected by market movement, spreads, liquidity, partial fills, extended-hours conditions, and brokerage or transaction charges. These costs are passed through under the product's pricing methodology.
 
-## Step 5 — Underlying Execution
+### Processing time
 
-Selling an ETFT results in the corresponding portion of its underlying portfolio being sold.
+Under normal market and operating conditions, **Processing typically completes within 10 minutes**. This measures the period from order acceptance to Claimable, including required execution, reconciliation, and funding availability. It is an estimate, not a guaranteed deadline or a promise that securities settlement finishes within 10 minutes.
 
-Using **Pelosi ETFT** as an example, the portfolio currently contains positions including GOOGL, AMZN, AVGO, NVDA, AAPL, V, MSFT, CRM, and other securities.
+Market closures, trading halts, partial fills, limited liquidity, broker interruptions, settlement constraints, and network delays can extend this period. A delay beyond 10 minutes does not automatically cancel the request.
 
-Conceptually, the amount of each underlying asset to be liquidated is determined by:
+## 3. Claimable
 
-$$
-Liquidation\ Notional_i = Portfolio\ Value_{\text{sold}} \times Weight_i
-$$
+The order changes to **Claimable** once the required execution and reconciliation are complete and USDC is available for delivery.
 
-where:
+A securities sale fill is not necessarily immediately withdrawable cash. Settlement, funding availability, and any required conversion or transfer steps can affect when the Claim action becomes available.
 
-- $$Liquidation\ Notional_i$$ = target value of underlying asset $$i$$ to be sold
-- $$Portfolio\ Value_{\text{sold}}$$ = underlying portfolio value corresponding to the ETFT amount being sold
-- $$Weight_i$$ = applicable portfolio weight of underlying asset $$i$$
+The claimable amount reflects actual execution, allocated transaction costs, and any redemption fee. If the order cannot satisfy its accepted limits, its disclosed exception procedure applies rather than silently reducing the minimum output.
 
-The actual proceeds depend on the prices achieved when the underlying orders are executed.
+### Claim your USDC
 
-Execution may be affected by:
+Click **Claim** and confirm the wallet transaction. USDC is delivered to your connected wallet on the applicable network.
 
-- Market movement
-- Bid-ask spreads
-- Available liquidity
-- Partial or fractional execution
-- Extended-hours market conditions
-- Brokerage and transaction costs
+## 4. Completed
 
-These execution results are incorporated through the ETFT's pass-through pricing methodology.
+After successful delivery, the order becomes **Completed**. The processing estimate does not include the time you take to claim or the confirmation time for the claim transaction.
 
-## Step 6 — USDC Becomes Claimable
+## Order lifecycle
 
-Once the required underlying assets have been successfully sold, the order status changes from:
+| Stage | What happens |
+| --- | --- |
+| Quote | Review estimated USDC proceeds, costs, redemption fee, and minimum output |
+| Processing | Reduce underlying positions, reconcile results, and prepare settlement |
+| Claimable | The confirmed USDC entitlement is available to claim |
+| Completed | USDC has been delivered to your wallet |
 
-**Processing → Claimable**
+## Important considerations
 
-The resulting USDC is now ready to claim.
-
-The claimable amount reflects the completed underlying execution, applicable transaction costs, and any applicable sell fee.
-
-## Step 7 — Claim Your USDC
-
-Click **Claim** and confirm the transaction with your wallet.
-
-The corresponding USDC will be transferred to your connected wallet on the supported network.
-
-Once the claim is successfully completed, the order status changes to:
-
-**Completed**
-
-The sell transaction is now fully settled.
-
-## Order Lifecycle
-
-| Status | What Happens |
-| :-- | :-- |
-| **Quote** | A real-time estimate of the minimum USDC amount is generated. |
-| **Processing** | The sell has been confirmed and the corresponding underlying assets are being sold. |
-| **Claimable** | Underlying execution is complete and USDC is ready to claim. |
-| **Completed** | USDC has been claimed to your wallet and the transaction is fully settled. |
-
-## Important Considerations
+Redemption may be delayed by market closures, trading halts, insufficient liquidity, broker interruptions, settlement constraints, or other exceptional conditions. Cancellation, partial execution, and any unwind follow the applicable order terms; already executed transactions may incur costs.
 
 <Warning>
-  The indicative NAV is not a guaranteed execution price. Market prices may change between quote generation and execution, and the final transaction economics may be affected by liquidity, bid-ask spreads, extended-hours conditions, and underlying execution costs.
+  USDT conversion costs incurred when minting are not reversed by later redeeming into USDC. Primary redemption and secondary-market selling have different pricing, fees, and execution paths.
 </Warning>
-
-Selling an ETFT requires execution of the corresponding underlying portfolio. Under stressed market conditions, market closures, trading halts, insufficient liquidity, broker interruptions, or other exceptional circumstances, execution may be delayed or otherwise affected.
-
-The availability of the **Claim** action depends on successful completion of the required underlying execution.
