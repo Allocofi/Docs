@@ -1,0 +1,209 @@
+---
+title: "Trading hours & order execution"
+---
+
+## Overview
+
+Minting and redeeming an ETFT connects a primary-market request with execution of its underlying portfolio. You select the product, enter an amount, and review the output limits and costs. Alloco manages the corresponding underlying orders.
+
+This page describes the execution policy for U.S. equity ETFTs routed through Alpaca. Hyperliquid-based products have separate market-specific execution rules, outlined at the end of this page.
+
+**Mint** and **Redeem** refer to primary transactions. **Buy** and **Sell** refer to secondary-market trading, except where this page explicitly describes purchases or sales of underlying securities.
+
+## Supported trading hours
+
+U.S. equity ETFTs support a **24/5 execution schedule**, subject to the eligibility and availability of every required underlying component.
+
+| Session | U.S. Eastern Time | Underlying order policy |
+| --- | --- | --- |
+| Pre-market | 04:00 to 09:30 | Marketable limit orders |
+| Regular market | 09:30 to 16:00 | Marketable limit orders |
+| Post-market | 16:00 to 20:00 | Marketable limit orders |
+| Overnight | 20:00 to 04:00 the following day | Marketable limit orders |
+| Weekend closure | Friday 20:00 to Sunday 20:00 | New primary requests unavailable |
+
+Session boundaries are start-inclusive and end-exclusive. Eastern Time follows U.S. daylight saving time and does not have a fixed UTC offset.
+
+Holidays, early closes, trading halts, venue interruptions, and session-transition restrictions can change availability. A supported trading session does not guarantee that every security or ETFT can be executed throughout that session.
+
+### When new requests are unavailable
+
+Alloco does not queue new primary requests for a future trading session under this policy. New requests are unavailable when a required component cannot be traded, reliable execution quotes are unavailable, or the necessary execution route is not operational.
+
+The product interface should identify the reason and, where known, the next expected available session. A displayed valuation may remain available for reference while minting and redemption are unavailable.
+
+These acceptance checks do not guarantee that conditions will remain unchanged after an order is accepted. Existing requests follow the processing and exception rules below.
+
+## Your request and the underlying orders
+
+You submit a single ETFT mint or redemption request. You do not need to choose an order type, limit price, or execution buffer for each security.
+
+Before confirmation, review:
+
+- The ETFT and amount requested.
+- The estimated output and minimum received condition.
+- Applicable fees and expected execution costs.
+- Any required USDT-to-USDC conversion.
+- Quote validity, market availability, and processing information.
+
+Alloco translates the accepted request into the required underlying purchases or sales. A portfolio can require multiple orders, which may fill at different times and prices.
+
+### Marketable limit orders
+
+Alloco uses **marketable limit orders** across supported U.S. equity sessions. This is Alloco's execution policy, including during regular market hours when other order types may be available from the broker.
+
+A marketable limit order is priced to interact with current opposite-side liquidity while setting a boundary on the price that may be paid or received:
+
+| Underlying action | Price protection |
+| --- | --- |
+| Purchase securities for a mint | A maximum permitted purchase price |
+| Sell securities for a redemption | A minimum permitted sale price |
+
+A limit order can fill at its limit or a better price. It may fill partially or not at all if liquidity is insufficient or the market moves beyond the limit. Marketability when an order is prepared does not guarantee marketability when it reaches the venue.
+
+## Valuation references and execution quotes
+
+Public valuations and executable quotes serve different purposes.
+
+| Session | Public valuation reference | Execution input |
+| --- | --- | --- |
+| Pre-market, regular, and post-market | Massive Fair Market Value (FMV) | Current valid buy/sell quotations for the execution route |
+| Overnight | Latest BOATS trade price accessed through Alpaca | Current valid overnight buy/sell quotations for the execution route |
+
+Overnight executions and market data are facilitated through Alpaca's access to the Blue Ocean Alternative Trading System (BOATS). The latest overnight trade is used for valuation with its original timestamp; it is not automatically the price at which the next order can execute.
+
+Indicative valuations are refreshed approximately once per minute during supported sessions. An underlying order is priced separately using current available execution inputs. Refreshing the page does not make an old trade or quote current.
+
+The complete valuation methodology is described in **Pricing & NAV**.
+
+## Execution buffers and price limits
+
+An execution buffer provides limited room for prices to move between quote preparation and order execution. It improves the likelihood of execution within a defined boundary, but **does not guarantee a fill**.
+
+Conceptually, the limit for security i can be expressed as:
+
+$$
+L_i^{\mathrm{buy}}
+=
+\min\left(Ask_i(1+b_i),\ Cap_i\right)
+$$
+
+$$
+L_i^{\mathrm{sell}}
+=
+\max\left(Bid_i(1-b_i),\ Floor_i\right)
+$$
+
+where:
+
+| Term | Meaning |
+| --- | --- |
+| Ask / Bid | Current valid opposite-side quote for the execution route |
+| b | Permitted execution buffer for that security and order |
+| Cap | Maximum purchase price allowed by the accepted execution constraints |
+| Floor | Minimum sale price allowed by those constraints |
+| L | Resulting order limit, adjusted for applicable price precision without weakening the protection |
+
+If the permitted purchase cap is below the current ask, or the permitted sale floor is above the current bid, immediate execution may not be available. Alloco does not automatically widen the accepted protection to force a fill.
+
+Buffer settings account for the session, security, spread, liquidity, volatility, order size, and data quality. There is no single published buffer percentage assumed to be appropriate for every ETFT.
+
+### Portfolio-level protection
+
+Individual security limits must remain consistent with the total request budget and minimum output. Protecting each order separately is not enough if aggregate execution costs, conversions, or fees would breach the accepted ETFT-level conditions.
+
+Price adjustments and retries remain within the original accepted limits. A change that would weaken those limits requires a new user authorization; it is not an automatic continuation of the original request.
+
+### A buffer is not a fee
+
+A limit is a boundary, not a price automatically charged to the user. If a purchase limit is USD 100.40 and the order actually fills at USD 100.20, the transaction reflects the actual fill and applicable disclosed costs, not an assumed USD 100.40 execution.
+
+Any cash reserved for potential price movement or fees is likewise not automatically spent or retained as platform revenue.
+
+## Minimum received
+
+**Minimum received** is a condition that a successfully completed primary request must satisfy. It is distinct from the estimated output, which may change with market conditions before acceptance.
+
+If an accepted request cannot meet its minimum output within the permitted execution conditions, it enters exception handling. Alloco does not silently reduce the minimum or issue an incomplete required portfolio as if execution had succeeded.
+
+This protection is not a guarantee that every submitted request will complete. It also does not establish a cost-free refund where conversion or underlying trades have already occurred.
+
+The accepted limits apply across the full request, including required conversion, execution, and applicable costs. A public NAV or latest trade price is not a substitute for those limits.
+
+## Processing and the execution window
+
+The normal primary lifecycle is:
+
+**Quote → Processing → Claimable → Completed**
+
+| Stage | Meaning |
+| --- | --- |
+| Quote | Review the proposed transaction before committing |
+| Processing | Carry out conversion, underlying execution, reconciliation, and required funding |
+| Claimable | The confirmed ETFT or USDC entitlement is available for delivery |
+| Completed | The claim has succeeded and the asset has been delivered |
+
+For U.S. equity requests under this policy, the **active execution window is 10 minutes from order acceptance**. During this window, orders may be submitted or adjusted only within the accepted constraints. Any required initial conversion uses part of this window; it does not silently restart the timer.
+
+Normally, processing is expected to reach Claimable within approximately 10 minutes. The active execution deadline is nevertheless a control on new execution activity, not a guaranteed completion, settlement, cancellation, or refund deadline.
+
+### At the execution deadline
+
+If required execution remains incomplete at the deadline, Alloco:
+
+1. Stops submitting new orders and stops repricing to pursue the original request.
+2. Requests cancellation of outstanding unfilled orders.
+3. Waits for cancellation responses and reconciles all fills, including fills received during cancellation.
+4. Moves the request into exception handling with a clear status explanation.
+
+A cancellation request is not confirmation that an order has stopped executing. Funds or inventory are not treated as released until outstanding obligations are reconciled.
+
+If all required trades have filled but reconciliation or funding is still pending, the request may remain Processing with the reason displayed. It does not become Claimable merely because the execution window has elapsed.
+
+Broker order validity can extend beyond Alloco's execution window. Alloco's deadline and cancellation controls apply independently of broker DAY or other time-in-force settings; an unfilled order is not intentionally left to pursue execution indefinitely across sessions.
+
+## Partial fills and exception handling
+
+The underlying basket does not execute atomically. Some components may fill while others remain outstanding. Transactions already executed cannot be assumed to reverse without cost.
+
+Alloco does not automatically deliver an ETFT missing required components. Cash substitutions or allocation tolerances are permitted only where the product methodology expressly allows them and the accepted output conditions remain satisfied.
+
+After partial execution, assets, liabilities, completed fills, and remaining cash are recorded against the request. Resolution may involve completion under a newly authorized execution plan or an orderly unwind and return of the resulting funds under the disclosed exception policy.
+
+Continued execution beyond the original window requires a new authorization with updated conditions. Necessary cancellation and reconciliation continue without requiring the user to authorize routine order cleanup. Any unwind follows the scope disclosed and accepted for exception handling.
+
+An exception is shown explicitly rather than presented as normal progress toward a guaranteed completion. The four stages describe the successful path; delays, failures, cancellations, and resolution actions require additional status information.
+
+## Remaining funds and costs
+
+### Successful mint
+
+USDC remaining after a successful mint is returned if it was neither used to establish the issued entitlement nor included as cash backing that entitlement. A legitimate product cash allocation is part of the user's product exposure, not an unspent refund balance.
+
+The transaction breakdown identifies the issued units, actual costs, and any residual USDC return. The delivery route and any applicable delivery charges follow the accepted order terms. Unused buffer amounts are not platform income.
+
+### Redemption
+
+Net redemption proceeds are delivered in USDC after actual execution, applicable costs, and any redemption fee. Funding and settlement availability determine when the proceeds can be claimed.
+
+### Exceptions
+
+Alloco bears additional remediation costs caused by platform technical errors. Other exceptional costs follow the policy disclosed before order acceptance. A failed request is not automatically a promise to return the original contribution in full after completed market transactions.
+
+Costs and proceeds must be attributable and recorded without double counting. Exceptional costs are not automatically transferred to other ETFT holders, and unused reserves must not be silently treated as fees.
+
+## Hyperliquid-based products
+
+Supported Hyperliquid markets operate on a **24/7** basis and use Hyperliquid market and account data, subject to market-specific availability and operational interruptions.
+
+The U.S. equity order policy in this page does not automatically apply to Hyperliquid products. Their specifications separately define order types, valuation fields, execution limits, time-in-force, active execution windows, partial-fill handling, and any leverage or margin controls.
+
+Public valuation updates remain separate from risk monitoring. A one-minute display refresh is not the monitoring interval for liquidation risk or margin requirements.
+
+A product combining U.S. equities with continuously traded derivatives may have a narrower executable window than its continuously traded components.
+
+## Important considerations
+
+An open market, an available quote, or an accepted order does not guarantee execution. Liquidity, volatility, trading halts, broker restrictions, data quality, and operational conditions can affect the outcome.
+
+Review the product methodology, minimum received condition, quote validity, and applicable exception terms before confirming. Secondary-market trading follows the selected venue's separate rules and does not use this primary claim lifecycle.
