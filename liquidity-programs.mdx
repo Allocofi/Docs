@@ -1,31 +1,186 @@
 ---
-title: "Liquidity programs"
+title: "Participation programs"
 ---
 
-Eligible users can participate directly in primary creation and redemption. Access is not reserved solely for investment banks or large broker-dealers, but remains subject to the product's participation and transfer rules.
+## Overview
 
-Alloco primary participation is distinct from authorization to create traditional ETF shares or third-party tokenized stocks. Using an ETFT does not automatically grant access to an external issuer's authorized participant network.
+Capital participation rewards are designed to recognize participants who mint eligible ETFTs and retain their positions over time.
 
-## Incentive principles
+Sustained participation helps an ETFT establish its asset base and supports the development of new products. The framework measures eligible capital and holding time, rather than the number of transactions or wallets used.
 
-Any participation program is published separately with its eligibility, measurement period, fixed budget, reward form, caps, and settlement terms. No standing reward entitlement is created by these docs.
+This program focuses on primary capital participation. Providing liquidity in a secondary market is a separate activity with separate eligibility and measurement rules.
 
-Programs focus on sustained capital or executable liquidity rather than raw mint counts, wallet counts, or gross trading volume.
+> This page describes the proposed program framework. Rewards become available only when Alloco announces an active campaign and publishes its terms. This page does not establish a platform-token launch, allocation, conversion ratio, or guaranteed return.
 
-| Program focus | Eligible contribution | Excluded behavior |
-| --- | --- | --- |
-| Primary participation | Retained net capital over a defined period | Short-cycle mint-and-redeem activity designed to farm rewards |
-| Liquidity provision | Two-sided executable depth within defined pricing limits | Unusable quoted depth or inventory that is not actually available |
-| Execution quality | Measurable improvement in trading costs for specified order sizes | Self-trading, wash volume, and related-party volume manipulation |
+## How participation works
 
-## Funding and distribution
+1. **Select an eligible ETFT.** Review the campaign dates, qualification requirements, reward budget, and distribution terms.
+2. **Mint the ETFT.** Contribute USDC or USDT through the supported primary route. USDT is automatically converted into USDC before underlying execution.
+3. **Complete your claim.** Once the mint becomes Claimable, claim the ETFT to your wallet. Under this framework, reward measurement starts when the order is Completed, or at the campaign start if later.
+4. **Retain the eligible position.** Contribution scores accrue for the qualifying portion of your position during the campaign.
+5. **Receive or claim rewards.** After the measurement period, Alloco validates contributions and distributes rewards according to the published terms.
 
-Programs can use capped fee credits or rebates against charges actually incurred. A rebate against a zero fee has no economic value and is not presented as a cash return. Points, if used, do not imply a token allocation, cash value, or investment return unless separate published terms expressly provide one.
+The primary order lifecycle remains **Quote → Processing → Claimable → Completed**. Its typical processing time does not apply to reward validation, vesting, or distribution.
 
-Rewards funded by a product are included in its disclosed expenses and NAV accounting. Externally funded programs have their own budget and do not silently charge existing holders.
+## Eligible products and participants
 
-## Liquidity quality
+Each campaign identifies its eligible ETFTs, networks, minting window, and participant requirements. Availability of an ETFT for minting does not automatically mean that it earns rewards.
 
-A program may score the smaller of bid-side and ask-side executable depth, adjusted for spread and valid quoting time. This rewards balanced liquidity rather than one-sided inventory. Market-open and market-closed periods can be evaluated separately.
+The minimum mint amount is **100 USDC**, measured after any USDT conversion costs and before underlying portfolio execution costs. Network gas is separate. Meeting this minimum does not automatically satisfy a campaign's reward qualification requirements.
 
-Program eligibility does not imply that a liquidity provider is protected from inventory losses, adverse selection, or price impact.
+Campaigns may specify a minimum qualifying period or contribution cap. These requirements must be disclosed before participation. Product access and transfer rules continue to apply.
+
+## Measuring eligible capital
+
+### Capital basis
+
+For this framework, eligible capital is the net USDC contribution attributed to a successfully completed mint after costs deducted from that contribution. It is recorded against the corresponding issued units.
+
+A USDT contribution is measured using the actual USDC conversion result, with applicable costs accounted for once. USDT and USDC are not assumed to exchange one-for-one. Separately paid network fees do not increase eligible capital.
+
+This reward basis is distinct from the 100 USDC mint threshold, which is tested before underlying execution costs. A qualifying mint can therefore have a reward capital basis below 100 USDC after those costs.
+
+### Holding-time score
+
+The contribution score measures eligible retained capital over time:
+
+```text
+Contribution score
+    = sum of eligible retained capital × eligible holding time
+```
+
+Scores are calculated for each interval in which the eligible balance is unchanged, then added together. A campaign defines its time precision and measurement schedule.
+
+For example, 10,000 USDC of eligible capital retained for 30 days produces **300,000 USDC-days**. The same amount retained for 10 days produces **100,000 USDC-days**.
+
+USDC-days are contribution units. They are not interest, reward tokens, or a guaranteed cash value.
+
+### Portfolio price changes
+
+The capital basis tracks the original net contribution attributable to the remaining eligible units. It does not increase when the ETFT price rises or decrease solely because its price falls.
+
+Consequently, the contribution score measures retained contributed capital, not current market value or investment performance. Holding rewards do not protect the position against losses.
+
+## Changes to your position
+
+| Event | Treatment under this framework |
+| --- | --- |
+| Additional completed mint | Creates a new eligible contribution record if it satisfies the campaign rules |
+| Pending, failed, or unclaimed mint | Does not accrue holding rewards |
+| Accepted redemption request | Stops accrual for the units committed to that request |
+| Partial redemption | Reduces the associated eligible capital in proportion to the units removed from each affected contribution record |
+| Transfer out | Stops accrual for the transferred eligible units in the sending wallet |
+| Transfer in or secondary purchase | Does not automatically establish an eligible primary contribution |
+| ETFT price movement | Does not itself change the original contribution basis |
+| Campaign end | Stops new accrual for that campaign |
+
+A campaign must publish how units are attributed to contribution records when a wallet contains multiple mint lots or other holdings. This attribution policy must be applied consistently to redemptions and transfers.
+
+If an accepted redemption is cancelled and the units are restored, subsequent accrual follows the campaign's reinstatement rules. Rewards do not automatically accrue during the period when those units were committed to redemption.
+
+Transferred units, exchange custody balances, and liquidity-pool positions are eligible only if the campaign expressly supports them and can reliably attribute ownership. A transfer must not create a second capital contribution or allow the same units to accrue rewards twice.
+
+Splitting a position across wallets does not increase its aggregate contribution score. Related-account rules apply to campaign caps and eligibility checks.
+
+## Reward allocation
+
+Each campaign has a defined measurement period and a capped reward budget. After validation, rewards may be allocated proportionally:
+
+```text
+Participant reward
+    = distributable campaign budget
+      × participant eligible score / total eligible score
+```
+
+This calculation is subject to the campaign's qualification requirements, individual caps, rounding rules, and any published adjustments. If no participant qualifies, the budget is not automatically distributed.
+
+For illustration, assume a campaign has a budget of 100,000 reward tokens and a participant contributes 300,000 of the campaign's 6,000,000 eligible USDC-days. The participant accounts for 5% of the total and would receive 5,000 reward tokens before applicable caps or adjustments.
+
+These figures are hypothetical. They do not establish an actual token, budget, or entitlement. The final reward depends on the campaign terms and the contributions of all qualifying participants.
+
+## Reward assets and distribution
+
+A campaign may offer platform tokens, fee credits, points, or another explicitly identified reward. The reward asset and its conditions are announced before participation.
+
+If platform tokens are offered, the terms specify the allocation budget, distribution network, claim process, and any vesting schedule. Token prices may fluctuate, and a liquid market may not exist. Points do not imply a future token allocation or conversion ratio without separate published terms.
+
+Fee credits apply only to specified charges that actually exist. Because the separate ETFT mint fee is zero, a rebate of that fee alone has no economic value. Brokerage, conversion, and network charges are not automatically reimbursed.
+
+After a measurement period ends, contributions are reviewed before rewards are finalized. Estimated dashboard amounts may change during verification. Final allocations, claim dates, deadlines, and any applicable claim costs are communicated through the campaign's official channels.
+
+## Redemption and reward vesting
+
+Participation does not itself lock your ETFT units or change the product's redemption terms. You can submit a redemption subject to the applicable product rules.
+
+An accepted redemption stops future reward accrual for the affected units. Previously accrued scores and unvested rewards are handled according to the campaign terms, including any disclosed minimum holding period. They are not automatically guaranteed or forfeited merely because a redemption occurs.
+
+A reward vesting schedule governs the delivery of rewards; it does not, by itself, restrict redemption of the ETFT. Any additional holding condition must be stated before participation.
+
+Redemption fees and execution costs remain applicable unless the campaign expressly covers a specified charge. Rewards do not reverse USDT conversion costs incurred during minting.
+
+## Program integrity
+
+Rewards are intended for sustained participation. Campaigns may exclude circular mint-and-redeem activity designed to farm rewards, duplicate claims, fabricated ownership, and related-account arrangements designed to evade limits.
+
+Normal redemption is not, by itself, evidence of abuse. Reviews follow the published criteria and dispute process. Where reliable measurement is unavailable, accrual or distribution may pause under the campaign's exception rules.
+
+Any combination with other Alloco incentives must be explicitly permitted. The same capital cannot be counted multiple times within this program through wallet transfers, custody records, or liquidity-pool representations.
+
+## Funding and reporting
+
+Each campaign identifies its funding source. Platform- or sponsor-funded rewards are separate from ETFT portfolio assets. Any reward expense charged to an ETFT must be disclosed and reflected in its valuation accounting.
+
+Reward distributions are reported separately from ETFT NAV performance. A platform-token reward does not increase the product's underlying investment return merely because it is distributed to a holder.
+
+Holding an ETFT or earning rewards does not establish a right to platform profits or guarantee a secondary-market listing.
+
+## Campaign terms
+
+Before a campaign begins, its terms specify:
+
+<table>
+  <colgroup>
+    <col width="126" />
+    <col width="548" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Area</th>
+      <th>Required details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Eligibility</td>
+      <td>Products, networks, participants, qualifying mint dates, and treatment of pre-existing positions</td>
+    </tr>
+    <tr>
+      <td>Measurement</td>
+      <td>Capital basis, time precision, qualification periods, lot attribution, transfers, and reinstatement rules</td>
+    </tr>
+    <tr>
+      <td>Budget</td>
+      <td>Reward asset, funding source, total budget, participant caps, and unused-budget treatment</td>
+    </tr>
+    <tr>
+      <td>Allocation</td>
+      <td>Formula, rounding, exclusions, and permitted combinations with other programs</td>
+    </tr>
+    <tr>
+      <td>Delivery</td>
+      <td>Validation timing, vesting, claims, deadlines, and applicable costs</td>
+    </tr>
+    <tr>
+      <td>Exceptions</td>
+      <td>Data outages, pauses, cancellations, disputes, misconduct review, and termination</td>
+    </tr>
+  </tbody>
+</table>
+
+Changes to future periods should be announced before they take effect. Corrections to historical calculations follow the published review process.
+
+## Important considerations
+
+Capital participation rewards do not guarantee a fixed yield or compensate for all costs and losses. ETFT values may fall, and reward assets may lose value or remain illiquid.
+
+Evaluate the ETFT's methodology, fees, execution process, and risks independently of any campaign. Participation remains subject to the applicable product documentation and campaign terms.
