@@ -1,4 +1,381 @@
 ---
 title: "Pricing & NAV"
 sidebarTitle: "Pricing & NAV"
+mode: "default"
 ---
+
+## Overview
+
+ETFT pricing distinguishes the performance of an investment methodology, the value attributable to product holders, and the economics of an individual primary-market order.
+
+| Pricing layer | What it measures | Treatment of costs |
+| --- | --- | --- |
+| Reference portfolio value | Theoretical performance of the defined reference portfolio | Excludes product management fees and actual execution costs unless the reference methodology expressly includes them |
+| Product NAV per unit | Product assets less liabilities, allocated across the corresponding economic units | Includes accrued product fees and costs already borne by the product |
+| Mint / Redeem pricing | The outcome of an individual primary-market transaction | Reflects actual execution, applicable conversion, and order-specific costs and fees |
+
+In this documentation, **Mint** and **Redeem** refer to primary issuance and redemption. **Buy** and **Sell** refer to secondary-market trading. Secondary prices are determined by the relevant trading venue and are covered separately.
+
+The theoretical reference series was previously described as iNAV. To distinguish it from an estimate of actual product net assets, this page calls it **reference portfolio value**. An **indicative product NAV** is an intraday estimate of product NAV based on available positions, prices, and accounting records.
+
+## Reference portfolio value
+
+Reference portfolio value shows how the defined strategy would have performed under its methodology. It is independent of the amount invested in the product and the number of holders.
+
+It provides a consistent performance reference, but is not a statement of actual brokerage holdings or a guaranteed mint or redemption price.
+
+### Calculation
+
+For a fully allocated reference portfolio with assets indexed by (i), target weights at the start of a portfolio period satisfy:
+
+$$
+\sum_{i=1}^{n} w_{i,r}=1
+$$
+
+Between rebalancing points:
+
+$$
+V_t^{\mathrm{ref}}
+=
+V_r^{\mathrm{ref}}
+\sum_{i=1}^{n}
+w_{i,r}\frac{A_{i,t}}{A_{i,r}}
+$$
+
+where:
+
+Weights are fixed at the start of the period for this calculation; their market-value proportions can drift as prices change. A cash allocation, where present, is included as a separate component with its own return convention.
+
+This formula describes an unleveraged reference basket. Leveraged, inverse, and derivative-based strategies require the exposure, reset, funding, and cash rules specified in their product methodology.
+
+### Example: Pelosi ETFT
+
+The following illustrative snapshot shows target weights for a Celebrity ETFT constructed from public disclosures associated with Nancy Pelosi. It is not a current holdings statement or a representation of her real-time account.
+
+| Ticker | Displayed target weight |
+| --- | --: |
+| GOOGL | 13.06% |
+| AMZN | 13.02% |
+| AVGO | 12.49% |
+| NVDA | 12.04% |
+| AAPL | 11.76% |
+| V | 10.89% |
+| MSFT | 10.53% |
+| CRM | 7.45% |
+| CRWD | 3.73% |
+| AXP | 1.94% |
+| NFLX | 1.62% |
+| IBKR | 0.71% |
+| CMCSA | 0.43% |
+| DBX | 0.32% |
+
+Displayed weights total 99.99% because of rounding. Calculations use the applicable full-precision weights. If only the rounded example is used, normalize it before calculating returns:
+
+$$
+\widetilde w_i=\frac{w_i}{\sum_j w_j},
+\qquad
+V_t^{\mathrm{ref}}=V_r^{\mathrm{ref}}\sum_i\widetilde w_iR_i,
+\qquad
+R_i=\frac{A_{i,t}}{A_{i,r}}
+$$
+
+### Rebalancing and corporate actions
+
+The reference series is chain-linked across rebalancing periods:
+
+$$
+V_{r^+}^{\mathrm{ref}}=V_{r^-}^{\mathrm{ref}}
+$$
+
+New weights apply to subsequent returns. Changing reference weights does not itself create a gain or loss. Actual portfolio rebalancing can nevertheless incur costs and execution differences that affect product NAV.
+
+Splits, dividends, mergers, spin-offs, and other corporate actions follow the reference methodology. A split should not mechanically change economic value. Dividend treatment must distinguish price-return and total-return series, including any assumed reinvestment and tax treatment.
+
+Corporate-action-adjusted reference returns and actual cash entitlements are separate accounting inputs. The same dividend must not be counted twice.
+
+## Product NAV
+
+Product NAV reflects the assets and liabilities attributable to an ETFT, rather than only the theoretical performance of its reference basket.
+
+For a securities-backed product:
+
+$$
+E_t
+=
+\sum_i q_{i,t}p_{i,t}+C_t+R_t-L_t
+$$
+
+$$
+NAV_t=\frac{E_t}{N_t}
+$$
+
+where:
+
+<table>
+  <colgroup>
+    <col width="100" />
+    <col width="624" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>(E_t)</td>
+      <td>Net assets attributable to the corresponding economic units</td>
+    </tr>
+    <tr>
+      <td>(q\_{i,t})</td>
+      <td>Actual attributable quantity of security (i)</td>
+    </tr>
+    <tr>
+      <td>(p\_{i,t})</td>
+      <td>Applicable valuation price of security (i)</td>
+    </tr>
+    <tr>
+      <td>(C_t)</td>
+      <td>Attributable cash and cash equivalents</td>
+    </tr>
+    <tr>
+      <td>(R_t)</td>
+      <td>Recognized receivables, such as eligible dividend or settlement receivables</td>
+    </tr>
+    <tr>
+      <td>(L_t)</td>
+      <td>Liabilities, including accrued fees and other recognized obligations</td>
+    </tr>
+    <tr>
+      <td>(N_t)</td>
+      <td>Economic units entitled to those net assets</td>
+    </tr>
+  </tbody>
+</table>
+
+All components are translated into the same valuation currency. Product NAV is expressed in USD unless the product specification states otherwise. A USD valuation is distinct from a USDC payment amount; any required conversion is accounted for separately.
+
+Unsettled transactions must be recognized consistently so that an asset, receivable, cash balance, or liability is not counted twice. Product NAV may differ from reference portfolio value because of cash balances, execution timing, taxes, fees, actual rebalancing, and other tracking differences.
+
+### Pending mints and redemptions
+
+The numerator and denominator must refer to the same economic interests. A raw onchain token supply is not necessarily sufficient when issuance, burns, claims, or cross-network representations are pending.
+
+Pending mint funds must not inflate existing holders' NAV before the corresponding new entitlement is recognized. Redeemed interests and amounts payable must likewise be treated consistently so that remaining holders neither gain nor lose value merely because an order awaits settlement or claim.
+
+Claiming delivers an established entitlement; it must not cause that entitlement to be counted a second time. Detailed recognition follows the product's issuance and accounting methodology.
+
+### Derivative-based products
+
+For products implemented through perpetual contracts, valuation uses attributable collateral, derivative profit and loss, funding, fees, and other assets or liabilities:
+
+$$
+E_t^{\mathrm{deriv}}
+=
+C_t^{\mathrm{collateral}}+UPnL_t+R_t-L_t
+$$
+
+This expression assumes the collateral balance excludes the unrealized P&L shown separately. If an account-equity field already includes P&L or other components, those components are not added again. Funding and realized P&L already reflected in the cash balance are also not duplicated.
+
+Derivative notional is exposure, not an additional asset to add to collateral. The product specification identifies the applicable valuation field, such as a mark price, and its treatment of oracle prices, funding, and resets. The unleveraged stock-basket formula does not replace these rules.
+
+## Management fees
+
+Management fees accrue according to the product's disclosed fee rate and calculation basis. Accrued unpaid fees are liabilities and reduce product NAV. Payment of an already accrued liability is not a second fee deduction.
+
+For illustration, a daily accrual using an annual rate (m) and a 365-day convention can be expressed as:
+
+$$
+\Delta M_d=B_d\frac{m}{365}
+$$
+
+Here (B_d) is the applicable fee base. The product terms define that base, day-count convention, and accrual timing.
+
+A theoretical reference series adjusted only for a constant management fee may be illustrated as:
+
+$$
+V_t^{\mathrm{ref,net}}
+=
+V_t^{\mathrm{ref}}F_t,
+\qquad
+F_t=\prod_{d=1}^{D}\left(1-\frac{m}{365}\right)
+$$
+
+This is a simplified fee-adjusted reference, not a substitute for actual product NAV. It does not automatically capture cash drag, taxes, funding, or actual execution costs. Do not apply this factor again to a product NAV that already includes the management-fee liability.
+
+## Trading sessions and valuation sources
+
+### U.S. equity products: 24/5
+
+Supported U.S. equity execution follows a 24/5 schedule, subject to security eligibility, holidays, trading halts, session transitions, and venue availability.
+
+| Session | U.S. Eastern Time | Valuation reference |
+| --- | --- | --- |
+| Pre-market | 04:00 to 09:30 | Massive Fair Market Value (FMV) |
+| Regular market | 09:30 to 16:00 | Massive FMV |
+| Post-market | 16:00 to 20:00 | Massive FMV |
+| Overnight | 20:00 to 04:00 the following day | Latest BOATS trade price accessed through Alpaca |
+| Weekend closure | Friday 20:00 to Sunday 20:00 | Last available valid reference, identified as closed-market data |
+
+Session boundaries are start-inclusive and end-exclusive. ET follows U.S. daylight saving time; it is not a fixed UTC offset.
+
+Massive FMV is an algorithmically derived valuation reference. It is not an executable bid, ask, or guaranteed fill price. U.S. equity orders are executed through Alloco's Alpaca integration rather than through the FMV data service.
+
+### Overnight execution and data
+
+Overnight executions and market data are facilitated by the **Blue Ocean Alternative Trading System (BOATS)**, accessed through Alpaca. BOATS operates an independent overnight session outside traditional stock exchanges.
+
+For overnight valuation, Alloco uses the **latest traded price**, retaining the timestamp of the underlying trade. Recalculating a portfolio does not make an old trade price fresh. If no new trade occurs, the latest observation remains unchanged.
+
+Liquidity and prices may differ across sessions. A change between Massive FMV and BOATS last-trade data can produce a valuation difference; switching sources does not itself constitute a portfolio rebalance or reset of performance history.
+
+### Hyperliquid products: 24/7
+
+Products implemented through supported Hyperliquid markets use Hyperliquid market and account data. Those markets follow a 24/7 trading model, subject to market-specific availability and operational interruptions.
+
+The precise contract and valuation-price field are defined by the product methodology. Reference or mark prices are distinguished from order-book execution estimates and actual fills.
+
+A 24/7 derivatives market does not mean the referenced company's shares trade continuously or that a derivative price represents an official private-company valuation. A product combining markets with different hours may have a narrower execution window than any one component.
+
+## Update frequency and data freshness
+
+Indicative valuations are refreshed **approximately once per minute during supported trading sessions**, using the latest available data from the applicable source.
+
+| Information | Update basis |
+| --- | --- |
+| Reference portfolio value | Approximately once per minute during supported sessions |
+| Indicative product NAV | Approximately once per minute, using available prices and product accounting inputs |
+| Mint / Redeem quote | Generated separately for the requested order using the latest available inputs |
+| Final order result | Determined after required execution and reconciliation |
+| Reconciled daily NAV | Calculated for the product's stated daily valuation point and published after reconciliation |
+
+The public refresh interval is not a quote-validity period, a promise of a new underlying price observation every minute, or the cadence of leverage and margin risk monitoring.
+
+Valuation records distinguish calculation time, underlying price timestamps, source, and market status. A portfolio can contain observations with different timestamps; the newest constituent observation does not make every holding current.
+
+Outside supported sessions, the last available price reference remains identifiable as closed-market data. Accrued fees and other accounting changes may still affect product value.
+
+Daily valuation cutoffs, publication timing, and treatment of non-trading days follow the product specification. A daily accounting cutoff does not itself interrupt an otherwise available trading session.
+
+### Unavailable or stale data
+
+A displayed value must not imply current pricing when its inputs are stale or unavailable. Any fallback valuation must identify its basis rather than silently substituting an old price as live data.
+
+A portfolio estimate may remain visible for reference even when a reliable executable quote cannot be produced. Quote availability, pauses, and treatment of already accepted orders follow the product's execution and exception rules. Data-age thresholds and fallback methods are specified for the relevant market and product.
+
+## Mint pricing
+
+Minting establishes the corresponding underlying portfolio exposure. The final units reflect the applicable product valuation and the actual cost of executing the request.
+
+For a USDT contribution:
+
+$$
+U_{\mathrm{USDC}}=U_{\mathrm{USDT}}x_{\mathrm{swap}}-K_{\mathrm{swap}}
+$$
+
+The minimum mint amount is 100 USDC after the required USDT conversion and its costs, before underlying execution costs. Network gas does not count toward this minimum.
+
+An order-level expression is:
+
+$$
+Q_{\mathrm{mint}}
+=
+\frac{U_{\mathrm{USDC}}-K_{\mathrm{mint}}}
+{P_{\mathrm{mint}}^{\mathrm{exec}}}
+$$
+
+where:
+
+There is **no separate ETFT mint fee**. This does not eliminate brokerage costs, spreads, market impact, required currency conversion, or network charges.
+
+## Redeem pricing
+
+Redemption reduces the corresponding actual positions or exposures. For a pro-rata securities redemption, a simplified relationship is:
+
+$$
+\alpha=\frac{Q_{\mathrm{redeem}}}{N_{\mathrm{applicable}}},
+\qquad
+q_i^{\mathrm{liquidation}}=\alpha q_i
+$$
+
+Actual holdings, cash, liabilities, pending flows, fractional quantities, and product allocation rules must be reconciled. Stale target weights do not automatically determine the positions to liquidate. Derivative products use their applicable exposure-reduction method.
+
+Net redemption proceeds can be expressed as:
+
+$$
+U_{\mathrm{redeem}}
+=
+Q_{\mathrm{redeem}}P_{\mathrm{redeem}}^{\mathrm{exec}}
+-K_{\mathrm{redeem}}-F_{\mathrm{redeem}}
+$$
+
+| Holding period | Redemption fee rate |
+| --- | --: |
+| Less than 3 months | 0.10% |
+| 3 months or longer | 0% |
+
+The product terms define the fee base, holding-period calculation, and treatment of acquisition lots and transfers. The quote and final breakdown reflect the applicable fee.
+
+Redemption proceeds are delivered in **USDC**, including when the original mint was funded with USDT. A completed securities sale does not necessarily mean cash is immediately available for delivery; required funding and settlement steps affect when the request becomes Claimable.
+
+## Indicative NAV versus execution pricing
+
+For a common valuation time and currency, execution-adjusted prices may be represented conceptually as:
+
+$$
+P^{\mathrm{mint}}=NAV^{\mathrm{ref}}+\Delta^{\mathrm{mint}},
+\qquad
+P^{\mathrm{redeem}}=NAV^{\mathrm{ref}}+\Delta^{\mathrm{redeem}}
+$$
+
+Spreads and transaction costs commonly make entering more expensive than exiting on a comparable basis. However, prices can move during processing, and reference-price methodologies can differ from executed prices. A fixed inequality between a displayed NAV and all later executions is therefore not guaranteed.
+
+A lower or higher final outcome does not necessarily represent an additional platform fee. It may reflect market movement, liquidity, spreads, market impact, conversion, and the timing of fills.
+
+## Quotes, output limits, and final execution
+
+A quote is generated before the underlying portfolio has been fully executed. It is specific to the requested amount, direction, market conditions, and applicable costs. It is not simply the public one-minute valuation used as a guaranteed transaction price.
+
+Where a quote specifies an enforceable minimum output, simplified bounds can be expressed as:
+
+$$
+Q_{\min}=\frac{U_{\min}^{\mathrm{available}}}{P_{\max}^{\mathrm{mint}}}
+$$
+
+$$
+U_{\min}=Q_{\mathrm{redeem}}P_{\min}^{\mathrm{redeem,net}}
+$$
+
+The first expression uses the minimum amount available after conversion and separately deducted costs, together with the applicable maximum per-unit mint price. The second uses a net per-unit redemption limit that already includes applicable costs and fees. Rounding and token precision are applied consistently with the accepted quote.
+
+These limits are meaningful only if supported by the order's execution rules. An estimated output alone must not be presented as a guaranteed minimum. Quote expiry, acceptance conditions, and execution limits are distinct from the expected processing duration.
+
+If an accepted order cannot satisfy its limits, its disclosed exception procedure governs partial execution, cancellation, any remaining funds, and any unwind. An already executed trade or conversion cannot be assumed to reverse without cost. A minimum output is not silently reduced.
+
+## Primary order lifecycle
+
+| Stage | What happens |
+| --- | --- |
+| Quote | Review estimated output, costs, validity, and any enforceable limits before submission |
+| Processing | Complete any required conversion, underlying execution, reconciliation, and funding steps |
+| Claimable | The confirmed ETFT or USDC entitlement is available for delivery |
+| Completed | The user has claimed and the asset has been successfully delivered |
+
+Under normal market and operating conditions, Processing typically completes within 10 minutes. This is an estimate from order acceptance to Claimable, not a guaranteed execution-price window, a securities-settlement deadline, or an end-to-end completion promise.
+
+Partial fills, trading halts, unavailable assets, conversion delays, venue interruptions, and funding constraints may extend processing. The time the user takes to claim and the claim transaction's confirmation time are additional.
+
+## Pricing summary
+
+| Item | Reference portfolio value | Product NAV | Mint / Redeem outcome |
+| --- | --- | --- | --- |
+| Portfolio basis | Methodology-defined reference | Actual attributable assets and liabilities | Order-specific executed allocation |
+| Market prices | Reference data | Valuation data | Actual execution and required conversions |
+| Management fees | Excluded from gross reference | Accrued in NAV | Included through the applicable valuation; not deducted twice |
+| Historical product expenses | Not automatically reflected | Reflected when borne by the product | Already reflected in the applicable NAV |
+| New order-specific costs | Excluded | Not automatically charged to existing holders | Reflected in price or deducted separately, once |
+| Redemption fee | Excluded | Not a general deduction from every holder | Applied to the relevant redemption |
+| Purpose | Strategy reference | Product valuation | Final transaction entitlement |
+
+A reference series, a product NAV, and a transaction outcome answer different questions. Review the valuation timestamp, data source, market state, and accepted order terms together.
