@@ -1,6 +1,6 @@
 ---
 title: "Fees"
-sidebarTitle: "Fee "
+sidebarTitle: "Fees"
 ---
 
 ## Overview
@@ -22,7 +22,7 @@ Costs fall into three categories:
 | Fee or cost | Amount | How it is applied |
 | --- | --- | --- |
 | Mint fee | **0%** | No separate Alloco product fee for minting |
-| Management fee | **0.5%–2.0% p.a.** | Accrued over time and reflected in product NAV; the product page states the applicable rate |
+| Management fee | **0.5%–2.0% p.a.** | Accrued over time and reflected in Product NAV; the product page states the applicable rate |
 | Redemption fee: held less than 3 months | **0.10%** | Deducted from the relevant redemption proceeds |
 | Redemption fee: held 3 months or longer | **0%** | No redemption fee after the applicable holding period |
 | Underlying execution costs | Variable | Reflected in actual execution prices or separately allocated transaction charges |
@@ -71,7 +71,7 @@ where:
 
 For example, an illustrative USD 1,000,000 fee base at 1% p.a. produces approximately USD 27.40 of daily accrual under this convention. The product terms define the fee base, day-count convention, and accrual timing.
 
-### Effect on product NAV
+### Effect on Product NAV
 
 Accrued unpaid management fees are product liabilities. They reduce the net assets attributable to holders:
 
@@ -79,15 +79,17 @@ $$
 NAV_t=\frac{A_t-L_t}{N_t}
 $$
 
-Here (A_t) is attributable product assets, (L_t) includes accrued fees and other liabilities, and (N_t) is the corresponding economic unit count.
+Here (At) is attributable product assets, (Lt) includes accrued fees and other liabilities, and (Nt) is the corresponding economic unit count.
 
 Paying a fee that has already been accrued settles the liability; it is not a second deduction from NAV. Management fees already reflected in NAV are not deducted again as an order-level charge when minting or redeeming.
 
 ### Reference performance and product value
 
-The **gross reference portfolio value** excludes management fees and represents the theoretical performance of the investment methodology. It is separate from actual product NAV.
+**Reference Portfolio Value** represents the theoretical performance of the defined reference portfolio. It excludes product management fees and actual product execution costs. Any modeled taxes, funding, financing, or trading costs are specified in the reference methodology. A series adjusted for modeled product fees is separately labeled **Fee-Adjusted Reference Portfolio Value** and remains a theoretical reference, not Product NAV.
 
-**Indicative product NAV** and reconciled product NAV reflect applicable accrued management fees. A theoretical reference series adjusted only for management fees is not a substitute for actual product valuation.
+**Product NAV** means Product NAV per Unit: actual attributable assets less liabilities, divided by the corresponding economic units outstanding. **Indicative Product NAV (iNAV)** is an intraday estimate using the latest available product records. **Daily Product NAV** is calculated for the specified daily valuation point and published after reconciliation.
+
+Both iNAV and Daily Product NAV reflect applicable accrued management fees and other recognized product costs. Daily Product NAV is not iNAV with management fees deducted again. Deducting modeled fees from Reference Portfolio Value does not reproduce actual Product NAV, which also reflects actual positions, cash, taxes, funding, execution, and other accounting items.
 
 ## Redemption fee
 
@@ -156,7 +158,7 @@ Expenses associated with portfolio operations, corporate actions, or taxes may i
 
 ### Rebalancing and ongoing portfolio costs
 
-A management fee does not imply that every underlying rebalance is free to execute. Where the product bears rebalancing costs or other disclosed ongoing expenses, they affect product NAV.
+A management fee does not imply that every underlying rebalance is free to execute. Where the product bears rebalancing costs or other disclosed ongoing expenses, they affect Product NAV.
 
 For derivative-based ETFTs, funding payments may be payable or receivable, and financing or borrowing costs may apply. Their treatment follows the product methodology. Amounts already recognized in cash or liabilities must not be recorded again as additional costs.
 
@@ -213,16 +215,21 @@ A USDC or USDT balance alone does not necessarily cover gas; the network's nativ
 
 ## How costs affect a mint
 
-After any required USDT conversion, a simplified order-level relationship is:
+Before submission, the **Mint Quote** shows estimated ETFT output, applicable minimum output, estimated costs, and quote validity. The quote is specific to the order; neither Reference Portfolio Value nor iNAV is a guaranteed mint price.
 
-$$
-Q_{\mathrm{mint}}
-=
-\frac{U_{\mathrm{USDC}}-K_{\mathrm{mint}}}
-{P_{\mathrm{mint}}^{\mathrm{exec}}}
-$$
+After any required USDT conversion, the amount available to establish the corresponding product exposure reflects the actual USDC conversion output and applicable order-specific costs. Final units are established under the product's issuance and accounting methodology using the applicable product valuation and actual execution results.
 
-where:
+The **Final Mint Outcome** identifies:
+
+- The confirmed ETFT units issued.
+- Actual conversion and execution costs attributable to the order.
+- Any remaining USDC returned under the order terms.
+
+USDC included as product cash backing the issued entitlement is distinct from unused funds returned to the investor. Reserved but unused execution buffers are not platform revenue.
+
+Costs embedded in actual fills or net conversion amounts are not deducted again as separate charges. Accrued management fees and historical product costs already reflected in Product NAV are not charged again as the same order-level expense.
+
+See **Pricing & NAV** for the valuation and unit-accounting principles that distinguish a Mint Quote from the Final Mint Outcome.
 
 ## How costs affect a redemption
 
@@ -253,7 +260,7 @@ The transaction and valuation methodology distinguishes costs already reflected 
 
 | Item | Treatment |
 | --- | --- |
-| Accrued management fee | Reflected in product NAV; not charged again on the order |
+| Accrued management fee | Reflected in Product NAV; not charged again on the order |
 | Historical costs borne by the product | Already affect NAV; not automatically deducted again |
 | Spread or slippage in actual fills | Reflected in achieved prices; not automatically a separate debit |
 | Fee included in net conversion output | Not deducted again from that output |
