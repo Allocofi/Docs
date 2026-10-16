@@ -71,19 +71,19 @@
             ]
           },
           {
-            "group": "Transparency and risks",
-            "pages": [
-              "risk-disclosures",
-              "reading-a-product-specification",
-              "faq"
-            ]
-          },
-          {
             "group": "ETFT Infrastructure",
             "pages": [
               "etft-caption",
               "etft-converter",
               "etft-yielding"
+            ]
+          },
+          {
+            "group": "Transparency and risks",
+            "pages": [
+              "risk-disclosures",
+              "reading-a-product-specification",
+              "faq"
             ]
           },
           {
