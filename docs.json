@@ -29,7 +29,7 @@
             "group": "Get Started",
             "pages": [
               "started/introduction",
-              "started/how-it-works",
+              "started/official-domains",
               "started/eligibility"
             ]
           },
@@ -40,40 +40,40 @@
               {
                 "group": "Categories",
                 "pages": [
-                  "overview",
+                  "categories",
                   "celebrity-etfts",
                   "institutional-portfolio-etfts",
                   "manager-led-etfts",
                   "thematic-etfts"
                 ]
               },
-              "leveraged-inverse-and-hedged-exposure",
+              "exposure",
               "product-lifecycle"
             ]
           },
           {
             "group": "Trading and participation",
             "pages": [
-              "products/hedge-fund-etp",
-              "products/stable-yield-etp",
+              "products/mint",
+              "products/redeem",
               "trading-hours-and-order-execution",
-              "untitled-page-14",
+              "secondary-market",
               "liquidity-programs"
             ]
           },
           {
             "group": "Portfolio mechanics",
             "pages": [
-              "products/themes-etp",
+              "pricing-nav",
               "portfolio-and-rebalancing",
               "execution-venues",
-              "products/private-markets"
+              "fees"
             ]
           },
           {
             "group": "Transparency and risks",
             "pages": [
-              "untitled-page-9",
+              "risk-disclosures",
               "reading-a-product-specification",
               "faq"
             ]
