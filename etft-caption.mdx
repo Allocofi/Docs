@@ -2,35 +2,138 @@
 title: "ETFT Captain"
 ---
 
-ETFT Captain is Alloco's infrastructure for bringing externally managed portfolios into the ETFT framework. It connects a manager's investment mandate with product issuance, execution, NAV accounting, and primary-market operations.
+## Overview
 
-Manager onboarding and product launch depend on approval and the applicable operating arrangements. A description of Caption does not mean that permissionless deployment or every external strategy is supported.
+ETFT Captain connects individuals and organizations with Alloco's infrastructure to bring investment strategies into the ETFT framework. A Captain makes portfolio decisions within an agreed mandate, while Alloco coordinates the product setup, execution integration, NAV accounting, and primary-market operations under the applicable arrangements.
+
+The onboarding process starts with an initial application through the Alloco website. Following an initial review, Alloco contacts the applicant by email to begin due diligence. Approved proposals then move through integration, launch preparation, and ongoing management.
+
+<Note>
+  Submitting an application or completing due diligence does not authorize trading or guarantee a product launch. Each Captain and each proposed ETFT must be reviewed, and management begins only after the relevant agreements, permissions, and launch requirements are in place.
+</Note>
 
 ## From mandate to product
 
 ![07 Caption](/images/07-caption.png "07 Caption")
 
-1. **Manager and strategy review.** Establish the manager's identity, investment process, operational capability, and conflicts of interest.
-2. **Product structure.** Identify the issuer, investor rights, manager mandate, and service agreements.
-3. **Configuration.** Define eligible instruments, venues, risk limits, fees, valuation, and dealing terms.
-4. **Operational validation.** Validate execution, reconciliation, unit accounting, and exception handling.
-5. **Primary launch.** Introduce capital and enable primary operations under the approved product terms.
-6. **Ongoing operation.** Monitor the mandate and evaluate secondary-market readiness separately.
+<Steps>
+  <Step title="Apply through the website">
+    Submit the initial Captain application through the [Alloco website](https://allocofi.com). Introduce yourself or your organization and the ETFT you would like to create.
+
+    This is an initial expression of interest. You do not need to complete both due diligence questionnaires before Alloco contacts you.
+  </Step>
+  <Step title="Receive an invitation to due diligence">
+    Alloco reviews the initial application and follows up by email. If the proposal progresses, the email provides the next steps, an application reference or Captain ID, and instructions for completing due diligence and supplying supporting materials.
+
+    Alloco may ask for clarification before proceeding. An invitation to due diligence is not final approval.
+  </Step>
+  <Step title="Complete Captain and ETFT due diligence">
+    Complete a Captain profile for the individual or organization responsible for managing the strategy, together with a separate ETFT questionnaire for each proposed product.
+
+    Alloco reviews the submissions and follows up on any outstanding questions, documents, or proposed parameters. The Captain and product reviews must both be resolved before the proposal proceeds to integration.
+  </Step>
+  <Step title="Complete integration and operational validation">
+    Agree the product mandate and operating arrangements, then configure and validate the supported execution workflow, permissions, risk controls, valuation, and primary-market processes.
+
+    The integration approach depends on the strategy and supported venues. It does not imply that every strategy, instrument, or external trading system can be supported.
+  </Step>
+  <Step title="Prepare the launch and communications">
+    Coordinate the product page, disclosures, and any agreed PR and marketing activities. Product descriptions, strategy claims, and performance materials must be consistent with the agreed mandate and approved launch materials.
+
+    The launch date and scope of communications are confirmed after readiness checks. Marketing support does not guarantee capital inflows, investor demand, or a secondary-market listing.
+  </Step>
+  <Step title="Begin ongoing management">
+    Once Alloco confirms activation and the agreed permissions are in place, begin managing the ETFT within its mandate. Continue to monitor positions, follow risk limits, respond to operational issues, and provide the information required under the operating arrangements.
+  </Step>
+</Steps>
+
+## Two levels of due diligence
+
+Due diligence separates the review of the Captain from the review of each product. This allows a Captain to propose multiple ETFTs without repeatedly submitting the same background information.
+
+| Review | Purpose | When to submit |
+| :-- | :-- | :-- |
+| **Captain DD** | Establish the profile of the individual or organization responsible for managing ETFTs | Submit the profile once; confirm it remains unchanged or update it for later applications |
+| **ETFT DD** | Review one proposed strategy, its execution, risk controls, and commercial terms | Submit a separate questionnaire for each ETFT; identify the existing product and changes when updating a proposal |
+
+<CardGroup cols={2}>
+  <Card title="Captain due diligence" icon="user" href="https://forms.gle/VivHtU8t4o3hk5LX8">
+    Complete or update your Captain profile. Allow approximately 15–20 minutes for a first submission, or about 2 minutes to confirm an unchanged profile.
+  </Card>
+
+  <Card title="ETFT due diligence" icon="file-lines" href="https://forms.gle/wFWj6NqMGR5wYXY59">
+    Submit one questionnaire for each proposed ETFT. Allow approximately 20–30 minutes per product.
+  </Card>
+</CardGroup>
+
+### Reusing your Captain profile
+
+Use the same Captain ID and associated contact email across product applications. Reference existing supporting documents rather than submitting them again, unless Alloco requests an updated copy.
+
+For example, a Captain proposing three ETFTs completes one Captain profile and three ETFT questionnaires. Approval of one ETFT does not approve the other two or extend the Captain's authority to them.
+
+If your profile changes, use the Captain questionnaire to provide an update. For an ETFT update, include the existing product reference and a summary of changes. Each product response should remain a complete specification rather than only a list of amendments.
+
+If you have not yet received a reference, follow the instructions in the relevant form. Alloco will reconcile the submission before proceeding.
+
+### Preparing your submission
+
+Short, specific answers are welcome. Use **N/A** where a Captain question does not apply. If a product parameter is undecided, write **To be agreed** and explain the intended approach.
+
+Suggested parameters are proposals for review. Entering a fee, risk limit, venue, or trading permission in a questionnaire does not make it effective or create an entitlement to compensation.
+
+<Warning>
+  Do not submit passwords, private keys, seed phrases, API credentials, confidential source code, or identity documents through these questionnaires. Do not enter identity-document numbers or full residential addresses in the Captain form. Supporting documents are requested through a separate channel provided by Alloco. Read the privacy notice supplied with your invitation before submitting.
+</Warning>
+
+## Integration and launch readiness
+
+Integration translates the agreed strategy into an operational product. Depending on the product, the work includes:
+
+| Area | What needs to be established |
+| :-- | :-- |
+| **Product structure** | Issuer, investor rights, responsible parties, and applicable service agreements |
+| **Investment mandate** | Strategy objectives, eligible instruments, supported venues, and portfolio decision rules |
+| **Risk controls** | Exposure and concentration limits, applicable leverage and margin controls, escalation procedures, and trading restrictions |
+| **Execution and access** | Instruction routing, trading permissions, account access, and handling of rejected or failed orders |
+| **Valuation and accounting** | Product NAV methodology, position and cash reconciliation, fees, liabilities, and unit accounting |
+| **Mint and redeem operations** | Dealing terms, execution timing, settlement, and exception handling |
+| **Launch materials** | Product specification, relevant disclosures, Captain information, and agreed communications |
+
+Operational validation must be completed before live management begins. Material changes identified during integration may require further review of the product proposal.
+
+The relevant product specification sets out the final terms. See [Pricing & NAV](/pricing-nav), [Fees](/fees), and [Trading hours & order execution](/trading-hours-and-order-execution) for the broader operating framework.
 
 ## Manager authority
 
-A manager can make portfolio decisions within its approved scope. That authority does not automatically include unrestricted withdrawals, unit issuance, fee changes, or changes to the NAV methodology.
+A Captain can make portfolio decisions within the agreed parameters and activated permissions for an ETFT. The exact legal role and responsibilities are established in the applicable agreements; the Captain designation alone does not confer regulatory authorization.
 
-Critical responsibilities are separated so that a portfolio instruction does not itself authorize asset release or creation of unbacked units.
+Portfolio decision-making authority does not automatically include unrestricted withdrawals, unit issuance, fee changes, changes to the NAV methodology, or expansion of the product's mandate.
+
+Critical responsibilities are separated so that a portfolio instruction does not itself authorize asset release or creation of unbacked units. Changes outside the agreed mandate must follow the applicable approval process before implementation.
 
 ## Product separation
 
 Each product has its own attributable assets, liabilities, expenses, and unit accounting. Assets of one ETFT are not available to meet another product's losses or margin obligations without a specifically authorized arrangement reflected in its documents.
 
-Legal isolation depends on the actual issuance structure and agreements, not solely on separate internal ledgers.
+Legal isolation depends on the actual issuance structure and agreements, not solely on separate internal ledgers. A shared Captain does not, by itself, create a shared asset pool or permission to move assets between products.
+
+## Ongoing management
+
+After activation, the Captain manages the portfolio within the agreed mandate and works with Alloco on monitoring and operational follow-up. Responsibilities are defined in the applicable agreements and may include:
+
+- Monitoring positions, exposures, and compliance with product risk limits.
+- Providing information needed for reconciliation, valuation, and product reporting.
+- Promptly escalating execution failures, risk-limit breaches, access issues, and other material incidents.
+- Disclosing material changes to the Captain's organization, personnel, strategy, or conflicts of interest.
+- Keeping public statements about the ETFT consistent with its current terms and disclosures.
+
+Secondary-market access is assessed separately from Captain onboarding and primary launch. Becoming a Captain does not guarantee exchange admission, market-making support, or continuous secondary liquidity. See [Secondary markets](/secondary-market).
 
 ## Changes and termination
 
 Manager replacement, mandate changes, restrictions, and product wind-down follow the product's governing process. Portfolio changes are recorded separately from changes to management authority.
 
-Caption is the infrastructure. [Manager-Led ETFTs](/manager-led-etfts) are one product family that uses it. Approved rules-based and thematic products can also use the same operating framework.
+Proposing a new ETFT requires a separate product review. Updates to an existing product may require revised documentation, additional operational validation, or renewed approval before taking effect.
+
+ETFT Captain is the onboarding and operating framework. [Manager-Led ETFTs](/manager-led-etfts) are one product family that uses it. Approved rules-based and thematic products can also use the same operating framework.
