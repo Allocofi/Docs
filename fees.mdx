@@ -7,15 +7,18 @@ sidebarTitle: "Fees"
 
 ETFT fees distinguish ongoing product expenses from the costs of an individual primary-market transaction.
 
-There is **no separate Alloco mint fee**. A position may incur an annual management fee, a holding-period-based redemption fee, and the actual costs associated with executing and settling the underlying portfolio.
+There is **no separate Alloco mint fee**. Holding an ETFT may incur management fees, applicable performance fees, and other disclosed product expenses. Minting and redeeming may also incur order-specific execution, conversion, network, and applicable redemption charges.
 
-This page covers **Mint** and **Redeem** transactions. Secondary-market Buy and Sell transactions follow the relevant venue's fee schedule and do not automatically use the primary redemption fee schedule.
+This page covers ongoing product expenses and **Mint** and **Redeem** transactions. Secondary-market Buy and Sell transactions follow the relevant venue's fee schedule and do not automatically use the primary redemption fee schedule.
 
-Costs fall into three categories:
+Costs fall into four categories:
 
-1. **Product fees and expenses:** management fees, applicable redemption fees, and disclosed expenses borne by the product.
-2. **Execution and conversion costs:** costs of establishing or reducing underlying exposure and making required currency or stablecoin conversions.
-3. **Network costs:** blockchain charges for supported onchain actions.
+1. **Ongoing operating expenses:** management fees and other disclosed recurring operating expenses borne by the product.
+2. **Performance fees:** performance-based compensation where expressly provided in the product terms.
+3. **Portfolio trading and holding costs:** execution, rebalancing, financing, borrowing, funding, conversion, and applicable taxes borne by the portfolio.
+4. **Investor transaction costs:** charges attributable to a particular mint, redemption, or wallet action, including applicable redemption fees and network gas.
+
+A cost's allocation determines whether it affects the product as a whole or an individual order. The same cost is not charged through both routes.
 
 ## Fee summary
 
@@ -23,6 +26,10 @@ Costs fall into three categories:
 | --- | --- | --- |
 | Mint fee | **0%** | No separate Alloco product fee for minting |
 | Management fee | **0.5%–2.0% p.a.** | Accrued over time and reflected in Product NAV; the product page states the applicable rate |
+| Ongoing Expense Ratio | Product-specific; estimated or historical where available | Includes management fees and eligible recurring operating expenses; a summary measure, not an additional charge |
+| Performance fee | Product-specific, where applicable | Accrued under the disclosed performance-fee methodology and reflected in Product NAV; shown separately from the Ongoing Expense Ratio |
+| Other operating expenses | As disclosed for the product | Recognized in Product NAV where borne by the product; eligible recurring expenses are included in the Ongoing Expense Ratio |
+| Portfolio financing, borrowing, funding, and taxes | Variable, where applicable | Reflected in portfolio assets, cash, or liabilities; funding may be payable or receivable |
 | Redemption fee: held less than 3 months | **0.10%** | Deducted from the relevant redemption proceeds |
 | Redemption fee: held 3 months or longer | **0%** | No redemption fee after the applicable holding period |
 | Underlying execution costs | Variable | Reflected in actual execution prices or separately allocated transaction charges |
@@ -30,6 +37,40 @@ Costs fall into three categories:
 | Network fees | Variable | Determined by the network and the transactions required |
 
 A zero mint fee or redemption fee does not eliminate other costs. The quote and transaction breakdown identify applicable charges and distinguish estimated amounts from final execution results.
+
+## Ongoing Expense Ratio
+
+Alloco uses **Ongoing Expense Ratio** to describe management fees and other eligible recurring operating expenses borne by an ETFT, expressed as an annual percentage of its average net assets. This is Alloco's defined disclosure measure; it should not be assumed to have the same scope as every ETF expense ratio or total expense ratio published elsewhere.
+
+For a complete one-year reporting period:
+
+$$
+\mathrm{OER}=\frac{\text{Management fees + eligible recurring operating expenses}}{\text{Average Product Net Assets over the same period}}
+$$
+
+The numerator uses expenses recognized for that period, including applicable accruals, rather than only cash payments. The denominator is total Product Net Assets, not Product NAV per Unit. The reporting period and averaging method must be disclosed. Any shorter-period annualization is identified with its calculation basis.
+
+### Included and excluded costs
+
+| Included, where borne by the product | Excluded from this measure and disclosed separately |
+| :-- | :-- |
+| Management fees | Performance fees |
+| Recurring administration, accounting, and valuation expenses | Portfolio trading commissions, spreads, slippage, and market impact |
+| Recurring custody and account-service expenses | Financing interest, borrowing costs, and derivative funding |
+| Recurring audit, legal, and product reporting expenses | Portfolio taxes and non-recurring exceptional expenses |
+| Recurring data or methodology licensing expenses allocated to the product | Order-specific mint, redemption, conversion, and investor network charges |
+
+Expenses included in a management fee are not counted again as separate operating expenses. Costs of underlying investment products, where applicable, must be identified as embedded costs or included on a disclosed look-through basis; they must not be silently treated as zero or counted twice.
+
+The Ongoing Expense Ratio is **not an all-in cost of ownership**. Excluded costs can still reduce Product NAV or an investor's transaction proceeds.
+
+### Estimated and historical figures
+
+An **Estimated Ongoing Expense Ratio** uses the disclosed operating budget and asset assumptions. Actual expenses can differ, particularly where fixed costs are spread over a changing asset base. A **Historical Ongoing Expense Ratio** uses recognized expenses and average net assets for the stated reporting period; it is not a promise of future costs.
+
+Where the other operating expenses have not been established, the management fee is shown separately rather than presented as a complete expense ratio. Any fee waiver, subsidy, or expense cap must identify its scope, duration, exclusions, and any permitted later recovery. An estimate is not an expense cap.
+
+For illustration only, a 0.50% management fee plus estimated eligible operating expenses of 0.10% on the same annual net-asset basis gives an estimated Ongoing Expense Ratio of **0.60% p.a.** The management fee is included in that figure, not charged on top of it. Performance fees and the excluded costs remain separate.
 
 ## Mint fee
 
@@ -51,7 +92,7 @@ Minting nevertheless requires the underlying portfolio exposure to be establishe
 
 Each ETFT has an annual management fee within the **0.5%–2.0% p.a.** range. The applicable rate is disclosed on the product page.
 
-The management fee compensates for ongoing product management, including methodology maintenance, monitoring, rebalancing oversight, operational infrastructure, and administration. It is accrued over time rather than charged as a separate upfront mint payment.
+The management fee compensates for ongoing product management and the services specified in the product terms, which may include methodology maintenance, monitoring, rebalancing oversight, operational infrastructure, and administration. Services covered by this fee must not also be charged as separate operating expenses. It is accrued over time rather than charged as a separate upfront mint payment.
 
 ### Accrual
 
@@ -65,31 +106,72 @@ where:
 
 | Symbol | Meaning |
 | --- | --- |
-| (\\Delta M_d) | Management fee accrued for day (d) |
-| (B_d) | Applicable total product fee base for that day |
-| (m) | Annual management fee rate expressed as a decimal |
+| $$\Delta M_d$$ | Management fee accrued for day $$d$$ |
+| $$B_d$$ | Applicable total product fee base for that day |
+| $$m$$ | Annual management fee rate expressed as a decimal |
 
 For example, an illustrative USD 1,000,000 fee base at 1% p.a. produces approximately USD 27.40 of daily accrual under this convention. The product terms define the fee base, day-count convention, and accrual timing.
 
 ### Effect on Product NAV
 
-Accrued unpaid management fees are product liabilities. They reduce the net assets attributable to holders:
+Accrued unpaid management fees, applicable performance fees, and other recognized unpaid product expenses are product liabilities. They reduce the net assets attributable to holders:
 
 $$
 NAV_t=\frac{A_t-L_t}{N_t}
 $$
 
-Here (At) is attributable product assets, (Lt) includes accrued fees and other liabilities, and (Nt) is the corresponding economic unit count.
+Here $$A_t$$ is attributable product assets, $$L_t$$ includes accrued fees and other liabilities, and $$N_t$$ is the corresponding economic unit count.
 
-Paying a fee that has already been accrued settles the liability; it is not a second deduction from NAV. Management fees already reflected in NAV are not deducted again as an order-level charge when minting or redeeming.
+Paying a fee that has already been accrued settles the liability; it is not a second deduction from NAV. Management fees, performance fees, and other expenses already reflected in NAV are not deducted again as an order-level charge when minting or redeeming.
 
 ### Reference performance and product value
 
-**Reference Portfolio Value** represents the theoretical performance of the defined reference portfolio. It excludes product management fees and actual product execution costs. Any modeled taxes, funding, financing, or trading costs are specified in the reference methodology. A series adjusted for modeled product fees is separately labeled **Fee-Adjusted Reference Portfolio Value** and remains a theoretical reference, not Product NAV.
+**Reference Portfolio Value** represents the theoretical performance of the defined reference portfolio. It excludes product management fees, performance fees, other product operating expenses, and actual product execution costs. Any modeled taxes, funding, financing, or trading costs are specified in the reference methodology. A series adjusted for modeled product fees is separately labeled **Fee-Adjusted Reference Portfolio Value** and remains a theoretical reference, not Product NAV.
 
 **Product NAV** means Product NAV per Unit: actual attributable assets less liabilities, divided by the corresponding economic units outstanding. **Indicative Product NAV (iNAV)** is an intraday estimate using the latest available product records. **Daily Product NAV** is calculated for the specified daily valuation point and published after reconciliation.
 
-Both iNAV and Daily Product NAV reflect applicable accrued management fees and other recognized product costs. Daily Product NAV is not iNAV with management fees deducted again. Deducting modeled fees from Reference Portfolio Value does not reproduce actual Product NAV, which also reflects actual positions, cash, taxes, funding, execution, and other accounting items.
+Both iNAV and Daily Product NAV reflect applicable accrued management fees, accrued performance fees, and other recognized product expenses and liabilities using the records available at the relevant valuation point. Reconciliation may update estimates. Daily Product NAV is not iNAV with those fees deducted again. Deducting modeled fees from Reference Portfolio Value does not reproduce actual Product NAV, which also reflects actual positions, cash, taxes, funding, execution, and other accounting items.
+
+## Performance fee
+
+Some ETFTs, particularly [Manager-Led ETFTs](/manager-led-etfts), may charge a performance fee. It applies only where expressly disclosed in the product terms. There is no platform-wide default performance-fee rate, and the presence of a Captain does not itself create a performance-fee entitlement.
+
+A performance fee is calculated on the eligible performance defined by the product, not automatically on all assets or every increase in market value. Its percentage cannot be added directly to an annual management-fee rate because the calculation bases differ.
+
+### Required product disclosures
+
+| Parameter | What the product terms specify |
+| :-- | :-- |
+| Rate and recipient | Applicable percentage and the party entitled to the fee |
+| Performance base | Eligible gains, measurement currency, realized and unrealized treatment, and whether management fees and other costs are deducted first |
+| High-water mark | Whether one applies, how it is established and adjusted, and how prior losses are carried forward |
+| Hurdle or benchmark | Any minimum return or benchmark, including whether the fee applies to all qualifying gains or only the excess |
+| Accrual | Valuation frequency and how the provisional liability changes with performance |
+| Crystallization | When the fee becomes payable, such as at a stated period end or an applicable redemption event |
+| Cash-flow treatment | How mints, redemptions, transfers, and different entry dates affect fee attribution |
+| Changes and termination | Treatment on manager replacement, product termination, and any permitted resets |
+
+A high-water mark, hurdle, or particular settlement frequency is not assumed unless specified. The disclosed method must address how investors entering at different times are treated, including any equalization, series, or other attribution mechanism used to avoid charging new contributions for earlier performance.
+
+### Accrual and Product NAV
+
+Applicable performance fees are recognized as they accrue under the agreed methodology, rather than first appearing only when paid. Uncrystallized accruals are recalculated, and reduced or reversed where required by that methodology, as eligible performance changes. A reversal of a provisional accrual is distinct from a refund of a fee already crystallized.
+
+Paying an already accrued fee reduces cash and settles the corresponding liability; it does not reduce NAV a second time. Redemption-related crystallization and attribution must also avoid duplicate charges.
+
+For illustration only, if eligible gains are USD 100,000 **after** all applicable prior costs, loss recovery, and performance conditions, a 20% performance fee would be USD 20,000. This example does not establish an actual product rate or a 20% charge on total assets.
+
+Performance fees are excluded from Alloco's Ongoing Expense Ratio and disclosed separately. Any historical performance-fee expense expressed as a percentage of average net assets must identify its period and basis; it is not a fixed forward annual fee.
+
+## Other operating expenses
+
+A product may bear specifically disclosed expenses for administration, custody, accounting, audit, legal services, valuation, data, licensing, or reporting. These examples do not authorize every category to be charged to every ETFT.
+
+The product terms identify the permitted categories, allocation basis, and any limits. Platform overhead is not automatically a product expense. Shared costs must use a documented, consistently applied allocation basis, and services already covered by the management fee are not charged again.
+
+Fixed expenses can represent a larger percentage of net assets for a smaller product. Any minimum charge, product-borne setup cost, exceptional expense, or cost cap must be disclosed separately where applicable. Non-recurring expenses are excluded from the Ongoing Expense Ratio defined above but still affect NAV when recognized.
+
+Expenses are reflected in NAV as recognized under the product's accounting methodology. Paying a previously accrued expense settles its liability without a second deduction. Expenses absorbed by Alloco or another party are not treated as borne by the product unless a disclosed reimbursement arrangement applies.
 
 ## Redemption fee
 
@@ -227,7 +309,7 @@ The **Final Mint Outcome** identifies:
 
 USDC included as product cash backing the issued entitlement is distinct from unused funds returned to the investor. Reserved but unused execution buffers are not platform revenue.
 
-Costs embedded in actual fills or net conversion amounts are not deducted again as separate charges. Accrued management fees and historical product costs already reflected in Product NAV are not charged again as the same order-level expense.
+Costs embedded in actual fills or net conversion amounts are not deducted again as separate charges. Accrued management fees, accrued performance fees, and historical product costs already reflected in Product NAV are not charged again as the same order-level expense.
 
 See **Pricing & NAV** for the valuation and unit-accounting principles that distinguish a Mint Quote from the Final Mint Outcome.
 
@@ -260,7 +342,8 @@ The transaction and valuation methodology distinguishes costs already reflected 
 
 | Item | Treatment |
 | --- | --- |
-| Accrued management fee | Reflected in Product NAV; not charged again on the order |
+| Accrued management fee, performance fee, or other product expense | Reflected in Product NAV; not charged again as the same order expense |
+| Ongoing Expense Ratio | Summarizes included expenses; not a separate charge on top of them |
 | Historical costs borne by the product | Already affect NAV; not automatically deducted again |
 | Spread or slippage in actual fills | Reflected in achieved prices; not automatically a separate debit |
 | Fee included in net conversion output | Not deducted again from that output |
@@ -285,4 +368,4 @@ Participation rewards or fee credits do not waive charges unless the published p
 - **Trading hours & order execution:** market availability, price protection, execution deadlines, and exceptions.
 - **Secondary markets:** trading existing ETFT units and venue-specific costs.
 
-Review the applicable product rate and transaction breakdown before confirming. Annual management fees, execution costs, and market performance are separate inputs to the overall result of holding an ETFT.
+Review the applicable product rate and transaction breakdown before confirming. Ongoing expenses, applicable performance fees, portfolio costs, transaction charges, and market performance are separate inputs to the overall result of holding an ETFT.
