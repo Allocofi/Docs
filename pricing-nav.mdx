@@ -337,7 +337,7 @@ $$
 
 Actual holdings, cash, liabilities, pending flows, fractional quantities, and product allocation rules must be reconciled. Stale target weights do not automatically determine the positions to liquidate. Derivative products use their applicable exposure-reduction method.
 
-Before submission, the **Redeem Quote** shows estimated USDC proceeds, applicable minimum output, estimated costs, and the redemption fee. The **Final Redeem Outcome** confirms net USDC proceeds and the actual transaction breakdown after execution and reconciliation.
+Before submission, the **Redeem Quote** shows estimated USDC proceeds, estimated costs, and the redemption fee. Estimated proceeds are indicative only, not a guaranteed payout or a minimum USDC output. The final amount may be higher or lower. The **Final Redeem Outcome** confirms net USDC proceeds and the actual transaction breakdown after execution and reconciliation.
 
 Net redemption proceeds can be expressed as:
 
@@ -364,7 +364,9 @@ Gross proceeds are an order-accounting amount, not Reference Portfolio Value mul
 
 The product terms define the fee base, holding-period calculation, and treatment of acquisition lots and transfers. The quote and final breakdown reflect the applicable fee.
 
-Redemption proceeds are delivered in **USDC**, including when the original mint was funded with USDT. A completed securities sale does not necessarily mean cash is immediately available for delivery; required funding and settlement steps affect when the request becomes Claimable.
+Redemption proceeds are delivered in **USDC**, including when the original mint was funded with USDT. Under normal market and operating conditions, redemptions settle on **T+1**, the next trading day after the effective redemption date, excluding weekends and applicable market holidays. The applicable product dealing terms define the effective date, trading calendar, and cutoff. This settlement schedule is distinct from the underlying execution window and is not a guaranteed wallet-delivery time. A request becomes Claimable only after settlement, reconciliation, and required funding are complete.
+
+Final proceeds reflect actual execution, applicable conversion, costs, fees, and reconciliation. T+1 does not itself mean that completed sales are repriced using the following day's market prices. Trading halts, incomplete execution, liquidity constraints, or operational interruptions may delay settlement; a delay does not automatically cancel the request.
 
 ## Product NAV and Transaction Pricing
 
@@ -382,17 +384,15 @@ A lower or higher Final Mint / Redeem Outcome does not necessarily represent an 
 
 A Mint / Redeem Quote is generated before the underlying portfolio has been fully executed. It is specific to the requested amount, direction, market conditions, and applicable costs. It is not the public iNAV or Reference Portfolio Value used as a guaranteed transaction price.
 
-Where a quote specifies an enforceable minimum output, simplified bounds can be expressed as:
+For a Mint Quote specifying an enforceable minimum ETFT output, a simplified bound can be expressed as:
 
 $$
 Q_{\min}=\frac{U_{\min}^{\mathrm{available}}}{P_{\max}^{\mathrm{mint}}}
 $$
 
-$$
-U_{\min}=Q_{\mathrm{redeem}}P_{\min}^{\mathrm{redeem,net}}
-$$
+This expression uses the minimum USDC amount available after conversion and separately deducted costs, together with the applicable maximum per-unit mint price in USDC per ETFT. That price boundary excludes the same separately deducted costs and is an order constraint, not Product NAV. Rounding and token precision are applied consistently with the accepted quote.
 
-The first expression uses the minimum USDC amount available after conversion and separately deducted costs, together with the applicable maximum per-unit mint price in USDC per ETFT. That price boundary excludes the same separately deducted costs and is an order constraint, not Product NAV. The second uses a net per-unit redemption limit in USDC per ETFT that already includes applicable costs and fees. Rounding and token precision are applied consistently with the accepted quote.
+A Redeem Quote provides estimated proceeds, not a minimum USDC output guarantee. Limits on the sale prices of individual underlying assets are execution controls; they do not guarantee the aggregate net USDC redemption amount.
 
 These limits are meaningful only if supported by the order's execution rules. An estimated output alone must not be presented as a guaranteed minimum. Quote expiry, acceptance conditions, and execution limits are distinct from the expected processing duration.
 
@@ -407,7 +407,9 @@ If an accepted order cannot satisfy its limits, its disclosed exception procedur
 | Claimable | The confirmed ETFT or USDC entitlement is available for delivery |
 | Completed | The user has claimed and the asset has been successfully delivered |
 
-Under normal market and operating conditions, Processing typically completes within 10 minutes. This is an estimate from order acceptance to Claimable, not a guaranteed execution-price window, a securities-settlement deadline, or an end-to-end completion promise.
+Under normal market and operating conditions, **Mint Processing typically completes within 10 minutes**, measured from order acceptance to Claimable. This is an estimate, not a guaranteed execution-price window, a securities-settlement deadline, or an end-to-end completion promise.
+
+**Redeem Processing includes T+1 settlement**, measured from the effective redemption date under the applicable dealing terms. It does not normally reach Claimable within the mint processing estimate. Claimable requires completed settlement, reconciliation, and funding; subsequent claiming and blockchain confirmation are separate.
 
 Partial fills, trading halts, unavailable assets, conversion delays, venue interruptions, and funding constraints may extend processing. The time the user takes to claim and the claim transaction's confirmation time are additional.
 
