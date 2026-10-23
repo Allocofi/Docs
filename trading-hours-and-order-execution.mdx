@@ -32,6 +32,8 @@ Alloco does not queue new primary requests for a future trading session under th
 
 The product interface should identify the reason and, where known, the next expected available session. A displayed valuation may remain available for reference while minting and redemption are unavailable.
 
+Requests outside an applicable dealing window are not accepted or automatically queued under this policy. For accepted redemptions, the effective redemption date is determined by the product's trading calendar, timezone, and cutoff.
+
 These acceptance checks do not guarantee that conditions will remain unchanged after an order is accepted. Existing requests follow the processing and exception rules below.
 
 ## Your request and the underlying orders
@@ -41,7 +43,8 @@ You submit a single ETFT mint or redemption request. You do not need to choose a
 Before confirmation, review:
 
 - The ETFT and amount requested.
-- The estimated output and minimum received condition.
+- For a mint, the estimated ETFT output and applicable minimum received condition.
+- For a redemption, the estimated USDC proceeds, which are not a guaranteed payout or a minimum USDC output.
 - Applicable fees and expected execution costs.
 - Any required USDT-to-USDC conversion.
 - Quote validity, market availability, and processing information.
@@ -110,7 +113,9 @@ Buffer settings account for the session, security, spread, liquidity, volatility
 
 ### Portfolio-level protection
 
-Individual security limits must remain consistent with the total request budget and minimum output. Protecting each order separately is not enough if aggregate execution costs, conversions, or fees would breach the accepted ETFT-level conditions.
+Individual security limits must remain consistent with the total request budget and, for mints, the applicable minimum ETFT output. Protecting each order separately is not enough if aggregate execution costs, conversions, or fees would breach the accepted ETFT-level conditions.
+
+For redemptions, underlying sale-price limits remain execution controls. They do not establish a guaranteed aggregate net USDC output; final proceeds depend on actual fills, applicable conversion, costs, and fees.
 
 Price adjustments and retries remain within the original accepted limits. A change that would weaken those limits requires a new user authorization; it is not an automatic continuation of the original request.
 
@@ -122,9 +127,11 @@ Any cash reserved for potential price movement or fees is likewise not automatic
 
 ## Minimum received
 
-**Minimum received** is a condition that a successfully completed primary request must satisfy. It is distinct from the estimated output, which may change with market conditions before acceptance.
+For a **mint**, **minimum received** is a condition that a successfully completed request must satisfy. It is distinct from the estimated output, which may change with market conditions before acceptance.
 
-If an accepted request cannot meet its minimum output within the permitted execution conditions, it enters exception handling. Alloco does not silently reduce the minimum or issue an incomplete required portfolio as if execution had succeeded.
+For a **redemption**, the displayed estimated USDC proceeds are indicative only. They are not a guaranteed payout or a minimum received condition, and the final amount may be higher or lower. Underlying sell limits do not guarantee the aggregate net USDC amount.
+
+If an accepted mint cannot meet its minimum output within the permitted execution conditions, it enters exception handling. Alloco does not silently reduce the minimum or issue an incomplete required portfolio as if execution had succeeded.
 
 This protection is not a guarantee that every submitted request will complete. It also does not establish a cost-free refund where conversion or underlying trades have already occurred.
 
@@ -145,7 +152,13 @@ The normal primary lifecycle is:
 
 For U.S. equity requests under this policy, the **active execution window is 10 minutes from order acceptance**. During this window, orders may be submitted or adjusted only within the accepted constraints. Any required initial conversion uses part of this window; it does not silently restart the timer.
 
-Normally, processing is expected to reach Claimable within approximately 10 minutes. The active execution deadline is nevertheless a control on new execution activity, not a guaranteed completion, settlement, cancellation, or refund deadline.
+Under normal market and operating conditions, **mint processing** is expected to reach Claimable within approximately 10 minutes. **Redemption processing includes T+1 settlement** and is not expected to reach Claimable within this mint processing estimate. The active execution deadline is a control on new execution activity, not a guaranteed completion, settlement, cancellation, or refund deadline.
+
+For redemptions, **T** is the effective redemption trading day under the applicable product dealing terms, and **T+1** is the next trading day, excluding weekends and applicable market holidays. The product terms specify the trading calendar and cutoff, including the trading-day assignment of overnight requests. T+1 is a settlement schedule, not a guaranteed wallet-delivery time. Settlement, reconciliation, and required funding must be complete before the request becomes Claimable. Exceptional conditions may delay settlement without automatically cancelling the request.
+
+<Tip>
+  T is the U.S. securities trading day on which the redemption request becomes effective. T+1 is the next U.S. securities trading day, excluding weekends and U.S. securities market holidays. Trading dates are determined in U.S. Eastern Time (ET).
+</Tip>
 
 ### At the execution deadline
 
@@ -184,7 +197,7 @@ The transaction breakdown identifies the issued units, actual costs, and any res
 
 ### Redemption
 
-Net redemption proceeds are delivered in USDC after actual execution, applicable costs, and any redemption fee. Funding and settlement availability determine when the proceeds can be claimed.
+Net redemption proceeds are delivered in USDC after actual execution, applicable conversion, costs, and any redemption fee. The estimate shown before submission is not guaranteed. Redemptions normally settle on T+1 under the applicable dealing terms; settlement, reconciliation, and funding availability determine when proceeds become Claimable. T+1 does not itself reprice completed sales using the following day's market prices. Claiming and blockchain confirmation occur separately.
 
 ### Exceptions
 
@@ -206,4 +219,4 @@ A product combining U.S. equities with continuously traded derivatives may have 
 
 An open market, an available quote, or an accepted order does not guarantee execution. Liquidity, volatility, trading halts, broker restrictions, data quality, and operational conditions can affect the outcome.
 
-Review the product methodology, minimum received condition, quote validity, and applicable exception terms before confirming. Secondary-market trading follows the selected venue's separate rules and does not use this primary claim lifecycle.
+Review the product methodology, applicable mint minimum received condition or redemption estimate, quote validity, settlement schedule, and applicable exception terms before confirming. Secondary-market trading follows the selected venue's separate rules and does not use this primary claim lifecycle.
