@@ -5,34 +5,36 @@ sidebarTitle: "Redeeming an ETFT"
 
 ## Overview
 
-Redeeming an ETFT converts your units into USDC through the primary-market redemption process. Enter the units to redeem, review the quote and applicable fee, and confirm the transaction. The corresponding underlying positions are then reduced or liquidated under the product's execution methodology.
+Redeeming an ETFT converts your units into USDC through the primary-market redemption process.
 
-When execution, reconciliation, and the required funding steps are complete, the resulting USDC becomes available to claim.
+Enter the units to redeem, review the estimated USDC proceeds and applicable fees, and confirm your request. The corresponding underlying positions are then reduced or liquidated under the product's execution methodology.
 
-Redemption is distinct from selling existing ETFT units to another participant in a secondary market. **Redemption proceeds are delivered in USDC**, including when the original mint was funded with USDT. USDT mint support does not imply a USDT redemption option.
+**Redemptions settle on T+1, the next trading day after the effective redemption date.** The amount displayed when you submit a request is an estimate, not a guaranteed payout. Final proceeds reflect actual execution, applicable costs and fees, and reconciliation.
+
+Redemption proceeds are delivered in USDC, including when the original mint was funded with USDT.
 
 ## 1. Quote
 
-Quote is the pre-submission stage. Reviewing a quote does not submit a redemption request.
+Reviewing an estimate does not submit a redemption request.
 
 ### Select an ETFT
 
-Open your portfolio and select the ETFT to redeem. Review your unit balance, Indicative Product NAV (iNAV), actual portfolio composition, holding period, applicable redemption fee, and risks.
+Open your portfolio and select the ETFT to redeem. Review your available balance, Indicative Product NAV (iNAV), holding period, applicable redemption fee, and product risks.
 
-You may redeem all or part of your position, subject to the product's dealing terms. The 100 USDC mint minimum does not itself establish a redemption minimum. Any product-specific redemption minimum or full-balance exception is disclosed before confirmation.
+You may redeem all or part of your position, subject to the product's dealing terms. Any redemption minimum or full-balance exception is disclosed before confirmation.
 
 ### Enter your redemption amount
 
 For example:
 
 ```text
-You redeem: 100 Pelosi ETFT
-Minimum output: [Quoted amount] USDC
+You redeem: 100 ETFT units
+Estimated proceeds: [Estimated amount] USDC
 ```
 
-The quote reflects current underlying prices, portfolio composition, iNAV, expected execution, market liquidity, applicable execution costs, and the redemption fee.
+The estimate uses available portfolio and pricing information, expected execution costs, and the applicable redemption fee.
 
-The quote is provided before the underlying positions are liquidated. Actual proceeds depend on completed execution. Review the quote validity and minimum-output conditions; iNAV is not a guaranteed executable price.
+**Estimated proceeds are indicative only. The final USDC amount may be higher or lower.** Market prices, liquidity, execution results, conversion rates, and applicable charges may change before the request is settled. Neither iNAV nor the displayed estimate guarantees an executable price or final redemption amount.
 
 ### Review the redemption fee
 
@@ -41,67 +43,60 @@ The quote is provided before the underlying positions are liquidated. Actual pro
 | Less than 3 months | 0.10% |
 | 3 months or longer | 0% |
 
-The applicable holding period and fee calculation follow the relevant product methodology and are reflected in the quote and final transaction breakdown. The method must account for the units being redeemed, including where a position contains multiple acquisition lots.
+Holding-period measurement and fee calculation follow the relevant product methodology, including the treatment of multiple acquisition lots.
 
-A zero redemption fee does not eliminate underlying execution, conversion, settlement, or network costs. This fee schedule applies to primary redemption, not automatically to secondary-market trades.
+A zero redemption fee does not eliminate execution, conversion, settlement, or network costs.
 
 ## 2. Processing
 
-Review the details, click **Redeem**, and confirm the required wallet transaction. The order enters **Processing**, and the submitted units are reserved against the request to prevent duplicate redemption or transfer.
+Review the details, click **Redeem**, and confirm the required wallet transaction.
 
-The applicable underlying positions are routed for execution. Unit cancellation and any unsettled redemption entitlement are reconciled so that a pending claim is not lost or included in the value attributable to remaining holders.
+The request enters **Processing**, and the submitted units are reserved against it to prevent duplicate redemption or transfer. The corresponding underlying positions are reduced or liquidated, and the resulting proceeds, liabilities, and applicable costs are reconciled.
 
-### Underlying execution
+Actual proceeds depend on execution prices and may be affected by market movements, spreads, liquidity, partial fills, trading-session conditions, and transaction charges.
 
-For an equity-backed product, redemption reduces the attributable securities positions. Conceptually, for a pro-rata redemption:
+### T+1 settlement
 
-```text
-Redemption fraction
-    = units being redeemed / applicable economic units outstanding
+Under normal market and operating conditions, redemption proceeds settle on **T+1**:
 
-Quantity of security i to liquidate
-    = redemption fraction × attributable quantity of security i
-```
+- **T** is the trading day on which the redemption request becomes effective under the applicable dealing window.
+- **T+1** is the next trading day, excluding weekends and applicable market holidays.
 
-This relationship uses actual portfolio positions, not stale target weights. Cash, liabilities, pending flows, fractional quantities, and the product's allocation rules are accounted for separately. Synthetic or leveraged products follow their specified exposure-reduction method rather than treating derivative notional as securities owned.
+For example, a request effective on Monday normally settles on Tuesday. A request effective on Friday normally settles on Monday, provided Monday is a trading day.
 
-Actual proceeds depend on execution prices and can be affected by market movement, spreads, liquidity, partial fills, extended-hours conditions, and brokerage or transaction charges. These costs are passed through under the product's pricing methodology.
+Requests submitted outside an applicable dealing window are assigned an effective redemption date under the product's dealing terms. Submission time alone does not necessarily determine T.
 
-### Processing time
-
-Under normal market and operating conditions, **Processing typically completes within 10 minutes**. This measures the period from order acceptance to Claimable, including required execution, reconciliation, and funding availability. It is an estimate, not a guaranteed deadline or a promise that securities settlement finishes within 10 minutes.
-
-Market closures, trading halts, partial fills, limited liquidity, broker interruptions, settlement constraints, and network delays can extend this period. A delay beyond 10 minutes does not automatically cancel the request.
+**T+1 refers to settlement, not a guaranteed wallet-delivery time.** Trading halts, incomplete execution, insufficient liquidity, broker interruptions, funding constraints, or other exceptional conditions may delay settlement. A delay does not automatically cancel the request.
 
 ## 3. Claimable
 
-The order changes to **Claimable** once the required execution and reconciliation are complete and USDC is available for delivery.
+The request becomes **Claimable** once settlement, reconciliation, and the required funding steps are complete and USDC is available for delivery.
 
-A securities sale fill is not necessarily immediately withdrawable cash. Settlement, funding availability, and any required conversion or transfer steps can affect when the Claim action becomes available.
-
-The claimable amount reflects actual execution, allocated transaction costs, and any redemption fee. If the order cannot satisfy its accepted limits, its disclosed exception procedure applies rather than silently reducing the minimum output.
+The interface then displays the **final claimable USDC amount**. This amount reflects actual execution, applicable conversion, allocated transaction costs, and any redemption fee. It may differ from the estimate shown when the request was submitted.
 
 ### Claim your USDC
 
-Click **Claim** and confirm the wallet transaction. USDC is delivered to your connected wallet on the applicable network.
+Click **Claim** and confirm the required wallet transaction. USDC is delivered to your connected wallet on the applicable network.
+
+Wallet issues, network congestion, or transaction-confirmation delays may affect delivery.
 
 ## 4. Completed
 
-After successful delivery, the order becomes **Completed**. The processing estimate does not include the time you take to claim or the confirmation time for the claim transaction.
+The request becomes **Completed** after successful USDC delivery.
+
+The time you take to claim and the blockchain confirmation time are separate from the T+1 settlement schedule.
 
 ## Order lifecycle
 
 | Stage | What happens |
 | --- | --- |
-| Quote | Review estimated USDC proceeds, costs, redemption fee, and minimum output |
-| Processing | Reduce underlying positions, reconcile results, and prepare settlement |
-| Claimable | The confirmed USDC entitlement is available to claim |
-| Completed | USDC has been delivered to your wallet |
+| Quote | Review estimated USDC proceeds and applicable fees. The estimate is not guaranteed. |
+| Processing | Reduce underlying positions and complete execution, reconciliation, and T+1 settlement. |
+| Claimable | The final confirmed USDC amount is available to claim. |
+| Completed | USDC has been delivered to your wallet. |
 
 ## Important considerations
 
-Redemption may be delayed by market closures, trading halts, insufficient liquidity, broker interruptions, settlement constraints, or other exceptional conditions. Cancellation, partial execution, and any unwind follow the applicable order terms; already executed transactions may incur costs.
+Cancellation, partial execution, failed execution, and any unwind follow the applicable product and order terms. Already executed transactions may incur costs.
 
-<Warning>
-  USDT conversion costs incurred when minting are not reversed by later redeeming into USDC. Primary redemption and secondary-market selling have different pricing, fees, and execution paths.
-</Warning>
+USDT conversion costs incurred when minting are not reversed by later redeeming into USDC.
