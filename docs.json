@@ -144,5 +144,12 @@
     "heading": {
       "family": "Inter"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/liquidity-programs",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
