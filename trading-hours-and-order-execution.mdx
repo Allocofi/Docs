@@ -173,7 +173,7 @@ A cancellation request is not confirmation that an order has stopped executing. 
 
 If all required trades have filled but reconciliation or funding is still pending, the request may remain Processing with the reason displayed. It does not become Claimable merely because the execution window has elapsed.
 
-Broker order validity can extend beyond Alloco's execution window. Alloco's deadline and cancellation controls apply independently of broker DAY or other time-in-force settings; an unfilled order is not intentionally left to pursue execution indefinitely across sessions.
+Execution partner order validity can extend beyond Alloco's execution window. Alloco's deadline and cancellation controls apply independently of execution partner DAY or other time-in-force settings; an unfilled order is not intentionally left to pursue execution indefinitely across sessions.
 
 ## Partial fills and exception handling
 
@@ -217,6 +217,6 @@ A product combining U.S. equities with continuously traded derivatives may have 
 
 ## Important considerations
 
-An open market, an available quote, or an accepted order does not guarantee execution. Liquidity, volatility, trading halts, broker restrictions, data quality, and operational conditions can affect the outcome.
+An open market, an available quote, or an accepted order does not guarantee execution. Liquidity, volatility, trading halts, execution partner restrictions, data quality, and operational conditions can affect the outcome.
 
 Review the product methodology, applicable mint minimum received condition or redemption estimate, quote validity, settlement schedule, and applicable exception terms before confirming. Secondary-market trading follows the selected venue's separate rules and does not use this primary claim lifecycle.

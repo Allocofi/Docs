@@ -208,9 +208,9 @@ This is a primary redemption fee. It does not automatically apply to a sale of e
 
 ETFT minting and redemption are execution-backed. Establishing or reducing the corresponding underlying portfolio can generate costs that vary by product, order size, market conditions, and trading session.
 
-### Brokerage and venue charges
+### Execution and venue charges
 
-Underlying securities execution may incur charges based on the applicable brokerage arrangement, number of shares, execution tier, order type, session, and security.
+Underlying securities execution may incur charges based on the applicable execution arrangement, number of shares, execution tier, order type, session, and security.
 
 Pre-market, post-market, and overnight execution may have different cost structures from regular-session execution. The applicable charges form part of the request's execution economics; they are not a separate Alloco mint fee.
 
@@ -218,7 +218,7 @@ For products using derivatives, venue trading fees and other relevant execution 
 
 ### Spreads, slippage, and market impact
 
-These are economic effects of execution, not automatically separate fees charged by Alloco or the broker.
+These are economic effects of execution, not automatically separate fees charged by Alloco or the execution partner.
 
 Execution analysis may distinguish:
 
@@ -228,7 +228,7 @@ C_{\mathrm{economic}}
 C_{\mathrm{explicit}}+C_{\mathrm{implicit}}
 $$
 
-Explicit costs include separately charged brokerage or transaction fees. Implicit costs describe differences between an appropriate reference price and the achieved execution price.
+Explicit costs include separately charged execution or transaction fees. Implicit costs describe differences between an appropriate reference price and the achieved execution price.
 
 This expression is an analytical decomposition, not an instruction to deduct every component again from actual proceeds. If actual fills already reflect spreads and price impact, those effects are not subtracted a second time. Different slippage and spread measurements can also overlap and must not be added mechanically.
 
