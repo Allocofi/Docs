@@ -151,5 +151,8 @@
       "destination": "/",
       "permanent": true
     }
-  ]
+  ],
+  "thumbnails": {
+    "background": "/images/Group1000004551(1).png"
+  }
 }
